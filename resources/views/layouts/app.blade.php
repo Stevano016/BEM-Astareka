@@ -108,7 +108,7 @@
             @auth
                 <a href="{{ route('admin.dashboard') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-headline font-bold text-sm tracking-wide active:scale-95 duration-200">Dashboard</a>
             @else
-                <a href="{{ route('login') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-headline font-bold text-sm tracking-wide active:scale-95 duration-200">Login</a>
+                <a href="{{ route('login') }}" class=" tracking-wide active:scale-95 duration-200"></a>
             @endauth
         </div>
     </nav>

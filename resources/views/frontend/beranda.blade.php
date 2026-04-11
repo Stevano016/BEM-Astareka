@@ -79,43 +79,46 @@
     </section>
 
     <!-- Program Unggulan Section -->
-    <section class="py-24">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="mb-12">
-                <h2 class="text-sm font-label uppercase tracking-widest text-outline mb-4">Strategi & Inovasi</h2>
-                <h3 class="text-4xl font-headline font-extrabold text-primary tracking-tight">Program Kerja Unggulan</h3>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[600px]">
-                @foreach($programKerja as $prog)
-                <div class="{{ $prog->is_featured ? 'md:col-span-2 md:row-span-2' : '' }} p-10 rounded-2xl flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:scale-[1.02]
-                    @if($prog->bg_style == 'primary') bg-primary text-white 
-                    @elseif($prog->bg_style == 'secondary-container') bg-secondary-container text-on-secondary-container
-                    @elseif($prog->bg_style == 'surface-container-highest') bg-surface-container-highest text-primary
-                    @else bg-surface-container-low text-primary @endif">
-                    
-                    <div class="space-y-6 z-10">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center {{ $prog->bg_style == 'primary' ? 'bg-white/10' : 'bg-primary/5' }}">
-                            <span class="material-symbols-outlined">{{ $prog->icon }}</span>
-                        </div>
-                        <h4 class="text-2xl md:text-3xl font-headline font-extrabold leading-tight">{{ $prog->nama }}</h4>
-                        <p class="opacity-80 leading-relaxed {{ $prog->is_featured ? 'text-lg max-w-sm' : 'text-sm' }}">{{ $prog->deskripsi }}</p>
-                    </div>
-                    
-                    <div class="flex justify-between items-center z-10">
-                        <span class="text-xs font-bold uppercase tracking-widest opacity-50">{{ $prog->departemen }}</span>
-                        <span class="material-symbols-outlined transform group-hover:rotate-45 transition-transform">north_east</span>
-                    </div>
-
-                    @if($prog->bg_style == 'primary')
-                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-                    @endif
-                </div>
-                @endforeach
-            </div>
+<section class="py-24">
+    <style>
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="mb-12">
+            <h2 class="text-sm font-label uppercase tracking-widest text-outline mb-4">Strategi & Inovasi</h2>
+            <h3 class="text-4xl font-headline font-extrabold text-primary tracking-tight">Program Kerja Unggulan</h3>
         </div>
-    </section>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 h-auto md:h-[600px]">
+            @foreach($programKerja as $prog)
+            <div class="{{ $prog->is_featured ? 'md:col-span-2 md:row-span-2' : '' }} p-10 rounded-2xl flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:scale-[1.02]
+                @if($prog->bg_style == 'primary') bg-primary text-white 
+                @elseif($prog->bg_style == 'secondary-container') bg-secondary-container text-on-secondary-container
+                @elseif($prog->bg_style == 'surface-container-highest') bg-surface-container-highest text-primary
+                @else bg-surface-container-low text-primary @endif">
+                
+                <div class="space-y-6 z-10 {{ !$prog->is_featured ? 'overflow-y-auto scrollbar-hide' : '' }}">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center {{ $prog->bg_style == 'primary' ? 'bg-white/10' : 'bg-primary/5' }}">
+                        <span class="material-symbols-outlined">{{ $prog->icon }}</span>
+                    </div>
+                    <h4 class="text-2xl md:text-3xl font-headline font-extrabold leading-tight">{{ $prog->nama }}</h4>
+                    <p class="opacity-80 leading-relaxed {{ $prog->is_featured ? 'text-lg max-w-sm' : 'text-sm' }}">{{ $prog->deskripsi }}</p>
+                </div>
+                
+                <div class="flex justify-between items-center z-10">
+                    <span class="text-xs font-bold uppercase tracking-widest opacity-50">{{ $prog->departemen }}</span>
+                    <span class="material-symbols-outlined transform group-hover:rotate-45 transition-transform">north_east</span>
+                </div>
 
+                @if($prog->bg_style == 'primary')
+                <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+                @endif
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
     <!-- Berita Terkini Section -->
     <section class="py-24 bg-surface-container-low/30">
         <div class="max-w-7xl mx-auto px-8">
