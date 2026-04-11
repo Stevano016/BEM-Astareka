@@ -39,16 +39,18 @@
             <!-- Right: Support Board & Visi -->
             <div class="space-y-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @foreach($strukturPendukung as $staff)
+                    @foreach($strukturPendukung as $pendukung)
                     <div class="bg-surface-container-low p-8 rounded-3xl flex items-center gap-6 editorial-shadow border border-white">
-                        <div class="w-16 h-16 rounded-full overflow-hidden bg-primary/10 flex-shrink-0">
-                            @if($staff->foto)
-                                <img src="{{ Storage::url($staff->foto) }}" class="w-full h-full object-cover" alt="{{ $staff->nama }}">
+                        <div class="w-16 h-24 rounded-2xl overflow-hidden bg-primary/10 flex-shrink-0">
+                            @if($pendukung->foto)
+                                <img src="{{ Storage::url($pendukung->foto) }}" class="w-full h-full object-cover" alt="{{ $pendukung->nama }}">
+                            @else
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($pendukung->nama) }}&background=001e40&color=fff" class="w-full h-full object-cover">
                             @endif
                         </div>
                         <div class="space-y-1">
-                            <h4 class="font-headline font-extrabold text-primary leading-tight">{{ $staff->nama }}</h4>
-                            <p class="text-xs font-bold text-outline uppercase tracking-widest">{{ $staff->jabatan }}</p>
+                            <h4 class="font-headline font-extrabold text-primary leading-tight">{{ $pendukung->nama }}</h4>
+                            <p class="text-xs font-bold text-outline uppercase tracking-widest">{{ $pendukung->jabatan }}</p>
                         </div>
                     </div>
                     @endforeach
@@ -60,6 +62,59 @@
                     <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Kementerian & Staff Section -->
+    <section class="max-w-7xl mx-auto px-8 mb-32">
+        <div class="flex items-center gap-6 mb-16">
+            <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Kementerian Kabinet</h2>
+            <div class="flex-grow h-px bg-outline/10"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            @foreach($kementerian as $menteri)
+            <div class="bg-surface-container-low p-10 rounded-3xl editorial-shadow border border-white group hover:border-secondary transition-all">
+                <div class="flex items-start gap-6 mb-8">
+                    <div class="w-20 h-28 rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0">
+                        @if($menteri->foto)
+                            <img src="{{ Storage::url($menteri->foto) }}" class="w-full h-full object-cover" alt="{{ $menteri->nama }}">
+                        @else
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($menteri->nama) }}&background=001e40&color=fff&size=80" class="w-full h-full object-cover">
+                        @endif
+                    </div>
+                    <div class="flex-1">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-secondary block mb-2">{{ $menteri->departemen }}</span>
+                        <h3 class="text-xl font-headline font-extrabold text-primary leading-tight">{{ $menteri->nama }}</h3>
+                        <p class="text-xs font-bold text-outline uppercase tracking-widest mt-1">{{ $menteri->jabatan }}</p>
+                    </div>
+                </div>
+                @if($menteri->quote)
+                <p class="text-on-surface-variant italic leading-relaxed text-sm opacity-70">"{{ $menteri->quote }}"</p>
+                @endif
+            </div>
+            @endforeach
+        </div>
+
+        <div class="flex items-center gap-6 mb-16">
+            <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Staff & Fungsionaris</h2>
+            <div class="flex-grow h-px bg-outline/10"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            @foreach($staff as $item)
+            <div class="text-center group">
+                <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 editorial-shadow ring-4 ring-transparent group-hover:ring-secondary transition-all bg-surface-container">
+                    @if($item->foto)
+                        <img src="{{ Storage::url($item->foto) }}" class="w-full h-full object-cover">
+                    @else
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode($item->nama) }}&background=001e40&color=fff" class="w-full h-full object-cover">
+                    @endif
+                </div>
+                <h4 class="font-headline font-extrabold text-primary text-sm leading-tight group-hover:text-secondary transition-colors">{{ $item->nama }}</h4>
+                <p class="text-[10px] text-outline font-black uppercase tracking-widest mt-1">{{ $item->departemen ?? 'Staff' }}</p>
+            </div>
+            @endforeach
         </div>
     </section>
 
@@ -105,7 +160,6 @@
                     </a>
                 </div>
             </div>
-            <!-- Decorative Circles -->
             <div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container rounded-full blur-3xl"></div>
         </div>

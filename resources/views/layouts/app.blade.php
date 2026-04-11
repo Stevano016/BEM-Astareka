@@ -99,17 +99,57 @@
     <nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-xl border-b border-outline-variant/10">
         <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
             <span class="text-xl font-black text-primary tracking-tighter font-headline">{{ config('bem.logo_text') }}</span>
+
+            {{-- Desktop Menu --}}
             <div class="hidden md:flex items-center gap-8">
                 <a href="{{ route('beranda') }}" class="{{ request()->routeIs('beranda') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Beranda</a>
                 <a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Tentang Kami</a>
                 <a href="{{ route('berita.index') }}" class="{{ request()->routeIs('berita.*') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Berita & Event</a>
                 <a href="{{ route('aspirasi.index') }}" class="{{ request()->routeIs('aspirasi.*') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Aspirasi</a>
             </div>
-            @auth
-                <a href="{{ route('admin.dashboard') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-headline font-bold text-sm tracking-wide active:scale-95 duration-200">Dashboard</a>
-            @else
-                <a href="{{ route('login') }}" class=" tracking-wide active:scale-95 duration-200"></a>
-            @endauth
+
+            {{-- Desktop CTA --}}
+            <div class="hidden md:block">
+                @auth
+                    <a href="{{ route('admin.dashboard') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-headline font-bold text-sm tracking-wide active:scale-95 duration-200">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}" class="tracking-wide active:scale-95 duration-200"></a>
+                @endauth
+            </div>
+
+            {{-- Burger Button (Mobile) --}}
+            <button id="burger-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 rounded-xl hover:bg-surface-container transition-colors" aria-label="Toggle menu">
+                <span id="burger-line-1" class="block w-5 h-0.5 bg-primary rounded-full transition-all duration-300"></span>
+                <span id="burger-line-2" class="block w-5 h-0.5 bg-primary rounded-full transition-all duration-300"></span>
+                <span id="burger-line-3" class="block w-5 h-0.5 bg-primary rounded-full transition-all duration-300"></span>
+            </button>
+        </div>
+
+        {{-- Mobile Menu Dropdown --}}
+        <div id="mobile-menu" class="md:hidden hidden flex-col px-6 pb-6 pt-2 gap-1 bg-[#f8f9ff]/95 backdrop-blur-xl border-t border-outline-variant/10">
+            <a href="{{ route('beranda') }}" class="{{ request()->routeIs('beranda') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+                <span class="material-symbols-outlined text-base">home</span> Beranda
+            </a>
+            <a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+                <span class="material-symbols-outlined text-base">info</span> Tentang Kami
+            </a>
+            <a href="{{ route('berita.index') }}" class="{{ request()->routeIs('berita.*') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+                <span class="material-symbols-outlined text-base">newspaper</span> Berita & Event
+            </a>
+            <a href="{{ route('aspirasi.index') }}" class="{{ request()->routeIs('aspirasi.*') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+                <span class="material-symbols-outlined text-base">campaign</span> Aspirasi
+            </a>
+            <div class="mt-3 pt-3 border-t border-outline-variant/20">
+                @auth
+                    <a href="{{ route('admin.dashboard') }}" class="flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm tracking-wide w-full active:scale-95 duration-200">
+                        <span class="material-symbols-outlined text-base">dashboard</span> Dashboard
+                    </a>
+                
+                    <!-- <a href="{{ route('login') }}" class="flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm tracking-wide w-full active:scale-95 duration-200">
+                        <span class="material-symbols-outlined text-base">login</span> Login
+                    </a> -->
+                @endauth
+            </div>
         </div>
     </nav>
 
@@ -161,6 +201,45 @@
             <p class="opacity-50">Designed for Excellence.</p>
         </div>
     </footer>
+
+    {{-- Burger Menu Script --}}
+    <script>
+       const burgerBtn = document.getElementById('burger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('burger-line-1');
+        const line2 = document.getElementById('burger-line-2');
+        const line3 = document.getElementById('burger-line-3');
+        let isOpen = false;
+
+        burgerBtn.addEventListener('click', () => {
+            isOpen = !isOpen;
+            if (isOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                line1.classList.add('rotate-45', 'translate-y-2');
+                line2.classList.add('opacity-0', 'scale-x-0');
+                line3.classList.add('-rotate-45', '-translate-y-2');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                line1.classList.remove('rotate-45', 'translate-y-2');
+                line2.classList.remove('opacity-0', 'scale-x-0');
+                line3.classList.remove('-rotate-45', '-translate-y-2');
+            }
+        });
+
+        // Tutup menu saat klik di luar navbar
+        document.addEventListener('click', (e) => {
+            if (isOpen && !burgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                isOpen = false;
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                line1.classList.remove('rotate-45', 'translate-y-2');
+                line2.classList.remove('opacity-0', 'scale-x-0');
+                line3.classList.remove('-rotate-45', '-translate-y-2');
+            }
+        });
+    </script>
 
     @stack('scripts')
 </body>
