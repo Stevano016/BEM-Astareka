@@ -1,0 +1,114 @@
+@extends('layouts.app')
+
+@section('content')
+<main class="pt-32 pb-24">
+    <!-- Hero Header -->
+    <section class="max-w-7xl mx-auto px-8 mb-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div class="space-y-4">
+                <span class="text-secondary font-black uppercase tracking-[0.3em] text-sm">Eksistensi Digital</span>
+                <h1 class="text-6xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none">Struktur <br/>Organisasi</h1>
+            </div>
+            <div class="h-1 w-32 bg-secondary mb-4 hidden md:block"></div>
+        </div>
+    </section>
+
+    <!-- Board Executive -->
+    <section class="max-w-7xl mx-auto px-8 mb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <!-- Left: Top Leaders -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                @foreach($strukturUtama as $leader)
+                <div class="space-y-6 group">
+                    <div class="aspect-[4/5] rounded-3xl overflow-hidden relative editorial-shadow bg-primary/5">
+                        @if($leader->foto)
+                            <img src="{{ Storage::url($leader->foto) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="{{ $leader->nama }}">
+                        @endif
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
+                            <h3 class="text-2xl font-headline font-extrabold text-white leading-tight">{{ $leader->nama }}</h3>
+                            <p class="text-secondary-fixed text-sm font-bold uppercase tracking-widest mt-2">{{ $leader->jabatan }}</p>
+                        </div>
+                    </div>
+                    @if($leader->quote)
+                    <p class="text-on-surface-variant italic leading-relaxed text-sm">"{{ $leader->quote }}"</p>
+                    @endif
+                </div>
+                @endforeach
+            </div>
+
+            <!-- Right: Support Board & Visi -->
+            <div class="space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    @foreach($strukturPendukung as $staff)
+                    <div class="bg-surface-container-low p-8 rounded-3xl flex items-center gap-6 editorial-shadow border border-white">
+                        <div class="w-16 h-16 rounded-full overflow-hidden bg-primary/10 flex-shrink-0">
+                            @if($staff->foto)
+                                <img src="{{ Storage::url($staff->foto) }}" class="w-full h-full object-cover" alt="{{ $staff->nama }}">
+                            @endif
+                        </div>
+                        <div class="space-y-1">
+                            <h4 class="font-headline font-extrabold text-primary leading-tight">{{ $staff->nama }}</h4>
+                            <p class="text-xs font-bold text-outline uppercase tracking-widest">{{ $staff->jabatan }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+                <div class="border-l-4 border-secondary bg-primary-container p-10 rounded-r-3xl text-white space-y-6 editorial-shadow relative overflow-hidden">
+                    <span class="material-symbols-outlined text-secondary-fixed-dim text-5xl">format_quote</span>
+                    <p class="text-2xl font-headline font-bold leading-tight relative z-10">{{ $profileBem['visi'] ?? 'Menjadi organisasi yang transformatif dan inklusif.' }}</p>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departemen Grid -->
+    <section class="bg-surface-container-low py-32">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-20 space-y-4">
+                <h2 class="text-xs font-black uppercase tracking-[0.2em] text-secondary">Functional Units</h2>
+                <h3 class="text-4xl md:text-5xl font-headline font-extrabold text-primary tracking-tight">Departemen & Divisi</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($departemen as $dept)
+                <div class="bg-surface-container-lowest p-10 rounded-3xl border-b-4 border-transparent hover:border-secondary transition-all editorial-shadow group">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-3xl">{{ $dept->icon }}</span>
+                    </div>
+                    <h3 class="text-2xl font-headline font-extrabold text-primary mb-4">{{ $dept->nama }}</h3>
+                    <p class="text-on-surface-variant text-sm leading-relaxed mb-8">{{ $dept->deskripsi }}</p>
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-outline">Program Unggulan</span>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-surface-container rounded-lg text-xs font-bold text-primary">{{ $dept->nama }} Program</span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="max-w-7xl mx-auto px-8 mt-32">
+        <div class="bg-primary rounded-3xl p-12 md:p-24 text-center text-white relative overflow-hidden">
+            <div class="relative z-10 max-w-2xl mx-auto space-y-8">
+                <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter leading-tight">Mari Berkolaborasi Untuk Perubahan.</h2>
+                <p class="text-white/60 text-lg">Pintu kami selalu terbuka untuk ide, saran, dan kolaborasi yang membangun demi kemajuan mahasiswa.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-4">
+                    <a href="{{ route('aspirasi.index') }}" class="bg-secondary text-white px-10 py-5 rounded-xl font-headline font-bold text-lg hover:bg-secondary/90 transition-all active:scale-95">Sampaikan Aspirasi</a>
+                    <a href="#" class="text-white font-bold flex items-center gap-2 group">
+                        Hubungi Kami
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Decorative Circles -->
+            <div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container rounded-full blur-3xl"></div>
+        </div>
+    </section>
+</main>
+@endsection

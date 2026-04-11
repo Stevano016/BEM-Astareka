@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASTAREKA | News &amp; Events Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#001e42",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#003366",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed": "#001b3d",
+                        "secondary-container": "#ffd660",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-fixed-dim": "#eac24e",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d5e3ff",
+                        "outline-variant": "#c3c6d1",
+                        "on-surface": "#0b1c30",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#755c00",
+                        "surface-variant": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#a7c8ff",
+                        "on-tertiary-container": "#739de0",
+                        "inverse-surface": "#213145",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#001e40",
+                        "secondary-fixed": "#ffe08e",
+                        "surface": "#f8f9ff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#799dd6",
+                        "tertiary-fixed": "#d6e3ff",
+                        "background": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-fixed": "#001b3c",
+                        "tertiary-container": "#003368",
+                        "surface-tint": "#3a5f94",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed-dim": "#a8c8ff",
+                        "secondary": "#755b00",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-surface-variant": "#43474f",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#737780",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#134684"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 dark:bg-[#0b1c30]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<span class="text-xl font-black text-[#001e40] dark:text-white tracking-tighter">ASTAREKA</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-manrope tracking-tight font-bold text-[#001e40] dark:text-[#eff4ff] opacity-70 hover:opacity-100 hover:text-[#003366] dark:hover:text-white transition-all" href="#">Beranda</a>
+<a class="font-manrope tracking-tight font-bold text-[#001e40] dark:text-[#eff4ff] opacity-70 hover:opacity-100 hover:text-[#003366] dark:hover:text-white transition-all" href="#">Tentang Kami</a>
+<a class="font-manrope tracking-tight font-bold text-[#755b00] border-b-2 border-[#755b00] pb-1" href="#">Berita &amp; Event</a>
+<a class="font-manrope tracking-tight font-bold text-[#001e40] dark:text-[#eff4ff] opacity-70 hover:opacity-100 hover:text-[#003366] dark:hover:text-white transition-all" href="#">Aspirasi</a>
+</div>
+<button class="px-6 py-2 bg-primary text-on-primary font-bold rounded-xl active:scale-95 duration-200 transition-all">Login</button>
+</div>
+</nav>
+<main class="pt-24 pb-12 max-w-7xl mx-auto px-6 lg:px-8">
+<!-- Hero: Upcoming Event Banner -->
+<section class="relative rounded-[2rem] overflow-hidden mb-12 shadow-2xl group">
+<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent z-10"></div>
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="professional university campus event hall with stage lighting and audience silhouettes in a modern navy and gold atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDK071LjTS5s_yFVuWDmwC3464OvIEsFdGkNaV4hqMZ6OU7ejxWzxbw0nUYhg5qgz4D0cB0FlrKhhqY_lycDPjwy9VbCCidiDbAdF7-EuFyCbWngpNWQXMK3pY9C71mw93zf2txB30i8S-XumTH3lXJLZB-r_VbtlCeZq8AxIwJpoqF2EPqlSWc8PnCLyQZMJ8AfZVBzcSQs7pz8HdTPIMPRINUqIAhlxX3aQa27JojfpKu_LxumQGkTf5cpfswVcfuTVYHtqrhDfGW"/>
+<div class="relative z-20 p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-8 min-h-[450px]">
+<div class="flex-1 space-y-6">
+<span class="inline-block px-4 py-1 bg-secondary text-on-secondary font-label text-xs tracking-widest rounded-full uppercase">Upcoming Major Event</span>
+<h1 class="text-5xl md:text-6xl font-headline font-extrabold text-white leading-tight tracking-tighter">SUGENG HARTONO <br/><span class="text-secondary-fixed">SUMMIT 2024</span></h1>
+<p class="text-surface-container text-lg max-w-xl font-light leading-relaxed">Join the most anticipated student leadership conference of the year. Connecting visionaries across the nation.</p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="px-8 py-4 bg-secondary text-on-secondary font-bold rounded-xl hover:bg-secondary-fixed-dim transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">how_to_reg</span> Register Now
+                        </button>
+<button class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl hover:bg-white/10 transition-all">Event Details</button>
+</div>
+</div>
+<div class="w-full md:w-auto glass-effect bg-white/10 p-8 rounded-3xl border border-white/10">
+<p class="text-white/60 font-label text-xs tracking-widest uppercase text-center mb-4">Countdown to Launch</p>
+<div class="flex gap-4 text-white">
+<div class="text-center">
+<div class="text-4xl font-headline font-bold">12</div>
+<div class="text-[10px] uppercase tracking-widest opacity-60">Days</div>
+</div>
+<div class="text-4xl font-light opacity-30">:</div>
+<div class="text-center">
+<div class="text-4xl font-headline font-bold">08</div>
+<div class="text-[10px] uppercase tracking-widest opacity-60">Hours</div>
+</div>
+<div class="text-4xl font-light opacity-30">:</div>
+<div class="text-center">
+<div class="text-4xl font-headline font-bold">45</div>
+<div class="text-[10px] uppercase tracking-widest opacity-60">Mins</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search & Filter Bar -->
+<section class="mb-12 flex flex-col md:flex-row gap-6 items-end">
+<div class="flex-1 w-full">
+<label class="block text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2 ml-1">Search the Archive</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-2xl focus:ring-2 focus:ring-primary/20 transition-all text-on-surface" placeholder="Topics, events, or keywords..." type="text"/>
+</div>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar w-full md:w-auto">
+<button class="px-6 py-4 bg-primary text-on-primary rounded-2xl font-bold whitespace-nowrap">All Items</button>
+<button class="px-6 py-4 bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-2xl font-bold transition-all whitespace-nowrap">News</button>
+<button class="px-6 py-4 bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-2xl font-bold transition-all whitespace-nowrap">Events</button>
+<button class="px-6 py-4 bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-primary rounded-2xl font-bold transition-all whitespace-nowrap">Announcements</button>
+</div>
+</section>
+<!-- Main Content Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Feed Grid -->
+<div class="lg:col-span-8">
+<h2 class="text-3xl font-headline font-extrabold text-primary mb-8 flex items-center gap-3">
+                    Latest Insights
+                    <span class="h-px flex-1 bg-outline-variant/15"></span>
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Featured Article Card -->
+<div class="col-span-1 md:col-span-2 group cursor-pointer">
+<div class="relative h-[300px] rounded-3xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="vibrant student activity in a modern campus lounge with natural light and wooden accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTAtWhe3wUy66pWFYewE5rhJ278HiF7J7_iPuaiir0roiThlilMJx29y46_eP0QUaafegOZFWlCKUhqLecJZqi6LWQJW1uNr01GZE8hjE_zCOhd4kVPm0Ke5etGIxTef_vm5hCaNkgWDVTJ9VihwETYtd8sp0sFbwJSrWnosSTCQQh4GUs9AySdg5xqFRQPx8iGF_eme_iMQahNMcREELDIIh_IeoSdP7QrenPqf1-fnzNZxdj02-gaAShNX6rJhAL2N3XwoAbU_w-"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="px-3 py-1 bg-white glass-effect text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">News</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 text-xs font-label text-outline uppercase tracking-wider">
+<span>24 May 2024</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>Astareka Editorial</span>
+</div>
+<h3 class="text-2xl font-headline font-bold text-on-surface group-hover:text-primary transition-colors leading-tight">Digital Transformation in Student Governance: A New Era for BEM U.S.H.</h3>
+<p class="text-on-surface-variant leading-relaxed line-clamp-2">How the new cabinet is leveraging advanced tech stacks to streamline student services and transparent budgeting processes...</p>
+</div>
+</div>
+<!-- Regular Cards -->
+<div class="group cursor-pointer">
+<div class="relative h-[200px] rounded-2xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="outdoor acoustic concert scene at dusk with fairy lights and students enjoying the atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoHWb4F5ef4xLMq_Bh2UV7FmvKncBX3x7mF_RsQqEcxoeHtDGTOrJRY3tExJS4u_PC2kj5-AeqmUlM20vYADWksXlUTYnkpIEgqdGLaO8YHTdiHTWvX7dJbpRQg3FgLSkQi-T1Hpi6DprpmGkTOwgiCszn9qEFXreqYGJoIJbDvmrwKw-jLBZUe6LqTj8dpTlzx09KFSZNnbYySGfeUQ8je8M10PNvUdARjrW3Nd6t9I3KStkhddwa7N7V6YEeSCyNc6Sx3q0EfFqS"/>
+<span class="absolute top-4 left-4 px-3 py-1 bg-white glass-effect text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">Event</span>
+</div>
+<div class="space-y-2">
+<span class="text-xs font-label text-outline uppercase tracking-wider">18 May 2024</span>
+<h4 class="text-lg font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Acoustic Night: Harmony in Diversity</h4>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative h-[200px] rounded-2xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="close up of graduation cap and diploma scroll on a library table with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLkDIvge1dL00KIaMA0LuCovsJxQdOMffKJsFHkTX1kkSh0mCBPhP3GzT_Xqgh0V8X_4DQlCpcvQtJNqk-lIQv8iv6hbjA6xKSBR_W-7BD9E9IGNPoCV2OpxdSUSb1WkctIWK2uSpExSTgwVwPkOzbq3mjrZ-UqrTIQj6Cmzr54GgG8diV_-3OYlSDp1CFfniX0d9R6CKWewUhUHofLa_SYgC8YGNJbYcU02Bic7BreL0hKZy3jIC-AtlOFF0IS61eGRzk_G_raYxa"/>
+<span class="absolute top-4 left-4 px-3 py-1 bg-white glass-effect text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">Announcement</span>
+</div>
+<div class="space-y-2">
+<span class="text-xs font-label text-outline uppercase tracking-wider">15 May 2024</span>
+<h4 class="text-lg font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Graduation Requirements Update for 2024 Cohort</h4>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative h-[200px] rounded-2xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="modern research lab with clean surfaces and technological equipment in cool blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3u-tpJ7H6jybd_6YGOSJUA21YSsxxXCj8CqtGqVTm0RfBARrats9RxdW0X9a6KyMmpwAlHFDbZsYIwty8BXL5xeE_ls6QVr5D-zE31LqExNrYANgzXDVlCBAl-bUD-U-pYdC9V7bK9W0_DuNlPdib2D2CsVleoy8XbXLf99hC4Z6Up7Y9MYhwsA9V94Omf71uAwRdQxVGPMjCRupHZZzY5U7nFHx6P-6f_rD5UIOTfQX9VYztrBhBtb80wCBvCGfmtTSLWyfewtJG"/>
+<span class="absolute top-4 left-4 px-3 py-1 bg-white glass-effect text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">News</span>
+</div>
+<div class="space-y-2">
+<span class="text-xs font-label text-outline uppercase tracking-wider">12 May 2024</span>
+<h4 class="text-lg font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Research Grant Winners Announced</h4>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative h-[200px] rounded-2xl overflow-hidden mb-4">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="professional workshop setting with mentors and students collaborating over laptops and design boards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOJog6SuLZ0a0PjMwZ7Ycq4sfhTYnpc_tEDsYRfD_I8PglZ9l-hsll1RLRop8MXiOzzz8qHyOqTZ41mSG6RFrsOi_I4pneAQ7GR0bbQ-bPZ1CK2QP8OdTgT_lR4IWJzViGoz4_J8f3fnGRqjzz1URJslBQYJmgr3b8dAPZltzPt56jtY1mdPUcxF1N2sjQms7uf5egw6V-jQZmy6MIRoJs5PVIHiypERGwDt0S1A6QeIOP4EBlXwFav-ulftptSyULt_D-fhDAoXlH"/>
+<span class="absolute top-4 left-4 px-3 py-1 bg-white glass-effect text-primary text-[10px] font-bold rounded-full uppercase tracking-tighter">Event</span>
+</div>
+<div class="space-y-2">
+<span class="text-xs font-label text-outline uppercase tracking-wider">10 May 2024</span>
+<h4 class="text-lg font-headline font-bold text-on-surface group-hover:text-primary transition-colors">UI/UX Intensive Workshop: Design for Future</h4>
+</div>
+</div>
+</div>
+<div class="mt-16 flex justify-center">
+<button class="px-8 py-4 bg-surface-container-low hover:bg-surface-container text-primary font-bold rounded-2xl transition-all flex items-center gap-3">
+                        Load More Articles
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Sidebar -->
+<aside class="lg:col-span-4 space-y-12">
+<!-- Calendar Widget -->
+<div class="bg-surface-container-low rounded-[2rem] p-8">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-headline font-extrabold text-primary">May 2024</h3>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-primary"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-xs font-label text-outline uppercase mb-4">
+<span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-sm font-medium">
+<span class="p-2 opacity-30">28</span><span class="p-2 opacity-30">29</span><span class="p-2 opacity-30">30</span>
+<span class="p-2">1</span><span class="p-2">2</span><span class="p-2">3</span><span class="p-2">4</span>
+<span class="p-2">5</span><span class="p-2">6</span><span class="p-2 bg-primary text-white rounded-lg shadow-lg shadow-primary/20">7</span><span class="p-2">8</span><span class="p-2">9</span><span class="p-2">10</span><span class="p-2">11</span>
+<span class="p-2">12</span><span class="p-2">13</span><span class="p-2">14</span><span class="p-2 bg-secondary text-on-secondary rounded-lg">15</span><span class="p-2">16</span><span class="p-2">17</span><span class="p-2">18</span>
+<span class="p-2">19</span><span class="p-2">20</span><span class="p-2">21</span><span class="p-2">22</span><span class="p-2">23</span><span class="p-2 bg-primary-container text-white rounded-lg">24</span><span class="p-2">25</span>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/15 space-y-4">
+<div class="flex gap-4">
+<div class="w-1 h-8 bg-secondary rounded-full"></div>
+<div>
+<p class="text-xs font-bold text-secondary">TODAY</p>
+<p class="text-sm font-semibold text-primary">Budget Coordination Meeting</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Popular Articles -->
+<div class="space-y-6">
+<h3 class="text-xl font-headline font-extrabold text-primary flex items-center gap-3">
+                        Popular
+                        <span class="h-px flex-1 bg-outline-variant/15"></span>
+</h3>
+<div class="space-y-6">
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="abstract architectural geometry of a modern glass building reflecting blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuv44ycMe3QqQNTN8ehgTj5-DkQeWkuwvxKK32TdU2sdvR87SCiLYrELUrq6hNi_eho0jdwbANHJJ02XMCZtud_ASB3W_d59HLbShGdbD0l4UY4m4a6FymMaQuVrhc535K_OJyiTmrzVucAv_CLHfemBydB1lwQ60pqUW9G5_romVdQTbrZQJ2bl89AmF3MdcwBHnoZ5NaANDXnScSto1Zwaw6ZIH0RMCeRutY2hfSXVtSsgArd1oXqx-IMaq3Q_VPQg1WbDUB6j6"/>
+</div>
+<div class="space-y-1">
+<span class="text-[10px] font-label text-secondary uppercase tracking-widest">Trending</span>
+<h5 class="text-sm font-bold text-on-surface leading-snug group-hover:text-primary transition-colors">Sustainability Report: campus Carbon footprint 2023</h5>
+<p class="text-[10px] text-outline">12.4k Views</p>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="colorful variety of fresh foods arranged neatly in a cafeteria setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4CgTSzUVDe1xSXq0YdqYUPhAWxovJ2Gk4J1fVHI_TAg0Wm5pKYc--I5jeVsgfJLiJECW41FxCH9p7zigUr_CDLipQ8unlmAInZqzmS_hThMYMtJGtZBNK2q-GjhsOw2pTYNn1RSsIjPdXAVtMZxteP8r7RsHMAxlfPYAiw9tVaIU32HCN37zcYNTqZab6Hc--W8KxFEl0nHeWLMU99vjrPA8M7i2SnSW4YCaKNha4E6sNbCR88QethQrEqpjHa3aqjLB7wdEGdrJm"/>
+</div>
+<div class="space-y-1">
+<span class="text-[10px] font-label text-secondary uppercase tracking-widest">Guide</span>
+<h5 class="text-sm font-bold text-on-surface leading-snug group-hover:text-primary transition-colors">New Cafeteria Payment Systems: A User Guide</h5>
+<p class="text-[10px] text-outline">8.9k Views</p>
+</div>
+</div>
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="athletic track field under bright stadium lights with soft fog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWj4d6G_NQhCZnnmSwnniqhbwokW9ZqjXNLwbXPzHgSTYG907mQv05LZtSuSvxcwNLOT-yz_8fHShb8j0sbPPFTNLLVbR2UX3sxxIzmTpQ6sb9EeuncFWBjL1-Z3DuK93gQIohoeAllQKQdyRjI4Uh6JQ2w9o5Q_7bzVkzjtX0Fq6CnMOz1X5CVHZOIr6s_PUt-ebPIjteUr2G2yl_Q5xMHjU2m2HKU_Td8C6PY2H3JcJUFQPgrRtavntTHx0xJ7eCmTx5-h-3MoIj"/>
+</div>
+<div class="space-y-1">
+<span class="text-[10px] font-label text-secondary uppercase tracking-widest">Announcement</span>
+<h5 class="text-sm font-bold text-on-surface leading-snug group-hover:text-primary transition-colors">Varsity Trials Schedule: Semester 2</h5>
+<p class="text-[10px] text-outline">5.2k Views</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Newsletter Card -->
+<div class="relative bg-primary rounded-[2rem] p-8 overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-32 h-32 bg-primary-container rounded-full opacity-50 blur-3xl"></div>
+<div class="relative z-10 space-y-4">
+<h3 class="text-xl font-headline font-bold text-white">Never miss an update.</h3>
+<p class="text-surface-container/60 text-sm">Get the weekly digest of news and events straight to your student inbox.</p>
+<input class="w-full bg-white/10 border-none rounded-xl text-white placeholder-white/40 py-3 px-4 focus:ring-1 focus:ring-secondary/50" placeholder="Your email address" type="email"/>
+<button class="w-full py-3 bg-secondary text-on-secondary font-bold rounded-xl active:scale-95 transition-all">Subscribe Now</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-[#eff4ff] dark:bg-[#001e40]">
+<div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 gap-8 w-full max-w-7xl mx-auto">
+<div class="space-y-6 max-w-sm">
+<span class="text-lg font-bold text-[#001e40] dark:text-white">ASTAREKA</span>
+<p class="font-inter text-sm tracking-wide text-[#0b1c30] dark:text-[#c3c6d1] opacity-80">
+                    Empowering students through innovative curation and visionary leadership. The Digital Curator for Universitas Sugeng Hartono.
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+<div class="space-y-4">
+<h6 class="font-bold text-primary">Portal</h6>
+<ul class="space-y-2 font-inter text-sm text-[#0b1c30] dark:text-[#c3c6d1]">
+<li><a class="hover:text-[#755b00] transition-colors" href="#">Archives</a></li>
+<li><a class="hover:text-[#755b00] transition-colors" href="#">Press Kits</a></li>
+<li><a class="hover:text-[#755b00] transition-colors" href="#">Media</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h6 class="font-bold text-primary">Connect</h6>
+<ul class="space-y-2 font-inter text-sm text-[#0b1c30] dark:text-[#c3c6d1]">
+<li><a class="hover:text-[#755b00] transition-colors" href="#">Instagram</a></li>
+<li><a class="hover:text-[#755b00] transition-colors" href="#">LinkedIn</a></li>
+<li><a class="hover:text-[#755b00] transition-colors" href="#">YouTube</a></li>
+<li><a class="hover:text-[#755b00] transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-outline-variant/10 max-w-7xl mx-auto">
+<p class="font-inter text-sm tracking-wide text-[#0b1c30] dark:text-[#c3c6d1] opacity-80">
+                © 2024 BEM Universitas Sugeng Hartono Kabinet Astareka. The Digital Curator.
+            </p>
+</div>
+</footer>
+</body></html>

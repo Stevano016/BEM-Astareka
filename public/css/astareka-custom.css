@@ -1,0 +1,41 @@
+.glass-effect {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.editorial-shadow {
+    box-shadow: 0 20px 40px rgba(11, 28, 48, 0.06);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* Custom Scrollbar for non-hidden areas */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f8f9ff;
+}
+::-webkit-scrollbar-thumb {
+    background: #001e40;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #003366;
+}
