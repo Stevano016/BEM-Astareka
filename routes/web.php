@@ -20,7 +20,9 @@ Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('dashboard');
     // Berita
-    Route::resource('berita', Admin\BeritaController::class);
+    Route::resource('berita', Admin\BeritaController::class)->parameters([
+        'berita' => 'berita'
+    ]);
     Route::patch('berita/{berita}/publish', [Admin\BeritaController::class, 'togglePublish'])->name('berita.publish');
 
     // Aspirasi
