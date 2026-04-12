@@ -4,6 +4,6 @@ return [
     'nama_organisasi' => 'BEM Universitas Sugeng Hartono',
     'kabinet' => 'Kabinet Astareka',
     'tagline' => 'The Digital Curator',
-    'tahun' => '2024',
+    'tahun' => date('Y'),
     'logo_text' => 'ASTAREKA',
 ];

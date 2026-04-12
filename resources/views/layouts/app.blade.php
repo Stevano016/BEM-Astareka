@@ -198,7 +198,7 @@
         </div>
         <div class="px-12 py-8 border-t border-outline-variant/10 text-center md:text-left text-on-surface-variant opacity-70 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© {{ config('bem.tahun') }} {{ config('bem.nama_organisasi') }} {{ config('bem.kabinet') }}. The Digital Curator.</p>
-            <p class="opacity-50">Designed for Excellence.</p>
+            <p class="opacity-50">Designed by Stevano.</p>
         </div>
     </footer>
 
