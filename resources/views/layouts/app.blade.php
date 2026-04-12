@@ -5,82 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', config('bem.nama_organisasi'))</title>
     
-    <!-- Fonts -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        headline: ['Manrope', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                        label: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        "primary": "#001e40",
-                        "primary-container": "#003366",
-                        "primary-fixed": "#d5e3ff",
-                        "primary-fixed-dim": "#a7c8ff",
-                        "on-primary": "#ffffff",
-                        "on-primary-container": "#799dd6",
-                        "on-primary-fixed": "#001b3c",
-                        "on-primary-fixed-variant": "#1f477b",
-                        "secondary": "#755b00",
-                        "secondary-container": "#ffd660",
-                        "secondary-fixed": "#ffe08e",
-                        "secondary-fixed-dim": "#eac24e",
-                        "on-secondary": "#ffffff",
-                        "on-secondary-container": "#755c00",
-                        "on-secondary-fixed": "#241a00",
-                        "on-secondary-fixed-variant": "#584400",
-                        "tertiary": "#001e42",
-                        "tertiary-container": "#003368",
-                        "tertiary-fixed": "#d6e3ff",
-                        "tertiary-fixed-dim": "#a8c8ff",
-                        "on-tertiary": "#ffffff",
-                        "on-tertiary-container": "#739de0",
-                        "on-tertiary-fixed": "#001b3d",
-                        "on-tertiary-fixed-variant": "#134684",
-                        "surface": "#f8f9ff",
-                        "surface-bright": "#f8f9ff",
-                        "surface-dim": "#cbdbf5",
-                        "surface-variant": "#d3e4fe",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container-low": "#eff4ff",
-                        "surface-container": "#e5eeff",
-                        "surface-container-high": "#dce9ff",
-                        "surface-container-highest": "#d3e4fe",
-                        "surface-tint": "#3a5f94",
-                        "on-surface": "#0b1c30",
-                        "on-surface-variant": "#43474f",
-                        "on-background": "#0b1c30",
-                        "background": "#f8f9ff",
-                        "outline": "#737780",
-                        "outline-variant": "#c3c6d1",
-                        "inverse-surface": "#213145",
-                        "inverse-on-surface": "#eaf1ff",
-                        "inverse-primary": "#a7c8ff",
-                        "error": "#ba1a1a",
-                        "error-container": "#ffdad6",
-                        "on-error": "#ffffff",
-                        "on-error-container": "#93000a",
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    }
-                }
-            }
-        }
-    </script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
         .material-symbols-outlined {
@@ -144,10 +76,6 @@
                     <a href="{{ route('admin.dashboard') }}" class="flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm tracking-wide w-full active:scale-95 duration-200">
                         <span class="material-symbols-outlined text-base">dashboard</span> Dashboard
                     </a>
-                
-                    <!-- <a href="{{ route('login') }}" class="flex items-center justify-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-xl font-headline font-bold text-sm tracking-wide w-full active:scale-95 duration-200">
-                        <span class="material-symbols-outlined text-base">login</span> Login
-                    </a> -->
                 @endauth
             </div>
         </div>
@@ -171,9 +99,27 @@
                     {{ config('bem.nama_organisasi') }} {{ config('bem.kabinet') }}. Menjadi garda terdepan dalam pelayanan dan advokasi mahasiswa.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#" class="hover:text-secondary transition-colors text-primary"><span class="material-symbols-outlined">share</span></a>
-                    <a href="#" class="hover:text-secondary transition-colors text-primary"><span class="material-symbols-outlined">alternate_email</span></a>
-                </div>
+                    <button 
+                        x-data 
+                        @click="
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: '{{ config('bem.nama_organisasi') }}',
+                                    text: 'Kunjungi website kami!',
+                                    url: window.location.href,
+                                })
+                            } else {
+                                navigator.clipboard.writeText(window.location.href);
+                                alert('Link website berhasil disalin!');
+                            }
+                        "
+                        class="hover:text-secondary transition-colors text-primary flex items-center"
+                        aria-label="Share website">
+                        <span class="material-symbols-outlined">share</span>
+                    </button>
+<a href="mailto:bemuniversitassugenghartono@gmail.com?subject=Pertanyaan%20seputar%20BEM%20USH" class="hover:text-secondary transition-colors text-primary">
+    <span class="material-symbols-outlined">alternate_email</span>
+</a>                </div>
             </div>
             <div class="grid grid-cols-2 gap-12">
                 <div class="space-y-4">
@@ -188,10 +134,9 @@
                 <div class="space-y-4">
                     <h4 class="font-bold text-primary-container text-xs uppercase tracking-widest">Hubungi Kami</h4>
                     <ul class="space-y-2 text-on-surface-variant opacity-80">
-                        <li><a href="#" class="hover:text-secondary transition-colors">Instagram</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">LinkedIn</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">YouTube</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Contact</a></li>
+                        <li><a href="https://www.instagram.com/bem.ush?igsh=aTNia2kxMm50emRt" class="hover:text-secondary transition-colors">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/company/bem-universitas-sugeng-hartono/" class="hover:text-secondary transition-colors">LinkedIn</a></li>
+                        <li><a href="https://youtube.com/@bem-kmuniversitassugenghartono?si=OT7EmZnAY1QWHREA" class="hover:text-secondary transition-colors">YouTube</a></li>
                     </ul>
                 </div>
             </div>

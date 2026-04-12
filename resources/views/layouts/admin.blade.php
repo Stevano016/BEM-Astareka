@@ -5,45 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin - {{ config('bem.logo_text') }}</title>
     
-    <!-- Fonts -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     
-    <!-- SimpleMDE -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        headline: ['Manrope', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        "primary": "#001e40",
-                        "primary-container": "#003366",
-                        "on-primary": "#ffffff",
-                        "secondary": "#755b00",
-                        "surface": "#f8f9ff",
-                        "surface-container-low": "#eff4ff",
-                        "on-surface": "#0b1c30",
-                        "outline": "#737780",
-                    }
-                }
-            }
-        }
-    </script>
 </head>
 <body class="bg-surface text-on-surface font-body">
     <div class="flex min-h-screen">
-        <!-- Sidebar -->
         <aside class="w-64 bg-primary text-on-primary flex-shrink-0 relative">
             <div class="p-8">
                 <span class="text-2xl font-black font-headline tracking-tighter">{{ config('bem.logo_text') }}</span>
@@ -90,7 +65,6 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="flex-1 overflow-y-auto">
             <header class="bg-white border-b border-outline/10 px-12 py-6 flex justify-between items-center">
                 <h2 class="text-xl font-headline font-extrabold text-primary">@yield('page_title', 'Dashboard')</h2>
