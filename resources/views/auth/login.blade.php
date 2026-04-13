@@ -5,32 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - {{ config('bem.logo_text') }}</title>
     
-    <!-- Fonts -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/LOGO ASTAREKA.png') }}">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        headline: ['Manrope', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        "primary": "#001e40",
-                        "on-primary": "#ffffff",
-                        "surface": "#f8f9ff",
-                        "surface-container-low": "#eff4ff",
-                        "surface-container-lowest": "#ffffff",
-                    }
-                }
-            }
-        }
-    </script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-surface font-body min-h-screen flex items-center justify-center p-8">
     <div class="w-full max-w-md bg-surface-container-lowest rounded-2xl p-12 shadow-xl border border-primary/5">
@@ -42,7 +23,6 @@
         <form method="POST" action="{{ route('login') }}" class="space-y-6">
             @csrf
 
-            <!-- Email Address -->
             <div>
                 <label for="email" class="text-xs font-semibold uppercase tracking-widest text-primary/60 mb-2 block">Email Address</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" 
@@ -52,7 +32,6 @@
                 @enderror
             </div>
 
-            <!-- Password -->
             <div>
                 <label for="password" class="text-xs font-semibold uppercase tracking-widest text-primary/60 mb-2 block">Password</label>
                 <input id="password" type="password" name="password" required autocomplete="current-password"
@@ -62,7 +41,6 @@
                 @enderror
             </div>
 
-            <!-- Remember Me -->
             <div class="flex items-center">
                 <input id="remember_me" type="checkbox" name="remember" class="rounded border-gray-300 text-primary focus:ring-primary">
                 <label for="remember_me" class="ml-2 text-sm text-primary/60 font-bold">Remember me</label>

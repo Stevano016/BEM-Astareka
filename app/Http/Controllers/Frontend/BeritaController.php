@@ -15,13 +15,20 @@ class BeritaController extends Controller
         if ($request->search) {
             $query->where('judul', 'like', '%' . $request->search . '%');
         }
-        if ($request->kategori && $request->kategori !== 'All Items') {
+        
+        // Sesuaikan filter kategori dengan Bahasa Indonesia
+        if ($request->kategori && $request->kategori !== 'Semua') {
             $query->where('kategori', $request->kategori);
         }
 
         $berita = $query->paginate(9)->withQueryString();
-        $featured = Berita::published()->where('kategori', 'Event')->latest('published_at')->first();
-        $popular = Berita::published()->latest()->take(3)->get(); // In real app, add views count
+        
+        // Ambil berita terbaru berkategori 'Kegiatan' untuk di-highlight (sebagai pengganti 'Event')
+        // Jika tidak ada 'Kegiatan', ambil berita terbaru apapun sebagai fallback
+        $featured = Berita::published()->where('kategori', 'Kegiatan')->latest('published_at')->first() 
+                    ?? Berita::published()->latest('published_at')->first();
+                    
+        $popular = Berita::published()->latest()->take(3)->get();
 
         return view('frontend.berita.index', compact('berita', 'featured', 'popular'));
     }

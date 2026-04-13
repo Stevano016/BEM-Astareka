@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="pt-32 pb-24">
-    <!-- Hero Header -->
-    <section class="max-w-7xl mx-auto px-8 mb-24">
+{{-- Memastikan container utama mengikuti lebar 95% --}}
+<main class="pt-32 pb-24 max-w-[95%] mx-auto">
+    {{-- Mengubah max-w-7xl menjadi max-w-full --}}
+    <section class="max-w-full mx-auto px-8 mb-24">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div class="space-y-4">
                 <span class="text-secondary font-black uppercase tracking-[0.3em] text-sm">Eksistensi Digital</span>
@@ -13,10 +14,8 @@
         </div>
     </section>
 
-    <!-- Board Executive -->
-    <section class="max-w-7xl mx-auto px-8 mb-32">
+    <section class="max-w-full mx-auto px-8 mb-32">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <!-- Left: Top Leaders -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 @foreach($strukturUtama as $leader)
                 <div class="space-y-6 group">
@@ -36,12 +35,11 @@
                 @endforeach
             </div>
 
-            <!-- Right: Support Board & Visi -->
             <div class="space-y-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @foreach($strukturPendukung as $pendukung)
                     <div class="bg-surface-container-low p-8 rounded-3xl flex items-center gap-6 editorial-shadow border border-white">
-                        <div class="w-16 h-24 rounded-2xl overflow-hidden bg-primary/10 flex-shrink-0">
+                        <div class="w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
                             @if($pendukung->foto)
                                 <img src="{{ Storage::url($pendukung->foto) }}" class="w-full h-full object-cover" alt="{{ $pendukung->nama }}">
                             @else
@@ -65,8 +63,7 @@
         </div>
     </section>
 
-    <!-- Kementerian & Staff Section -->
-    <section class="max-w-7xl mx-auto px-8 mb-32">
+    <section class="max-w-full mx-auto px-8 mb-32">
         <div class="flex items-center gap-6 mb-16">
             <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Kementerian Kabinet</h2>
             <div class="flex-grow h-px bg-outline/10"></div>
@@ -76,7 +73,7 @@
             @foreach($kementerian as $menteri)
             <div class="bg-surface-container-low p-10 rounded-3xl editorial-shadow border border-white group hover:border-secondary transition-all">
                 <div class="flex items-start gap-6 mb-8">
-                    <div class="w-20 h-28 rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0">
+                    <div class="w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
                         @if($menteri->foto)
                             <img src="{{ Storage::url($menteri->foto) }}" class="w-full h-full object-cover" alt="{{ $menteri->nama }}">
                         @else
@@ -118,36 +115,7 @@
         </div>
     </section>
 
-    <!-- Departemen Grid -->
-    <section class="bg-surface-container-low py-32">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-20 space-y-4">
-                <h2 class="text-xs font-black uppercase tracking-[0.2em] text-secondary">Functional Units</h2>
-                <h3 class="text-4xl md:text-5xl font-headline font-extrabold text-primary tracking-tight">Departemen & Divisi</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($departemen as $dept)
-                <div class="bg-surface-container-lowest p-10 rounded-3xl border-b-4 border-transparent hover:border-secondary transition-all editorial-shadow group">
-                    <div class="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-all">
-                        <span class="material-symbols-outlined text-3xl">{{ $dept->icon }}</span>
-                    </div>
-                    <h3 class="text-2xl font-headline font-extrabold text-primary mb-4">{{ $dept->nama }}</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed mb-8">{{ $dept->deskripsi }}</p>
-                    <div class="space-y-4">
-                        <span class="text-[10px] font-black uppercase tracking-widest text-outline">Program Unggulan</span>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-surface-container rounded-lg text-xs font-bold text-primary">{{ $dept->nama }} Program</span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="max-w-7xl mx-auto px-8 mt-32">
+    <section class="max-w-full mx-auto px-8 mt-32">
         <div class="bg-primary rounded-3xl p-12 md:p-24 text-center text-white relative overflow-hidden">
             <div class="relative z-10 max-w-2xl mx-auto space-y-8">
                 <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter leading-tight">Mari Berkolaborasi Untuk Perubahan.</h2>

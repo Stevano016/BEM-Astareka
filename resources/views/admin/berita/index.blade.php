@@ -39,7 +39,7 @@
                         <form action="{{ route('admin.berita.publish', $item->id) }}" method="POST">
                             @csrf @method('PATCH')
                             <button type="submit" class="px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest {{ $item->is_published ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' }}">
-                                {{ $item->is_published ? 'Published' : 'Draft' }}
+                                {{ $item->is_published ? 'Terbit' : 'Draf' }}
                             </button>
                         </form>
                     </td>

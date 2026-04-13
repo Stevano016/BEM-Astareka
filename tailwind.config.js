@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -75,12 +76,47 @@ export default {
                 "lg": "0.25rem",
                 "xl": "0.5rem",
                 "full": "0.75rem"
-            }
+            },
+            // Custom styling untuk typography/prose
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        color: theme('colors.on-surface-variant'),
+                        maxWidth: 'none',
+                        hr: {
+                            borderColor: theme('colors.outline'),
+                            opacity: '0.1',
+                        },
+                        h1: { color: theme('colors.primary'), fontFamily: theme('fontFamily.headline').join(',') },
+                        h2: { color: theme('colors.primary'), fontFamily: theme('fontFamily.headline').join(',') },
+                        h3: { color: theme('colors.primary'), fontFamily: theme('fontFamily.headline').join(',') },
+                        h4: { color: theme('colors.primary'), fontFamily: theme('fontFamily.headline').join(',') },
+                        'strong, b': { color: theme('colors.primary'), fontWeight: '700' },
+                        'ul > li::marker': { color: theme('colors.secondary') },
+                        'ol > li::marker': { color: theme('colors.secondary'), fontWeight: '700' },
+                        a: {
+                            color: theme('colors.secondary'),
+                            '&:hover': {
+                                color: theme('colors.on-secondary-container'),
+                            },
+                        },
+                        blockquote: {
+                            borderLeftColor: theme('colors.secondary'),
+                            backgroundColor: theme('colors.surface-container-low'),
+                            padding: '1.5rem',
+                            borderRadius: '1rem',
+                            fontStyle: 'italic',
+                            color: theme('colors.primary'),
+                        },
+                    },
+                },
+            }),
         },
     },
 
     plugins: [
         forms,
-        require('@tailwindcss/container-queries') // Plugin tambahan dari CDN kamu
+        typography,
+        require('@tailwindcss/container-queries')
     ],
 };

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin - {{ config('bem.logo_text') }}</title>
     
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/LOGO ASTAREKA.png') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    
 </head>
 <body class="bg-surface text-on-surface font-body">
     <div class="flex min-h-screen">
@@ -88,10 +87,6 @@
         </main>
     </div>
     @stack('scripts')
-    <script>
-        if (document.getElementById('editor')) {
-            var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
-        }
-    </script>
+
 </body>
 </html>

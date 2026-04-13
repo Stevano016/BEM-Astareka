@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="pt-32 pb-24">
-    <!-- Hero Event Banner -->
+{{-- Menambahkan kontainer utama yang lebih lebar --}}
+<main class="pt-32 pb-24 max-w-[95%] mx-auto">
+    
     @if($featured)
-    <section class="max-w-7xl mx-auto px-8 mb-16">
+    {{-- Featured News / Highlight Section --}}
+    <section class="max-w-full mx-auto px-8 mb-16">
         <div class="relative h-[400px] md:h-[500px] rounded-3xl overflow-hidden editorial-shadow group">
             @if($featured->gambar)
                 <img src="{{ Storage::url($featured->gambar) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="{{ $featured->judul }}">
@@ -26,19 +28,19 @@
     </section>
     @endif
 
-    <!-- Search & Filter Bar -->
-    <section class="max-w-7xl mx-auto px-8 mb-12">
+    {{-- Filter Section --}}
+    <section class="max-w-full mx-auto px-8 mb-12">
         <div class="bg-surface-container-low p-4 rounded-2xl flex flex-col md:flex-row justify-between gap-4 items-center">
             <form action="{{ route('berita.index') }}" method="GET" class="flex-1 w-full relative">
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40">search</span>
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari berita atau event..." 
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari berita atau kegiatan..." 
                     class="w-full pl-12 pr-4 py-3 bg-white border-0 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all text-sm font-bold">
             </form>
             <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 md:pb-0 w-full md:w-auto">
-                @foreach(['All Items', 'News', 'Event', 'Announcement', 'Achievement'] as $cat)
+                @foreach(['Semua', 'Berita', 'Kegiatan', 'Pengumuman', 'Prestasi', 'Lainnya'] as $cat)
                     <a href="{{ route('berita.index', ['kategori' => $cat]) }}" 
                         class="px-6 py-3 rounded-xl text-sm font-bold whitespace-nowrap transition-all
-                        {{ (request('kategori', 'All Items') == $cat) ? 'bg-primary text-white' : 'bg-white text-primary/60 hover:text-primary' }}">
+                        {{ (request('kategori', 'Semua') == $cat) ? 'bg-primary text-white' : 'bg-white text-primary/60 hover:text-primary' }}">
                         {{ $cat }}
                     </a>
                 @endforeach
@@ -46,12 +48,14 @@
         </div>
     </section>
 
-    <!-- Main Grid -->
-    <section class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <!-- Feed -->
+    {{-- News Grid & Sidebar Section --}}
+    <section class="max-w-full mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div class="lg:col-span-8 space-y-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 @forelse($berita as $item)
+                {{-- Jangan tampilkan berita yang sudah ada di featured --}}
+                @if($featured && $item->id == $featured->id) @continue @endif
+                
                 <a href="{{ route('berita.show', $item->slug) }}" class="group block space-y-6">
                     <div class="aspect-video rounded-2xl overflow-hidden bg-primary/5 relative">
                         @if($item->gambar)
@@ -83,15 +87,12 @@
                 @endforelse
             </div>
 
-            <!-- Pagination -->
             <div class="pt-12 border-t border-outline/10">
                 {{ $berita->links() }}
             </div>
         </div>
 
-        <!-- Sidebar -->
         <aside class="lg:col-span-4 space-y-12">
-            <!-- Popular Post -->
             <div class="space-y-8">
                 <h4 class="text-xs font-black uppercase tracking-[0.2em] text-outline">Populer Minggu Ini</h4>
                 <div class="space-y-6">
@@ -111,7 +112,6 @@
                 </div>
             </div>
 
-            <!-- Newsletter -->
             <div class="bg-primary p-10 rounded-3xl text-white space-y-6 relative overflow-hidden">
                 <div class="relative z-10 space-y-4">
                     <span class="material-symbols-outlined text-secondary text-4xl">mail</span>

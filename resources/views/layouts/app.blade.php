@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', config('bem.nama_organisasi'))</title>
     
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/LOGO ASTAREKA.png') }}">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +29,8 @@
 <body class="bg-surface text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
     
     <nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-xl border-b border-outline-variant/10">
-        <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+        {{-- Mengubah max-w-7xl menjadi max-w-[95%] --}}
+        <div class="flex justify-between items-center px-8 py-4 max-w-[95%] mx-auto">
             <span class="text-xl font-black text-primary tracking-tighter font-headline">{{ config('bem.logo_text') }}</span>
 
             {{-- Desktop Menu --}}
@@ -92,7 +93,8 @@
     </main>
 
     <footer class="w-full mt-20 bg-surface-container-low font-body text-sm tracking-wide">
-        <div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 gap-8 w-full max-w-7xl mx-auto">
+        {{-- Mengubah max-w-7xl menjadi max-w-[95%] --}}
+        <div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 gap-8 w-full max-w-[95%] mx-auto">
             <div class="space-y-4 max-w-sm">
                 <div class="text-lg font-bold text-primary font-headline">{{ config('bem.logo_text') }}</div>
                 <p class="text-on-surface-variant opacity-80 leading-relaxed">
@@ -117,9 +119,10 @@
                         aria-label="Share website">
                         <span class="material-symbols-outlined">share</span>
                     </button>
-<a href="mailto:bemuniversitassugenghartono@gmail.com?subject=Pertanyaan%20seputar%20BEM%20USH" class="hover:text-secondary transition-colors text-primary">
-    <span class="material-symbols-outlined">alternate_email</span>
-</a>                </div>
+                    <a href="mailto:bemuniversitassugenghartono@gmail.com?subject=Pertanyaan%20seputar%20BEM%20USH" class="hover:text-secondary transition-colors text-primary">
+                        <span class="material-symbols-outlined">alternate_email</span>
+                    </a>
+                </div>
             </div>
             <div class="grid grid-cols-2 gap-12">
                 <div class="space-y-4">
@@ -141,15 +144,16 @@
                 </div>
             </div>
         </div>
-        <div class="px-12 py-8 border-t border-outline-variant/10 text-center md:text-left text-on-surface-variant opacity-70 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        {{-- Mengubah max-w-7xl menjadi max-w-[95%] pada baris copyright --}}
+        <div class="px-12 py-8 border-t border-outline-variant/10 text-center md:text-left text-on-surface-variant opacity-70 max-w-[95%] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© {{ config('bem.tahun') }} {{ config('bem.nama_organisasi') }} {{ config('bem.kabinet') }}. The Digital Curator.</p>
             <p class="opacity-50">Designed by Stevano.</p>
         </div>
     </footer>
 
-    {{-- Burger Menu Script --}}
+    {{-- Burger Menu Script Tetap Sama --}}
     <script>
-       const burgerBtn = document.getElementById('burger-btn');
+        const burgerBtn = document.getElementById('burger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const line1 = document.getElementById('burger-line-1');
         const line2 = document.getElementById('burger-line-2');
@@ -173,7 +177,6 @@
             }
         });
 
-        // Tutup menu saat klik di luar navbar
         document.addEventListener('click', (e) => {
             if (isOpen && !burgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
                 isOpen = false;

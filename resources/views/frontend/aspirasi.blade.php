@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="pt-32 pb-24">
-    <!-- Hero Section -->
-    <section class="max-w-7xl mx-auto px-8 mb-24">
+{{-- Tambahkan max-w-[95%] dan mx-auto di tag main --}}
+<main class="pt-32 pb-24 max-w-[95%] mx-auto">
+    {{-- Ganti max-w-7xl menjadi max-w-full --}}
+    <section class="max-w-full mx-auto px-8 mb-24">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
             <div class="md:col-span-8">
                 <span class="text-secondary font-semibold mb-4 block uppercase tracking-[0.2em] text-sm">Suara Mahasiswa</span>
@@ -17,9 +18,8 @@
         </div>
     </section>
 
-    <!-- Main Content Grid -->
-    <section class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16">
-        <!-- Form Section -->
+    {{-- Ganti max-w-7xl menjadi max-w-full --}}
+    <section class="max-w-full mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16">
         <div class="lg:col-span-7">
             <div class="bg-surface-container-lowest rounded-3xl p-10 editorial-shadow border border-outline-variant/10">
                 <h2 class="text-2xl font-headline font-extrabold text-primary mb-8">Sampaikan Aspirasimu</h2>
@@ -41,11 +41,14 @@
                         <div class="space-y-2">
                             <label class="text-xs font-semibold uppercase tracking-widest text-outline">Program Studi</label>
                             <select name="prodi" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
-                                <option value="">Pilih Program Studi</option>
-                                <option value="Informatika">Informatika</option>
-                                <option value="Sistem Informasi">Sistem Informasi</option>
+                                <option value="Informatika">Ilmu Komputer</option>
                                 <option value="Bisnis Digital">Bisnis Digital</option>
+                                <option value="Management Bisnis Internasional">Management Bisnis Internasional</option>
+                                <option value="Hukum Bisnis">Hukum Bisnis</option>
                                 <option value="Gizi">Gizi</option>
+                                <option value="Teknologi Pangan">Teknologi Pangan</option>
+                                <option value="Pariwisata">Pariwisata</option>
+                                <option value="Sastra Inggris">Sastra Inggris</option>
                             </select>
                         </div>
                         <div class="space-y-2">
@@ -70,9 +73,7 @@
             </div>
         </div>
 
-        <!-- Sidebar Section -->
         <div class="lg:col-span-5 space-y-12">
-            <!-- Status Tracker -->
             <div class="bg-surface-container-low rounded-3xl p-8 space-y-8">
                 <div class="flex justify-between items-center">
                     <h3 class="text-xl font-headline font-extrabold text-primary">Status Terkini</h3>
@@ -97,10 +98,9 @@
                 </div>
             </div>
 
-            <!-- Quote Decoration -->
             <div class="rounded-3xl aspect-video relative overflow-hidden flex items-center justify-center p-12 text-center group">
                 <div class="absolute inset-0 bg-primary/90 z-10"></div>
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Decoration">
+                <img src="{{ asset('img/LOGO ASTAREKA.png') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Decoration">
                 <div class="relative z-20 space-y-4">
                     <span class="material-symbols-outlined text-secondary text-5xl">format_quote</span>
                     <p class="text-xl font-headline font-bold text-white leading-relaxed italic">"{{ $profileBem['quote_inspirasi'] ?? 'Setiap aspirasi adalah inovasi.' }}"</p>
@@ -109,8 +109,8 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="max-w-7xl mx-auto px-8 mt-24">
+    {{-- Ganti max-w-7xl menjadi max-w-full --}}
+    <section class="max-w-full mx-auto px-8 mt-24">
         <div class="text-center mb-16 space-y-4">
             <h2 class="text-xs font-black uppercase tracking-[0.2em] text-secondary">Information Hub</h2>
             <h3 class="text-4xl font-headline font-extrabold text-primary tracking-tight">Pertanyaan Umum</h3>
