@@ -14,16 +14,17 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
-    
 </head>
 <body class="bg-surface text-on-surface font-body">
     <div class="flex min-h-screen">
-        <aside class="w-64 bg-primary text-on-primary flex-shrink-0 relative">
+        
+        <aside class="w-64 bg-primary text-on-primary flex-shrink-0 flex flex-col sticky top-0 h-screen">
             <div class="p-8">
                 <span class="text-2xl font-black font-headline tracking-tighter">{{ config('bem.logo_text') }}</span>
                 <p class="text-xs opacity-50 uppercase tracking-widest mt-1">Admin Panel</p>
             </div>
-            <nav class="mt-4 px-4 space-y-2">
+            
+            <nav class="mt-4 px-4 space-y-2 flex-1 overflow-y-auto pb-4">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">home</span>
                     <span class="font-bold">Dashboard</span>
@@ -53,10 +54,11 @@
                     <span class="font-bold">Profil BEM</span>
                 </a>
             </nav>
-            <div class="absolute bottom-8 px-8 w-64">
+
+            <div class="mt-auto p-8 border-t border-white/10 w-full">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="flex items-center gap-4 text-red-400 hover:text-red-300 font-bold">
+                    <button type="submit" class="flex items-center gap-4 text-red-400 hover:text-red-300 font-bold w-full">
                         <span class="material-symbols-outlined">logout</span>
                         <span>Logout</span>
                     </button>
@@ -64,7 +66,7 @@
             </div>
         </aside>
 
-        <main class="flex-1 overflow-y-auto">
+        <main class="flex-1">
             <header class="bg-white border-b border-outline/10 px-12 py-6 flex justify-between items-center">
                 <h2 class="text-xl font-headline font-extrabold text-primary">@yield('page_title', 'Dashboard')</h2>
                 <div class="flex items-center gap-4">
