@@ -11,6 +11,7 @@ Sistem Informasi Manajemen dan Portal Publik untuk Badan Eksekutif Mahasiswa (BE
 - **Manajemen Hero/Slider**: Pengaturan tampilan utama (banner) pada halaman depan.
 - **Dashboard Admin**: Area khusus administrator untuk mengelola seluruh konten situs.
 - **Profil BEM**: Informasi lengkap mengenai visi, misi, dan identitas organisasi.
+- **Event Calendar**: Menampilkan jadwal dan agenda kegiatan BEM secara interaktif menggunakan FullCalendar.
 
 ##  Teknologi yang Digunakan
 
@@ -25,6 +26,7 @@ Sistem Informasi Manajemen dan Portal Publik untuk Badan Eksekutif Mahasiswa (BE
 - **CSS Framework**: Tailwind CSS
 - **JavaScript Framework**: Alpine.js
 - **Rich Text Editor**: TinyMCE
+- **Calendar Library:** FullCalendar
 
 ##  Prasyarat
 
