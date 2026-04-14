@@ -10,11 +10,13 @@
             <div class="space-y-6">
                 <div class="space-y-2">
                     <label class="text-xs font-black uppercase tracking-widest text-outline">Visi Kabinet</label>
-                    <textarea name="visi" rows="3" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">{{ $profile['visi'] ?? '' }}</textarea>
+                    <textarea name="visi" rows="3" class="editor-rich w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">{{ $profile['visi'] ?? '' }}</textarea>
+                    <p class="text-[10px] text-outline italic">*Gunakan enter untuk baris baru.</p>
                 </div>
                 <div class="space-y-2">
                     <label class="text-xs font-black uppercase tracking-widest text-outline">Misi Kabinet</label>
-                    <textarea name="misi" rows="4" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">{{ $profile['misi'] ?? '' }}</textarea>
+                    <textarea name="misi" rows="10" class="editor-rich w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">{{ $profile['misi'] ?? '' }}</textarea>
+                    <p class="text-[10px] text-outline italic">*Gunakan bullet list untuk misi yang lebih rapi.</p>
                 </div>
                 <div class="space-y-2">
                     <label class="text-xs font-black uppercase tracking-widest text-outline">Tentang Singkat (Footer/Hero)</label>

@@ -45,9 +45,10 @@ import 'tinymce/plugins/media';
 
 // init
 document.addEventListener('DOMContentLoaded', function () {
-    if (document.querySelector('#editor')) {
+    const editorSelector = '#editor, .editor-rich';
+    if (document.querySelector(editorSelector)) {
         tinymce.init({
-            selector: '#editor',
+            selector: editorSelector,
             height: 500,
             license_key: 'gpl',
             

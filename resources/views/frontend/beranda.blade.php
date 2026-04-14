@@ -65,14 +65,18 @@
                             <span class="material-symbols-outlined">visibility</span>
                         </div>
                         <h4 class="text-2xl font-headline font-bold text-primary">Visi</h4>
-                        <p class="text-on-surface-variant leading-relaxed">{{ $visi }}</p>
+                        <div class="text-on-surface-variant leading-relaxed prose prose-sm max-w-none prose-p:leading-relaxed prose-p:text-on-surface-variant prose-p:mt-0">
+                            {!! $visi !!}
+                        </div>
                     </div>
                     <div class="space-y-6">
                         <div class="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center text-on-secondary">
                             <span class="material-symbols-outlined">rocket_launch</span>
                         </div>
                         <h4 class="text-2xl font-headline font-bold text-primary">Misi</h4>
-                        <p class="text-on-surface-variant leading-relaxed">{{ $misi }}</p>
+                        <div class="text-on-surface-variant leading-relaxed prose prose-sm max-w-none prose-p:leading-relaxed prose-p:text-on-surface-variant prose-li:text-on-surface-variant prose-p:mt-0">
+                            {!! $misi !!}
+                        </div>
                     </div>
                 </div>
             </div>

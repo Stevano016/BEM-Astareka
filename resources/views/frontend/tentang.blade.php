@@ -55,8 +55,21 @@
                 </div>
 
                 <div class="border-l-4 border-secondary bg-primary-container p-10 rounded-r-3xl text-white space-y-6 editorial-shadow relative overflow-hidden">
-                    <span class="material-symbols-outlined text-secondary-fixed-dim text-5xl">format_quote</span>
-                    <p class="text-2xl font-headline font-bold leading-tight relative z-10">{{ $profileBem['visi'] ?? 'Menjadi organisasi yang transformatif dan inklusif.' }}</p>
+                    <span class="material-symbols-outlined text-secondary-fixed-dim text-5xl">
+                        format_quote
+                    </span>
+                    <div class="text-2xl font-headline font-bold leading-tight relative z-10 
+                                prose prose-2xl prose-invert max-w-none 
+                                prose-p:leading-tight
+                                prose-headings:text-white 
+                                prose-p:text-white 
+                                prose-strong:text-white 
+                                prose-li:text-white
+                                prose-a:text-white
+                                prose-blockquote:text-white
+                                [&_*]:text-white">
+                        {!! $profileBem['visi'] ?? '<p>Menjadi organisasi yang transformatif dan inklusif.</p>' !!}
+                    </div>
                     <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
                 </div>
             </div>
