@@ -8,7 +8,22 @@
                 <div class="space-y-1">
                     <span class="text-xs font-black uppercase tracking-widest text-outline">Pengirim</span>
                     <h3 class="text-2xl font-headline font-black text-primary">{{ $aspirasi->nama ?? 'Anonim' }}</h3>
-                    <p class="font-bold text-outline">{{ $aspirasi->nim ?? '-' }} • {{ $aspirasi->prodi ?? '-' }}</p>
+                    <p class="font-bold text-outline">
+                        {{ $aspirasi->nim ?? '-' }} • 
+                        @php
+                            $prodiMap = [
+                                'Informatika' => 'Ilmu Komputer',
+                                'Bisnis Digital' => 'Bisnis Digital',
+                                'Management Bisnis Internasional' => 'Management Bisnis Internasional',
+                                'Hukum Bisnis' => 'Hukum Bisnis',
+                                'Gizi' => 'Gizi',
+                                'Teknologi Pangan' => 'Teknologi Pangan',
+                                'Pariwisata' => 'Pariwisata',
+                                'Sastra Inggris' => 'Sastra Inggris',
+                            ];
+                            echo $prodiMap[$aspirasi->prodi] ?? $aspirasi->prodi ?? '-';
+                        @endphp
+                    </p>
                 </div>
                 <div class="text-right space-y-1">
                     <span class="text-xs font-black uppercase tracking-widest text-outline">Kategori</span>

@@ -36,7 +36,7 @@
                             <input type="text" name="nim" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
                         </div>
                     </div>
-
+ 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="space-y-2">
                             <label class="text-xs font-semibold uppercase tracking-widest text-outline">Program Studi</label>

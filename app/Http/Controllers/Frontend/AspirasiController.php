@@ -11,7 +11,7 @@ class AspirasiController extends Controller
 {
     public function index()
     {
-        $statusTerkini = Aspirasi::whereIn('status', ['diproses', 'selesai'])->latest()->take(3)->get();
+        $statusTerkini = Aspirasi::whereIn('status', [ 'dibaca', 'diproses', 'selesai'])->latest()->take(3)->get();
         $profileBem = ProfileBem::pluck('value', 'key');
         return view('frontend.aspirasi', compact('statusTerkini', 'profileBem'));
     }
