@@ -9,3 +9,31 @@
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
 } */
+
+/* Header "Minggu" */
+.fc-col-header-cell.fc-day-sun {
+    color: #ef4444 !important;
+    font-weight: bold;
+}
+
+/* Background kolom Minggu */
+.fc-daygrid-day.fc-day-sun {
+    background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* Angka tanggal Minggu */
+.fc-daygrid-day.fc-day-sun .fc-daygrid-day-number {
+    color: #ef4444 !important;
+    font-weight: bold;
+}
+
+/* Background hari ini */
+.fc-day-today {
+    background-color: rgba(59, 130, 246, 0.15) !important; /* biru lembut */
+}
+
+/* Angka tanggal hari ini */
+.fc-day-today .fc-daygrid-day-number {
+    color: #3b82f6 !important;
+    font-weight: bold;
+}

@@ -55,9 +55,9 @@
                 </div>
 
                 <div class="border-l-4 border-secondary bg-primary-container p-10 rounded-r-3xl text-white space-y-6 editorial-shadow relative overflow-hidden">
-                    <span class="material-symbols-outlined text-secondary-fixed-dim text-5xl">
+                    <!-- <span class="material-symbols-outlined text-secondary-fixed-dim text-5xl">
                         format_quote
-                    </span>
+                    </span> -->
                     <div class="text-2xl font-headline font-bold leading-tight relative z-10 
                                 prose prose-2xl prose-invert max-w-none 
                                 prose-p:leading-tight
