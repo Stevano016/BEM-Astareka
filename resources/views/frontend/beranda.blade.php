@@ -120,6 +120,33 @@
         </div>
     </section>
 
+    <section class="py-24">
+        <div class="max-w-full mx-auto px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-4 space-y-8">
+                    <div>
+                        <h2 class="text-sm font-label uppercase tracking-[0.2em] text-secondary mb-4">Timeline</h2>
+                        <h3 class="text-4xl font-headline font-extrabold text-primary tracking-tight">Kalender Kegiatan</h3>
+                        <div class="w-16 h-1 bg-secondary mt-6"></div>
+                    </div>
+                    <p class="text-on-surface-variant leading-relaxed font-body">Pantau seluruh agenda dan kegiatan BEM Universitas Sugeng Hartono di sini. Jangan lewatkan setiap momen kolaborasi dan inovasi kami.</p>
+                    
+                    <div id="event-details" class="p-6 bg-surface-container-low rounded-2xl border border-outline/5 min-h-[150px] flex items-center justify-center text-center">
+                        <div class="space-y-2">
+                            <span class="material-symbols-outlined text-outline text-4xl">event_note</span>
+                            <p class="text-sm font-bold text-outline uppercase tracking-widest">Klik event untuk detail</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-8">
+                    <div class="bg-white p-8 rounded-3xl editorial-shadow border border-outline/5">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-24 bg-surface-container-low/30 rounded-3xl">
         <div class="max-w-full mx-auto px-8">
             <div class="flex justify-between items-end mb-12">
@@ -152,4 +179,85 @@
         </div>
     </section>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        if (!calendarEl || !window.FullCalendar) return;
+
+        var events = @json($kalenderEvents);
+
+        var calendar = new window.FullCalendar.Calendar(calendarEl, {
+            plugins: [ 
+                window.FullCalendar.dayGridPlugin, 
+                window.FullCalendar.interactionPlugin, 
+                window.FullCalendar.listPlugin 
+            ],
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,listMonth'
+            },
+            events: events,
+            eventClick: function(info) {
+                var detailsEl = document.getElementById('event-details');
+                var start = new Date(info.event.start).toLocaleDateString('id-ID', { 
+                    day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' 
+                });
+                
+                detailsEl.innerHTML = `
+                    <div class="animate-in fade-in slide-in-from-bottom-2 duration-500 text-left w-full space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-12 rounded-full" style="background-color: ${info.event.backgroundColor}"></div>
+                            <div>
+                                <p class="text-[10px] font-black uppercase tracking-widest text-outline">${start}</p>
+                                <h4 class="text-xl font-headline font-black text-primary leading-tight">${info.event.title}</h4>
+                            </div>
+                        </div>
+                        <p class="text-sm text-on-surface-variant leading-relaxed">${info.event.extendedProps.description || 'Tidak ada deskripsi tambahan.'}</p>
+                    </div>
+                `;
+            },
+            height: 'auto',
+            themeSystem: 'standard'
+        });
+        calendar.render();
+    });
+</script>
+
+<style>
+    :root {
+        --fc-border-color: rgba(0,0,0,0.05);
+        --fc-daygrid-dot-event-hover-bg-color: rgba(0,0,0,0.02);
+        --fc-today-bg-color: rgba(var(--primary-rgb, 59, 130, 246), 0.05);
+    }
+    .fc { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .fc .fc-toolbar-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #1a1c1e; text-transform: uppercase; letter-spacing: -0.02em; }
+    .fc .fc-button-primary { 
+        background-color: #f0f4f8; 
+        border: none; 
+        color: #1a1c1e; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        font-size: 10px; 
+        letter-spacing: 0.1em; 
+        padding: 10px 16px; 
+        border-radius: 12px; 
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .fc .fc-button-primary:hover { background-color: #e1e7ef; color: #1a1c1e; opacity: 0.8; }
+    .fc .fc-button-primary:not(:disabled):active, 
+    .fc .fc-button-primary:not(:disabled).fc-button-active { 
+        background-color: #1a1c1e !important; 
+        color: #fff !important; 
+        box-shadow: none !important;
+    }
+    .fc .fc-button:focus { box-shadow: none !important; }
+    .fc th { padding: 12px 0; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #74777f; border: none; }
+    .fc-theme-standard td, .fc-theme-standard th { border: 1px solid rgba(0,0,0,0.03); }
+    .fc-daygrid-event { border-radius: 6px; padding: 2px 6px; font-weight: 700; font-size: 11px; border: none; }
+    .fc-h-event { background-color: var(--fc-event-bg-color, #3b82f6); }
+</style>
 @endsection

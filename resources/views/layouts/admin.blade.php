@@ -49,6 +49,10 @@
                     <span class="material-symbols-outlined">groups</span>
                     <span class="font-bold">Struktur</span>
                 </a>
+                <a href="{{ route('admin.kalender.index') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.kalender.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                    <span class="font-bold">Kalender</span>
+                </a>
                 <a href="{{ route('admin.profile.edit') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.profile.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">info</span>
                     <span class="font-bold">Profil BEM</span>

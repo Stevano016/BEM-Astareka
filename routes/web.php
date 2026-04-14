@@ -40,6 +40,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     // Struktur
     Route::resource('struktur', Admin\StrukturController::class);
 
+    // Kalender
+    Route::resource('kalender', Admin\KalenderController::class);
+
     // Profile BEM
     Route::get('profile', [Admin\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('profile', [Admin\ProfileController::class, 'update'])->name('profile.update');

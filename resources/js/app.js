@@ -1,5 +1,17 @@
 import './bootstrap';
 
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
+
+window.FullCalendar = {
+    Calendar: Calendar,
+    dayGridPlugin: dayGridPlugin,
+    interactionPlugin: interactionPlugin,
+    listPlugin: listPlugin
+};
+
 import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
