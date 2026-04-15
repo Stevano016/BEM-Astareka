@@ -3,12 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
+// Hapus baris import Attributes\Fillable
 
-#[Fillable(['nama', 'deskripsi', 'departemen', 'icon', 'bg_style', 'is_featured', 'urutan', 'is_active'])]
 class ProgramKerja extends Model
 {
     protected $table = 'program_kerja';
+
+    // Pindahkan daftar field ke properti protected
+    protected $fillable = [
+        'nama', 
+        'deskripsi', 
+        'departemen', 
+        'icon', 
+        'bg_style', 
+        'is_featured', 
+        'urutan', 
+        'is_active'
+    ];
 
     protected $casts = [
         'is_featured' => 'boolean',

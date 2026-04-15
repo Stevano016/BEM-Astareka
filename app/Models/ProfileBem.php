@@ -3,14 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
+// Hapus import Attributes\Fillable
 
-#[Fillable(['key', 'value'])]
 class ProfileBem extends Model
 {
     protected $table = 'profile_bem';
 
-    // Helper static method
+    // Pindahkan ke properti protected
+    protected $fillable = ['key', 'value'];
+
+    // Helper static method ini tetap aman dan sangat bagus kodenya
     public static function getValue(string $key, string $default = ''): string
     {
         return static::where('key', $key)->value('value') ?? $default;

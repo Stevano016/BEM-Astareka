@@ -4,12 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
+// Hapus import Attributes\Fillable karena sudah tidak dipakai
 
-#[Fillable(['judul', 'slug', 'konten', 'excerpt', 'gambar', 'kategori', 'is_published', 'published_at', 'user_id'])]
 class Berita extends Model
 {
     protected $table = 'berita';
+
+    // Pindahkan daftar field ke sini (Cara Tradisional)
+    protected $fillable = [
+        'judul', 
+        'slug', 
+        'konten', 
+        'excerpt', 
+        'gambar', 
+        'kategori', 
+        'is_published', 
+        'published_at', 
+        'user_id'
+    ];
 
     protected $casts = [
         'is_published' => 'boolean',
@@ -21,7 +33,7 @@ class Berita extends Model
         return $this->belongsTo(User::class);
     }
 
-    // Auto-generate slug
+    // Auto-generate slug tetap aman digunakan di Laravel 12
     protected static function boot()
     {
         parent::boot();
@@ -32,7 +44,7 @@ class Berita extends Model
         });
     }
 
-    // Scope
+    // Scope juga tetap aman
     public function scopePublished($q)
     {
         return $q->where('is_published', true)->whereNotNull('published_at');

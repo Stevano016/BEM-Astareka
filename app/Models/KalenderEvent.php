@@ -13,4 +13,10 @@ class KalenderEvent extends Model
         'waktu_selesai',
         'warna'
     ];
+
+    // Tambahkan ini agar field waktu otomatis jadi objek Carbon
+    protected $casts = [
+        'waktu_mulai' => 'datetime',
+        'waktu_selesai' => 'datetime',
+    ];
 }
