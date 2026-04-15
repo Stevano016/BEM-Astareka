@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/sugengha/public_html
+    - /bin/cp -R /home/sugengha/BEM-Astareka/public/* $DEPLOYPATH
+    - /bin/cp /home/sugengha/BEM-Astareka/public/.htaccess $DEPLOYPATH
+    - export PHP=/usr/local/bin/php
+    - cd /home/sugengha/BEM-Astareka && $PHP artisan config:cache
+    - cd /home/sugengha/BEM-Astareka && $PHP artisan route:cache
+    - cd /home/sugengha/BEM-Astareka && $PHP artisan view:cache
+    - cd /home/sugengha/BEM-Astareka && $PHP artisan storage:link
