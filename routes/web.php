@@ -13,7 +13,7 @@ Route::middleware(['auth'])->get('/dashboard', [Admin\DashboardController::class
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
-Route::post('/aspirasi', [AspirasiController::class, 'store'])->name('aspirasi.store');
+Route::post('/aspirasi', [AspirasiController::class, 'store'])->name('aspirasi.store')->middleware('throttle:2,1');
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
 
 // Admin

@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 // Hapus import Attributes\Fillable karena sudah tidak dipakai
 
+use App\Traits\LogsActivity;
+
 class Berita extends Model
 {
+    use LogsActivity;
     protected $table = 'berita';
 
     // Pindahkan daftar field ke sini (Cara Tradisional)
