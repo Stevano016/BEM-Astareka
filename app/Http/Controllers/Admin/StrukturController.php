@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\StrukturOrganisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Laravel\Facades\Image;
-use Intervention\Image\Encoders\WebpEncoder;
 
 class StrukturController extends Controller
 {
@@ -38,11 +36,7 @@ class StrukturController extends Controller
             $image = $request->file('foto');
             $filename = time() . '_' . uniqid() . '.webp';
             $path = 'struktur/' . $filename;
-
-            $img = Image::decode($image);
-            $img->scale(width: 800);
-
-            Storage::disk('public')->put($path, $img->encode(new WebpEncoder(quality: 80))->toString());
+            $this->compressToWebp($image, $path, 800, 80);
             $data['foto'] = $path;
         }
 
@@ -75,11 +69,7 @@ class StrukturController extends Controller
             $image = $request->file('foto');
             $filename = time() . '_' . uniqid() . '.webp';
             $path = 'struktur/' . $filename;
-
-            $img = Image::decode($image);
-            $img->scale(width: 800);
-
-            Storage::disk('public')->put($path, $img->encode(new WebpEncoder(quality: 80))->toString());
+            $this->compressToWebp($image, $path, 800, 80);
             $data['foto'] = $path;
         }
 
@@ -94,5 +84,37 @@ class StrukturController extends Controller
         }
         $struktur->delete();
         return back()->with('success', 'Anggota struktur berhasil dihapus.');
+    }
+
+    private function compressToWebp($file, string $path, int $width, int $quality): void
+    {
+        $source = $file->getPathname();
+        $mime = mime_content_type($source);
+
+        $src = match($mime) {
+            'image/jpeg' => imagecreatefromjpeg($source),
+            'image/png'  => imagecreatefrompng($source),
+            'image/webp' => imagecreatefromwebp($source),
+            'image/gif'  => imagecreatefromgif($source),
+            default      => throw new \Exception("Format tidak didukung: $mime"),
+        };
+
+        $origW = imagesx($src);
+        $origH = imagesy($src);
+
+        if ($origW > $width) {
+            $height = (int) round($origH * $width / $origW);
+            $resized = imagecreatetruecolor($width, $height);
+            imagecopyresampled($resized, $src, 0, 0, 0, 0, $width, $height, $origW, $origH);
+            imagedestroy($src);
+            $src = $resized;
+        }
+
+        ob_start();
+        imagewebp($src, null, $quality);
+        $webpData = ob_get_clean();
+        imagedestroy($src);
+
+        Storage::disk('public')->put($path, $webpData);
     }
 }
