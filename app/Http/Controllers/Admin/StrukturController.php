@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\StrukturOrganisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
+use Intervention\Image\Encoders\WebpEncoder;
 
 class StrukturController extends Controller
 {
@@ -33,7 +35,15 @@ class StrukturController extends Controller
         ]);
 
         if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('struktur', 'public');
+            $image = $request->file('foto');
+            $filename = time() . '_' . uniqid() . '.webp';
+            $path = 'struktur/' . $filename;
+
+            $img = Image::decode($image);
+            $img->scale(width: 800);
+
+            Storage::disk('public')->put($path, $img->encode(new WebpEncoder(quality: 80))->toString());
+            $data['foto'] = $path;
         }
 
         StrukturOrganisasi::create($data);
@@ -61,7 +71,16 @@ class StrukturController extends Controller
             if ($struktur->foto) {
                 Storage::disk('public')->delete($struktur->foto);
             }
-            $data['foto'] = $request->file('foto')->store('struktur', 'public');
+
+            $image = $request->file('foto');
+            $filename = time() . '_' . uniqid() . '.webp';
+            $path = 'struktur/' . $filename;
+
+            $img = Image::decode($image);
+            $img->scale(width: 800);
+
+            Storage::disk('public')->put($path, $img->encode(new WebpEncoder(quality: 80))->toString());
+            $data['foto'] = $path;
         }
 
         $struktur->update($data);

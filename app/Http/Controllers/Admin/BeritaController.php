@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreBeritaRequest;
 use App\Http\Requests\UpdateBeritaRequest;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
+use Intervention\Image\Encoders\WebpEncoder;
 
 class BeritaController extends Controller
 {
@@ -30,7 +32,15 @@ class BeritaController extends Controller
     {
         $data = $request->validated();
         if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('berita', 'public');
+            $image = $request->file('gambar');
+            $filename = time() . '.webp';
+            $path = 'berita/' . $filename;
+
+            $img = Image::decode($image);
+            $img->scale(width: 1200);
+
+            Storage::disk('public')->put($path, $img->encode(new WebpEncoder(quality: 75))->toString());
+            $data['gambar'] = $path;
         }
         $data['user_id'] = auth()->id();
         if ($request->is_published) {
@@ -53,7 +63,16 @@ class BeritaController extends Controller
             if ($berita->gambar) {
                 Storage::disk('public')->delete($berita->gambar);
             }
-            $data['gambar'] = $request->file('gambar')->store('berita', 'public');
+
+            $image = $request->file('gambar');
+            $filename = time() . '.webp';
+            $path = 'berita/' . $filename;
+
+            $img = Image::decode($image);
+            $img->scale(width: 1200);
+
+            Storage::disk('public')->put($path, $img->encode(new WebpEncoder(quality: 75))->toString());
+            $data['gambar'] = $path;
         }
 
         if ($request->is_published && !$berita->is_published) {

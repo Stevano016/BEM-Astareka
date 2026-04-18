@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Hero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
+use Intervention\Image\Encoders\WebpEncoder;
 
 class HeroController extends Controller
 {
@@ -34,7 +36,16 @@ class HeroController extends Controller
             if ($hero->gambar) {
                 Storage::disk('public')->delete($hero->gambar);
             }
-            $data['gambar'] = $request->file('gambar')->store('hero', 'public');
+
+            $image = $request->file('gambar');
+            $filename = time() . '.webp';
+            $path = 'hero/' . $filename;
+
+            $img = Image::decode($image);
+            $img->scale(width: 1920);
+
+            Storage::disk('public')->put($path, $img->encode(new WebpEncoder(quality: 80))->toString());
+            $data['gambar'] = $path;
         }
 
         $hero->fill($data);
