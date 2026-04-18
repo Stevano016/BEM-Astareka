@@ -133,24 +133,7 @@
         </style>
     </section>
 
-    <section class="max-w-full mx-auto px-8 mt-32">
-        <div class="bg-primary rounded-3xl p-12 md:p-24 text-center text-white relative overflow-hidden">
-            <div class="relative z-10 max-w-2xl mx-auto space-y-8">
-                <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter leading-tight">Mari Berkolaborasi Untuk Perubahan.</h2>
-                <p class="text-white/60 text-lg">Pintu kami selalu terbuka untuk ide, saran, dan kolaborasi yang membangun demi kemajuan mahasiswa.</p>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-4">
-                    <a href="{{ route('aspirasi.index') }}" class="bg-secondary text-white px-10 py-5 rounded-xl font-headline font-bold text-lg hover:bg-secondary/90 transition-all active:scale-95">Sampaikan Aspirasi</a>
-                    <a href="#" class="text-white font-bold flex items-center gap-2 group">
-                        Hubungi Kami
-                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-            <div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container rounded-full blur-3xl"></div>
-        </div>
-    </section>
-
+    
     {{-- ========================================== --}}
     {{-- SECTION BAGAN STRUKTUR ORGANISASI (TREE)   --}}
     {{-- ========================================== --}}
@@ -360,5 +343,24 @@
             </div>
         </div>
     </section>
+
+    <section class="max-w-full mx-auto px-8 mt-32">
+        <div class="bg-primary rounded-3xl p-12 md:p-24 text-center text-white relative overflow-hidden">
+            <div class="relative z-10 max-w-2xl mx-auto space-y-8">
+                <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter leading-tight">Mari Berkolaborasi Untuk Perubahan.</h2>
+                <p class="text-white/60 text-lg">Pintu kami selalu terbuka untuk ide, saran, dan kolaborasi yang membangun demi kemajuan mahasiswa.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-4">
+                    <a href="{{ route('aspirasi.index') }}" class="bg-secondary text-white px-10 py-5 rounded-xl font-headline font-bold text-lg hover:bg-secondary/90 transition-all active:scale-95">Sampaikan Aspirasi</a>
+                    <a href="#" class="text-white font-bold flex items-center gap-2 group">
+                        Hubungi Kami
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+            <div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container rounded-full blur-3xl"></div>
+        </div>
+    </section>
+
 </main>
 @endsection
