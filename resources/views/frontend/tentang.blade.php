@@ -145,5 +145,184 @@
             <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container rounded-full blur-3xl"></div>
         </div>
     </section>
+
+    {{-- ========================================== --}}
+    {{-- SECTION BAGAN STRUKTUR ORGANISASI (TREE)   --}}
+    {{-- ========================================== --}}
+    <section class="max-w-full mx-auto px-8 mt-32 mb-32">
+        <div class="flex items-center gap-6 mb-12">
+            <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Bagan Struktur Organisasi</h2>
+            <div class="flex-grow h-px bg-outline/10"></div>
+        </div>
+
+        {{-- Legend Keterangan Garis --}}
+        <div class="flex flex-wrap gap-8 mb-8 text-xs font-bold text-outline">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-[2px] bg-primary/40"></div>
+                <span class="tracking-widest">GARIS KOMANDO</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-[2px] border-b-[2px] border-dashed border-primary/40"></div>
+                <span class="tracking-widest">GARIS KOORDINASI</span>
+            </div>
+        </div>
+
+        {{-- Scrollable Container for Wide Tree --}}
+        <div class="w-full overflow-x-auto pb-16 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-outline/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+            <div class="min-w-[1300px] flex flex-col items-center pt-8 relative select-none">
+                
+                {{-- 1. LEVEL: KETUA --}}
+                @if($ketua)
+                <div class="flex flex-col items-center relative z-10">
+                    <div class="flex items-center gap-4 bg-surface-container-low p-2 pr-6 rounded-full border border-white editorial-shadow w-[280px] hover:border-secondary transition-all">
+                        @if($ketua->foto)
+                            <img src="{{ Storage::url($ketua->foto) }}" class="w-12 h-12 rounded-full object-cover shrink-0">
+                        @else
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($ketua->nama) }}&background=001e40&color=fff" class="w-12 h-12 rounded-full object-cover shrink-0">
+                        @endif
+                        <div class="text-left">
+                            <h4 class="text-[10px] font-black text-secondary uppercase tracking-[0.2em] leading-tight mb-1">Ketua</h4>
+                            <p class="text-sm font-headline font-extrabold text-primary leading-tight">{{ $ketua->nama }}</p>
+                            <p class="text-[9px] text-outline mt-0.5">{{ $ketua->nim }}</p>
+                        </div>
+                    </div>
+                </div>
+                @endif
+
+                {{-- SPACING & CABANG KE WAKIL KETUA --}}
+                <div class="w-full relative flex justify-center h-20">
+                    {{-- Garis Komando Utama (Solid) --}}
+                    <div class="w-[2px] h-full bg-primary/20"></div>
+                    
+                    {{-- Garis Koordinasi ke Wakil Ketua (Dashed) --}}
+                    @if($wakilKetua)
+                    <div class="absolute top-1/2 left-1/2 w-[340px] border-t-[2px] border-dashed border-primary/40 z-0"></div>
+                    
+                    {{-- 2. LEVEL: WAKIL KETUA --}}
+                    <div class="absolute top-1/2 left-[calc(50%+340px)] -translate-y-1/2 z-10">
+                        <div class="flex items-center gap-4 bg-surface-container-low p-2 pr-6 rounded-full border border-white editorial-shadow w-[280px] hover:border-secondary transition-all">
+                            @if($wakilKetua->foto)
+                                <img src="{{ Storage::url($wakilKetua->foto) }}" class="w-12 h-12 rounded-full object-cover shrink-0">
+                            @else
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($wakilKetua->nama) }}&background=001e40&color=fff" class="w-12 h-12 rounded-full object-cover shrink-0">
+                            @endif
+                            <div class="text-left">
+                                <h4 class="text-[10px] font-black text-secondary uppercase tracking-[0.2em] leading-tight mb-1">Wakil Ketua</h4>
+                                <p class="text-sm font-headline font-extrabold text-primary leading-tight truncate">{{ $wakilKetua->nama }}</p>
+                                <p class="text-[9px] text-outline mt-0.5">{{ $wakilKetua->nim }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+
+                {{-- SPACING SEBELUM SEKRE & BENDAHARA --}}
+                <div class="w-full flex justify-center h-16 relative">
+                    <div class="w-[2px] h-full bg-primary/20"></div>
+                </div>
+
+                {{-- 3. LEVEL: SEKRETARIS & BENDAHARA (KOORDINASI) --}}
+                <div class="flex justify-center gap-24 relative w-[900px]">
+                    {{-- Garis Komando Utama Lanjut ke Bawah (Tembus) --}}
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-[calc(100%+5rem)] bg-primary/20 z-0"></div>
+                    
+                    {{-- Garis Koordinasi Horizontal (Dashed) --}}
+                    <div class="absolute top-0 left-[25%] right-[25%] border-t-[2px] border-dashed border-primary/40 z-0"></div>
+                    
+                    @php
+                        $admins = [];
+                        if($sekretaris->isNotEmpty()) {
+                            $admins[] = ['jabatan' => 'Sekretaris', 'anggota' => $sekretaris];
+                        }
+                        if($bendahara->isNotEmpty()) {
+                            $admins[] = ['jabatan' => 'Bendahara', 'anggota' => $bendahara];
+                        }
+                    @endphp
+
+                    @foreach($admins as $admin)
+                    <div class="flex flex-col items-center w-[320px] relative z-10">
+                        {{-- Drop down dashed line --}}
+                        <div class="w-[2px] h-8 border-l-[2px] border-dashed border-primary/40 mb-3"></div>
+                        
+                        <div class="bg-surface-container-low p-5 rounded-2xl border border-white editorial-shadow w-full hover:border-secondary transition-all">
+                            <h4 class="text-[11px] font-black text-secondary uppercase tracking-[0.2em] leading-tight mb-4 text-center border-b border-outline/10 pb-3">{{ $admin['jabatan'] }}</h4>
+                            <div class="space-y-3">
+                                @foreach($admin['anggota'] as $person)
+                                <div class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                        <span class="text-[10px] font-bold text-primary">{{ substr($person->nama, 0, 1) }}</span>
+                                    </div>
+                                    <div class="flex-1 overflow-hidden">
+                                        <p class="text-[11px] font-headline font-extrabold text-primary truncate leading-tight">{{ $person->nama }}</p>
+                                        <p class="text-[9px] text-outline mt-0.5">{{ $person->nim }}</p>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+                {{-- SPACING SEBELUM DIVISI --}}
+                <div class="w-full flex justify-center h-20 relative">
+                    {{-- Terhubung dengan garis tembusan di atas --}}
+                </div>
+
+                {{-- 4 & 5. LEVEL: DIVISI & ANGGOTA --}}
+                <div class="flex relative w-full justify-center gap-10 max-w-[1200px]">
+                    {{-- Garis Komando Horizontal Divisi (Solid) --}}
+                    <div class="absolute top-0 left-[18%] right-[18%] border-t-[2px] border-primary/20 z-0"></div>
+
+                    @foreach($divisiTree as $divisi)
+                    <div class="flex flex-col items-center w-[350px] relative z-10">
+                        {{-- Drop down solid line to Divisi --}}
+                        <div class="w-[2px] h-8 bg-primary/20 mb-3"></div>
+                        
+                        {{-- Node Ketua Divisi --}}
+                        @if($divisi['ketua'])
+                        <div class="flex items-center gap-3 bg-surface-container-low p-2 pr-4 rounded-full border border-white editorial-shadow w-[300px] hover:border-secondary transition-all">
+                            @if($divisi['ketua']->foto)
+                                <img src="{{ Storage::url($divisi['ketua']->foto) }}" class="w-11 h-11 rounded-full object-cover shrink-0 bg-primary/5">
+                            @else
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($divisi['ketua']->nama) }}&background=001e40&color=fff" class="w-11 h-11 rounded-full object-cover shrink-0 bg-primary/5">
+                            @endif
+                            <div class="text-left w-full overflow-hidden">
+                                <h4 class="text-[9px] font-black text-secondary uppercase tracking-widest leading-tight mb-0.5 truncate">{{ $divisi['divisi'] }}</h4>
+                                <p class="text-[12px] font-headline font-extrabold text-primary leading-tight truncate">{{ $divisi['ketua']->nama }}</p>
+                                <p class="text-[9px] text-outline mt-0.5">Ketua Divisi • {{ $divisi['ketua']->nim }}</p>
+                            </div>
+                        </div>
+                        @else
+                        <div class="flex items-center justify-center bg-surface-container-low p-2 rounded-full border border-dashed border-outline/20 w-[300px]">
+                            <p class="text-[10px] text-outline uppercase font-bold">{{ $divisi['divisi'] }}</p>
+                        </div>
+                        @endif
+
+                        {{-- Drop down line to Anggota --}}
+                        <div class="w-[2px] h-10 bg-primary/20 mt-3 mb-3"></div>
+
+                        {{-- Kartu Anggota --}}
+                        <div class="bg-surface-container-low p-5 rounded-2xl border border-white editorial-shadow w-full hover:border-secondary transition-all">
+                            <h4 class="text-[10px] font-black text-outline uppercase tracking-[0.2em] leading-tight mb-4 text-center border-b border-outline/10 pb-3">Anggota Divisi</h4>
+                            <div class="space-y-3">
+                                @foreach($divisi['anggota'] as $anggota)
+                                <div class="flex items-center gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></div>
+                                    <div class="flex-1 overflow-hidden">
+                                        <p class="text-[11px] font-headline font-extrabold text-primary truncate leading-tight">{{ $anggota->nama }}</p>
+                                        <p class="text-[9px] text-outline mt-0.5">{{ $anggota->nim }}</p>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+
+            </div>
+        </div>
+    </section>
 </main>
 @endsection

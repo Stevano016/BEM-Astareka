@@ -24,6 +24,7 @@ class StrukturController extends Controller
     {
         $data = $request->validate([
             'nama' => 'required|string|max:255',
+            'nim' => 'nullable|string|max:20',
             'jabatan' => 'required|string|max:100',
             'departemen' => 'nullable|string|max:100',
             'foto' => 'nullable|image|max:2048',
@@ -48,6 +49,7 @@ class StrukturController extends Controller
     {
         $data = $request->validate([
             'nama' => 'required|string|max:255',
+            'nim' => 'nullable|string|max:20',
             'jabatan' => 'required|string|max:100',
             'departemen' => 'nullable|string|max:100',
             'foto' => 'nullable|image|max:2048',

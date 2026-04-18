@@ -7,21 +7,21 @@
         <div class="grid grid-cols-2 gap-8">
             <div class="space-y-2">
                 <label class="text-xs font-black uppercase tracking-widest text-outline">Nama Lengkap</label>
-                <input type="text" name="nama" required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <input type="text" name="nama" value="{{ old('nama') }}" required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
             <div class="space-y-2">
-                <label class="text-xs font-black uppercase tracking-widest text-outline">Jabatan</label>
-                <input type="text" name="jabatan" placeholder="e.g. Ketua BEM, Kepala Departemen..." required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <label class="text-xs font-black uppercase tracking-widest text-outline">NIM</label>
+                <input type="text" name="nim" value="{{ old('nim') }}" placeholder="e.g. 062302029" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
         </div>
         <div class="grid grid-cols-2 gap-8">
             <div class="space-y-2">
-                <label class="text-xs font-black uppercase tracking-widest text-outline">Departemen</label>
-                <input type="text" name="departemen" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <label class="text-xs font-black uppercase tracking-widest text-outline">Jabatan</label>
+                <input type="text" name="jabatan" value="{{ old('jabatan') }}" placeholder="e.g. Ketua BEM, Kepala Departemen..." required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
             <div class="space-y-2">
-                <label class="text-xs font-black uppercase tracking-widest text-outline">Foto Profile</label>
-                <input type="file" name="foto" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <label class="text-xs font-black uppercase tracking-widest text-outline">Departemen</label>
+                <input type="text" name="departemen" value="{{ old('departemen') }}" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
         </div>
         <div class="space-y-2">

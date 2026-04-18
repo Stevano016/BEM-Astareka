@@ -26,7 +26,10 @@
                             <div class="w-10 h-10 rounded-full bg-primary/5 overflow-hidden">
                                 @if($item->foto) <img src="{{ Storage::url($item->foto) }}" class="w-full h-full object-cover"> @endif
                             </div>
-                            <span class="font-bold text-primary">{{ $item->nama }}</span>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-primary">{{ $item->nama }}</span>
+                                <span class="text-[10px] text-outline font-black">{{ $item->nim ?? '-' }}</span>
+                            </div>
                         </div>
                     </td>
                     <td class="px-8 py-4 text-sm font-bold text-outline">{{ $item->jabatan }}</td>
@@ -44,6 +47,9 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="px-8 py-4 bg-surface-container-low border-t border-outline/5">
+        {{ $struktur->links() }}
     </div>
 </div>
 @endsection

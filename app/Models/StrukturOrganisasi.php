@@ -13,6 +13,7 @@ class StrukturOrganisasi extends Model
     // Pindahkan daftar field ke sini (Cara Tradisional)
     protected $fillable = [
         'nama', 
+        'nim',
         'jabatan', 
         'departemen', 
         'foto', 

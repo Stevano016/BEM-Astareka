@@ -8,21 +8,21 @@
         <div class="grid grid-cols-2 gap-8">
             <div class="space-y-2">
                 <label class="text-xs font-black uppercase tracking-widest text-outline">Nama Lengkap</label>
-                <input type="text" name="nama" value="{{ $struktur->nama }}" required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <input type="text" name="nama" value="{{ old('nama', $struktur->nama) }}" required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
             <div class="space-y-2">
-                <label class="text-xs font-black uppercase tracking-widest text-outline">Jabatan</label>
-                <input type="text" name="jabatan" value="{{ $struktur->jabatan }}" placeholder="e.g. Ketua BEM, Kepala Departemen..." required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <label class="text-xs font-black uppercase tracking-widest text-outline">NIM</label>
+                <input type="text" name="nim" value="{{ old('nim', $struktur->nim) }}" placeholder="e.g. 062302029" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
         </div>
         <div class="grid grid-cols-2 gap-8">
             <div class="space-y-2">
-                <label class="text-xs font-black uppercase tracking-widest text-outline">Departemen</label>
-                <input type="text" name="departemen" value="{{ $struktur->departemen }}" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <label class="text-xs font-black uppercase tracking-widest text-outline">Jabatan</label>
+                <input type="text" name="jabatan" value="{{ old('jabatan', $struktur->jabatan) }}" placeholder="e.g. Ketua BEM, Kepala Departemen..." required class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
             <div class="space-y-2">
-                <label class="text-xs font-black uppercase tracking-widest text-outline">Foto Profile (Kosongi jika tetap)</label>
-                <input type="file" name="foto" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+                <label class="text-xs font-black uppercase tracking-widest text-outline">Departemen</label>
+                <input type="text" name="departemen" value="{{ old('departemen', $struktur->departemen) }}" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
             </div>
         </div>
         <div class="space-y-2">
