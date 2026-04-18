@@ -87,34 +87,47 @@ class StrukturController extends Controller
     }
 
     private function compressToWebp($file, string $path, int $width, int $quality): void
-    {
-        $source = $file->getPathname();
-        $mime = mime_content_type($source);
+{
+    $source = $file->getPathname();
+    $mime = mime_content_type($source);
 
-        $src = match($mime) {
-            'image/jpeg' => imagecreatefromjpeg($source),
-            'image/png'  => imagecreatefrompng($source),
-            'image/webp' => imagecreatefromwebp($source),
-            'image/gif'  => imagecreatefromgif($source),
-            default      => throw new \Exception("Format tidak didukung: $mime"),
+    $src = match($mime) {
+        'image/jpeg' => imagecreatefromjpeg($source),
+        'image/png'  => imagecreatefrompng($source),
+        'image/webp' => imagecreatefromwebp($source),
+        'image/gif'  => imagecreatefromgif($source),
+        default      => throw new \Exception("Format tidak didukung: $mime"),
+    };
+
+    // Fix orientasi berdasarkan EXIF (khusus JPEG)
+    if ($mime === 'image/jpeg' && function_exists('exif_read_data')) {
+        $exif = @exif_read_data($source);
+        $orientation = $exif['Orientation'] ?? 1;
+
+        $src = match($orientation) {
+            3 => imagerotate($src, 180, 0),
+            6 => imagerotate($src, -90, 0),
+            8 => imagerotate($src, 90, 0),
+            default => $src,
         };
-
-        $origW = imagesx($src);
-        $origH = imagesy($src);
-
-        if ($origW > $width) {
-            $height = (int) round($origH * $width / $origW);
-            $resized = imagecreatetruecolor($width, $height);
-            imagecopyresampled($resized, $src, 0, 0, 0, 0, $width, $height, $origW, $origH);
-            imagedestroy($src);
-            $src = $resized;
-        }
-
-        ob_start();
-        imagewebp($src, null, $quality);
-        $webpData = ob_get_clean();
-        imagedestroy($src);
-
-        Storage::disk('public')->put($path, $webpData);
     }
+
+    $origW = imagesx($src);
+    $origH = imagesy($src);
+
+    if ($origW > $width) {
+        $height = (int) round($origH * $width / $origW);
+        $resized = imagecreatetruecolor($width, $height);
+        imagecopyresampled($resized, $src, 0, 0, 0, 0, $width, $height, $origW, $origH);
+        imagedestroy($src);
+        $src = $resized;
+    }
+
+    ob_start();
+    imagewebp($src, null, $quality);
+    $webpData = ob_get_clean();
+    imagedestroy($src);
+
+    Storage::disk('public')->put($path, $webpData);
+}
 }
