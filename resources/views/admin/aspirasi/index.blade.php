@@ -42,8 +42,12 @@
                             {{ $asp->status }}
                         </span>
                     </td>
-                    <td class="px-8 py-4">
+                    <td class="px-8 py-4 flex items-center gap-4">
                         <a href="{{ route('admin.aspirasi.show', $asp->id) }}" class="text-primary hover:text-secondary font-bold text-sm">Detail</a>
+                        <form action="{{ route('admin.aspirasi.destroy', $asp->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus aspirasi ini?')">
+                            @csrf @method('DELETE')
+                            <button type="submit" class="text-red-500 hover:text-red-700 font-bold text-sm">Hapus</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

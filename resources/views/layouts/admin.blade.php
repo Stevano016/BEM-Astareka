@@ -12,16 +12,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
 
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
 </head>
 <body class="bg-surface text-on-surface font-body">
-    <div class="flex min-h-screen">
+    <div class="flex min-h-screen relative" x-data="{ sidebarOpen: false }">
         
-        <aside class="w-64 bg-primary text-on-primary flex-shrink-0 flex flex-col sticky top-0 h-screen">
-            <div class="p-8">
-                <span class="text-2xl font-black font-headline tracking-tighter">{{ config('bem.logo_text') }}</span>
-                <p class="text-xs opacity-50 uppercase tracking-widest mt-1">Admin Panel</p>
+        <!-- Backdrop Mobile -->
+        <div x-show="sidebarOpen" 
+             x-cloak
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             @click="sidebarOpen = false"
+             class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-40 lg:hidden">
+        </div>
+
+        <!-- Sidebar aside -->
+        <aside 
+            class="fixed lg:sticky top-0 left-0 w-64 bg-primary text-on-primary flex-shrink-0 flex flex-col h-screen z-50 transition-transform lg:transition-none duration-300 ease-in-out"
+            :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+            x-cloak>
+            <div class="p-8 flex justify-between items-center">
+                <div>
+                    <span class="text-2xl font-black font-headline tracking-tighter">{{ config('bem.logo_text') }}</span>
+                    <p class="text-xs opacity-50 uppercase tracking-widest mt-1">Admin Panel</p>
+                </div>
+                <button @click.stop="sidebarOpen = false" class="lg:hidden text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
             </div>
             
             <nav class="mt-4 px-4 space-y-2 flex-1 overflow-y-auto pb-4">
@@ -70,18 +96,23 @@
             </div>
         </aside>
 
-        <main class="flex-1">
-            <header class="bg-white border-b border-outline/10 px-12 py-6 flex justify-between items-center">
-                <h2 class="text-xl font-headline font-extrabold text-primary">@yield('page_title', 'Dashboard')</h2>
+        <main class="flex-1 w-full overflow-x-hidden">
+            <header class="bg-white border-b border-outline/10 px-6 lg:px-12 py-6 flex justify-between items-center sticky top-0 z-30">
                 <div class="flex items-center gap-4">
-                    <span class="text-sm font-bold text-primary opacity-70">{{ auth()->user()->name }}</span>
-                    <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold">
+                    <button @click.stop="sidebarOpen = true" class="lg:hidden text-primary p-2 -ml-2">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <h2 class="text-lg lg:text-xl font-headline font-extrabold text-primary truncate">@yield('page_title', 'Dashboard')</h2>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-sm font-bold text-primary opacity-70 hidden md:block">{{ auth()->user()->name }}</span>
+                    <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold flex-shrink-0">
                         {{ substr(auth()->user()->name, 0, 1) }}
                     </div>
                 </div>
             </header>
 
-            <div class="p-12">
+            <div class="p-6 lg:p-12">
                 @if(session('success'))
                     <div class="mb-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200">
                         {{ session('success') }}

@@ -21,7 +21,7 @@
                 <div class="space-y-6 group">
                     <div class="aspect-[4/5] rounded-3xl overflow-hidden relative editorial-shadow bg-primary/5">
                         @if($leader->foto)
-                            <img src="{{ Storage::url($leader->foto) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="{{ $leader->nama }}">
+                            <img src="{{ asset('storage/' . $leader->foto) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="{{ $leader->nama }}">
                         @endif
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
                             <h3 class="text-2xl font-headline font-extrabold text-white leading-tight">{{ $leader->nama }}</h3>
@@ -41,7 +41,7 @@
                     <div class="bg-surface-container-low p-8 rounded-3xl flex items-center gap-6 editorial-shadow border border-white">
                         <div class="w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
                             @if($pendukung->foto)
-                                <img src="{{ Storage::url($pendukung->foto) }}" class="w-full h-full object-cover" alt="{{ $pendukung->nama }}">
+                                <img src="{{ asset('storage/' . $pendukung->foto) }}" class="w-full h-full object-cover" alt="{{ $pendukung->nama }}">
                             @else
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($pendukung->nama) }}&background=001e40&color=fff" class="w-full h-full object-cover">
                             @endif
@@ -88,7 +88,7 @@
                 <div class="flex items-start gap-6 mb-8">
                     <div class="w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
                         @if($menteri->foto)
-                            <img src="{{ Storage::url($menteri->foto) }}" class="w-full h-full object-cover" alt="{{ $menteri->nama }}">
+                            <img src="{{ asset('storage/' . $menteri->foto) }}" class="w-full h-full object-cover" alt="{{ $menteri->nama }}">
                         @else
                             <img src="https://ui-avatars.com/api/?name={{ urlencode($menteri->nama) }}&background=001e40&color=fff&size=80" class="w-full h-full object-cover">
                         @endif
@@ -111,21 +111,26 @@
             <div class="flex-grow h-px bg-outline/10"></div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        <div class="flex overflow-x-auto gap-8 pb-12 scrollbar-hide snap-x snap-mandatory -mx-8 px-8">
             @foreach($staff as $item)
-            <div class="text-center group">
+            <div class="text-center group shrink-0 w-40 md:w-56 snap-center">
                 <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 editorial-shadow ring-4 ring-transparent group-hover:ring-secondary transition-all bg-surface-container">
                     @if($item->foto)
-                        <img src="{{ Storage::url($item->foto) }}" class="w-full h-full object-cover">
+                        <img src="{{ asset('storage/' . $item->foto) }}" class="w-full h-full object-cover">
                     @else
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($item->nama) }}&background=001e40&color=fff" class="w-full h-full object-cover">
                     @endif
                 </div>
-                <h4 class="font-headline font-extrabold text-primary text-sm leading-tight group-hover:text-secondary transition-colors">{{ $item->nama }}</h4>
+                <h4 class="font-headline font-extrabold text-primary text-sm leading-tight group-hover:text-secondary transition-colors truncate px-2">{{ $item->nama }}</h4>
                 <p class="text-[10px] text-outline font-black uppercase tracking-widest mt-1">{{ $item->departemen ?? 'Staff' }}</p>
             </div>
             @endforeach
         </div>
+
+        <style>
+            .scrollbar-hide::-webkit-scrollbar { display: none; }
+            .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
     </section>
 
     <section class="max-w-full mx-auto px-8 mt-32">
@@ -169,14 +174,15 @@
 
         {{-- Scrollable Container for Wide Tree --}}
         <div class="w-full overflow-x-auto pb-16 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-outline/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
-            <div class="min-w-[1300px] flex flex-col items-center pt-8 relative select-none">
+            {{-- Menggunakan min-w-max dan px-12 agar tidak terpotong saat di-scroll --}}
+            <div class="min-w-max px-12 flex flex-col items-center pt-8 relative select-none">
                 
                 {{-- 1. LEVEL: KETUA --}}
                 @if($ketua)
                 <div class="flex flex-col items-center relative z-10">
                     <div class="flex items-center gap-4 bg-surface-container-low p-2 pr-6 rounded-full border border-white editorial-shadow w-[280px] hover:border-secondary transition-all">
                         @if($ketua->foto)
-                            <img src="{{ Storage::url($ketua->foto) }}" class="w-12 h-12 rounded-full object-cover shrink-0">
+                            <img src="{{ asset('storage/' . $ketua->foto) }}" class="w-12 h-12 rounded-full object-cover shrink-0">
                         @else
                             <img src="https://ui-avatars.com/api/?name={{ urlencode($ketua->nama) }}&background=001e40&color=fff" class="w-12 h-12 rounded-full object-cover shrink-0">
                         @endif
@@ -192,7 +198,7 @@
                 {{-- SPACING & CABANG KE WAKIL KETUA --}}
                 <div class="w-full relative flex justify-center h-20">
                     {{-- Garis Komando Utama (Solid) --}}
-                    <div class="w-[2px] h-full bg-primary/20"></div>
+                    <div class="w-[2px] h-full bg-primary/30"></div>
                     
                     {{-- Garis Koordinasi ke Wakil Ketua (Dashed) --}}
                     @if($wakilKetua)
@@ -202,7 +208,7 @@
                     <div class="absolute top-1/2 left-[calc(50%+340px)] -translate-y-1/2 z-10">
                         <div class="flex items-center gap-4 bg-surface-container-low p-2 pr-6 rounded-full border border-white editorial-shadow w-[280px] hover:border-secondary transition-all">
                             @if($wakilKetua->foto)
-                                <img src="{{ Storage::url($wakilKetua->foto) }}" class="w-12 h-12 rounded-full object-cover shrink-0">
+                                <img src="{{ asset('storage/' . $wakilKetua->foto) }}" class="w-12 h-12 rounded-full object-cover shrink-0">
                             @else
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($wakilKetua->nama) }}&background=001e40&color=fff" class="w-12 h-12 rounded-full object-cover shrink-0">
                             @endif
@@ -218,27 +224,31 @@
 
                 {{-- SPACING SEBELUM SEKRE & BENDAHARA --}}
                 <div class="w-full flex justify-center h-16 relative">
-                    <div class="w-[2px] h-full bg-primary/20"></div>
+                    <div class="w-[2px] h-full bg-primary/30"></div>
                 </div>
 
                 {{-- 3. LEVEL: SEKRETARIS & BENDAHARA (KOORDINASI) --}}
-                <div class="flex justify-center gap-24 relative w-[900px]">
-                    {{-- Garis Komando Utama Lanjut ke Bawah (Tembus) --}}
-                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-[calc(100%+5rem)] bg-primary/20 z-0"></div>
-                    
-                    {{-- Garis Koordinasi Horizontal (Dashed) --}}
-                    <div class="absolute top-0 left-[25%] right-[25%] border-t-[2px] border-dashed border-primary/40 z-0"></div>
-                    
-                    @php
-                        $admins = [];
-                        if($sekretaris->isNotEmpty()) {
-                            $admins[] = ['jabatan' => 'Sekretaris', 'anggota' => $sekretaris];
-                        }
-                        if($bendahara->isNotEmpty()) {
-                            $admins[] = ['jabatan' => 'Bendahara', 'anggota' => $bendahara];
-                        }
-                    @endphp
+                @php
+                    $admins = [];
+                    if(isset($sekretaris) && $sekretaris->isNotEmpty()) {
+                        $admins[] = ['jabatan' => 'Sekretaris', 'anggota' => $sekretaris];
+                    }
+                    if(isset($bendahara) && $bendahara->isNotEmpty()) {
+                        $admins[] = ['jabatan' => 'Bendahara', 'anggota' => $bendahara];
+                    }
+                    $adminCount = count($admins);
+                @endphp
 
+                <div class="flex justify-center gap-24 relative">
+                    {{-- Garis Komando Utama Lanjut ke Bawah (Otomatis se-tinggi container terdalam) --}}
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-full bg-primary/30 z-0"></div>
+                    
+                    {{-- Garis Koordinasi Horizontal (Dashed) Otomatis Berdasarkan Jumlah Admin --}}
+                    {{-- (Lebar Item 320px + Gap 96px = Jarak antar tengah adalah 416px) --}}
+                    @if($adminCount > 1)
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 border-t-[2px] border-dashed border-primary/40 z-0" style="width: {{ ($adminCount - 1) * 416 }}px;"></div>
+                    @endif
+                    
                     @foreach($admins as $admin)
                     <div class="flex flex-col items-center w-[320px] relative z-10">
                         {{-- Drop down dashed line --}}
@@ -249,10 +259,16 @@
                             <div class="space-y-3">
                                 @foreach($admin['anggota'] as $person)
                                 <div class="flex items-center gap-3">
-                                    <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                                        <span class="text-[10px] font-bold text-primary">{{ substr($person->nama, 0, 1) }}</span>
+                                    <div class="w-10 h-10 rounded-full bg-primary/5 overflow-hidden shrink-0 border border-outline/5">
+                                        @if($person->foto)
+                                            <img src="{{ asset('storage/' . $person->foto) }}" class="w-full h-full object-cover">
+                                        @else
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <span class="text-[10px] font-bold text-primary">{{ substr($person->nama, 0, 1) }}</span>
+                                            </div>
+                                        @endif
                                     </div>
-                                    <div class="flex-1 overflow-hidden">
+                                    <div class="flex-1 overflow-hidden text-left">
                                         <p class="text-[11px] font-headline font-extrabold text-primary truncate leading-tight">{{ $person->nama }}</p>
                                         <p class="text-[9px] text-outline mt-0.5">{{ $person->nim }}</p>
                                     </div>
@@ -266,24 +282,32 @@
 
                 {{-- SPACING SEBELUM DIVISI --}}
                 <div class="w-full flex justify-center h-20 relative">
-                    {{-- Terhubung dengan garis tembusan di atas --}}
+                    <div class="w-[2px] h-full bg-primary/30"></div>
                 </div>
 
                 {{-- 4 & 5. LEVEL: DIVISI & ANGGOTA --}}
-                <div class="flex relative w-full justify-center gap-10 max-w-[1200px]">
-                    {{-- Garis Komando Horizontal Divisi (Solid) --}}
-                    <div class="absolute top-0 left-[18%] right-[18%] border-t-[2px] border-primary/20 z-0"></div>
+                @php
+                    // Menghitung jumlah divisi untuk menentukan panjang garis horizontal
+                    $divisiCount = isset($divisiTree) ? count($divisiTree) : 0;
+                @endphp
+
+                <div class="flex relative w-full justify-center gap-10">
+                    {{-- Garis Komando Horizontal Divisi (Solid) Dihitung Dinamis --}}
+                    {{-- (Lebar Item 350px + Gap 40px = Jarak antar tengah adalah 390px) --}}
+                    @if($divisiCount > 1)
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 border-t-[2px] border-primary/30 z-0" style="width: {{ ($divisiCount - 1) * 390 }}px;"></div>
+                    @endif
 
                     @foreach($divisiTree as $divisi)
                     <div class="flex flex-col items-center w-[350px] relative z-10">
                         {{-- Drop down solid line to Divisi --}}
-                        <div class="w-[2px] h-8 bg-primary/20 mb-3"></div>
+                        <div class="w-[2px] h-8 bg-primary/30 mb-3"></div>
                         
                         {{-- Node Ketua Divisi --}}
                         @if($divisi['ketua'])
                         <div class="flex items-center gap-3 bg-surface-container-low p-2 pr-4 rounded-full border border-white editorial-shadow w-[300px] hover:border-secondary transition-all">
                             @if($divisi['ketua']->foto)
-                                <img src="{{ Storage::url($divisi['ketua']->foto) }}" class="w-11 h-11 rounded-full object-cover shrink-0 bg-primary/5">
+                                <img src="{{ asset('storage/' . $divisi['ketua']->foto) }}" class="w-11 h-11 rounded-full object-cover shrink-0 bg-primary/5">
                             @else
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($divisi['ketua']->nama) }}&background=001e40&color=fff" class="w-11 h-11 rounded-full object-cover shrink-0 bg-primary/5">
                             @endif
@@ -300,21 +324,33 @@
                         @endif
 
                         {{-- Drop down line to Anggota --}}
-                        <div class="w-[2px] h-10 bg-primary/20 mt-3 mb-3"></div>
+                        <div class="w-[2px] h-10 bg-primary/30 mt-3 mb-3"></div>
 
                         {{-- Kartu Anggota --}}
                         <div class="bg-surface-container-low p-5 rounded-2xl border border-white editorial-shadow w-full hover:border-secondary transition-all">
                             <h4 class="text-[10px] font-black text-outline uppercase tracking-[0.2em] leading-tight mb-4 text-center border-b border-outline/10 pb-3">Anggota Divisi</h4>
-                            <div class="space-y-3">
-                                @foreach($divisi['anggota'] as $anggota)
-                                <div class="flex items-center gap-3">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></div>
-                                    <div class="flex-1 overflow-hidden">
-                                        <p class="text-[11px] font-headline font-extrabold text-primary truncate leading-tight">{{ $anggota->nama }}</p>
-                                        <p class="text-[9px] text-outline mt-0.5">{{ $anggota->nim }}</p>
+                            <div class="space-y-4">
+                                @if(isset($divisi['anggota']) && count($divisi['anggota']) > 0)
+                                    @foreach($divisi['anggota'] as $anggota)
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-primary/5 overflow-hidden shrink-0 border border-outline/5">
+                                            @if($anggota->foto)
+                                                <img src="{{ asset('storage/' . $anggota->foto) }}" class="w-full h-full object-cover">
+                                            @else
+                                                <div class="w-full h-full flex items-center justify-center">
+                                                    <span class="text-[9px] font-bold text-primary">{{ substr($anggota->nama, 0, 1) }}</span>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="flex-1 overflow-hidden text-left">
+                                            <p class="text-[11px] font-headline font-extrabold text-primary truncate leading-tight">{{ $anggota->nama }}</p>
+                                            <p class="text-[9px] text-outline mt-0.5">{{ $anggota->nim }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                @endforeach
+                                    @endforeach
+                                @else
+                                    <p class="text-[10px] text-outline text-center italic">Belum ada anggota</p>
+                                @endif
                             </div>
                         </div>
                     </div>

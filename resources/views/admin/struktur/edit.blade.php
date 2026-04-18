@@ -33,6 +33,16 @@
             <label class="text-xs font-black uppercase tracking-widest text-outline">Urutan Tampil</label>
             <input type="number" name="urutan" value="{{ $struktur->urutan }}" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
         </div>
+        <div class="space-y-4">
+            <label class="text-xs font-black uppercase tracking-widest text-outline">Foto Anggota</label>
+            @if($struktur->foto)
+                <div class="w-32 aspect-[3/4] rounded-xl overflow-hidden mb-2 bg-surface-container">
+                    <img src="{{ Storage::url($struktur->foto) }}" class="w-full h-full object-cover">
+                </div>
+            @endif
+            <input type="file" name="foto" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+            <p class="text-[10px] text-outline italic">Kosongkan jika tidak ingin mengubah foto. Max: 2MB</p>
+        </div>
         <div class="flex items-center gap-4">
             <input type="checkbox" name="is_active" value="1" id="active" {{ $struktur->is_active ? 'checked' : '' }} class="rounded border-gray-300 text-primary focus:ring-primary">
             <label for="active" class="text-sm font-bold text-primary">Aktif</label>

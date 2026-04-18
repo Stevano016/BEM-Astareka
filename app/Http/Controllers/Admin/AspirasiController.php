@@ -39,4 +39,12 @@ class AspirasiController extends Controller
 
         return back()->with('success', 'Status aspirasi berhasil diperbarui.');
     }
+
+    public function destroy($id)
+    {
+        $aspirasi = Aspirasi::findOrFail($id);
+        $aspirasi->delete();
+
+        return redirect()->route('admin.aspirasi.index')->with('success', 'Aspirasi berhasil dihapus.');
+    }
 }

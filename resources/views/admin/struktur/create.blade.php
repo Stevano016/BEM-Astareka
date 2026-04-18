@@ -32,6 +32,11 @@
             <label class="text-xs font-black uppercase tracking-widest text-outline">Urutan Tampil</label>
             <input type="number" name="urutan" value="0" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
         </div>
+        <div class="space-y-2">
+            <label class="text-xs font-black uppercase tracking-widest text-outline">Foto Anggota</label>
+            <input type="file" name="foto" class="w-full bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all px-4 py-3 rounded-t-lg font-bold text-primary">
+            <p class="text-[10px] text-outline italic">Format: JPG, PNG, WEBP. Max: 2MB</p>
+        </div>
         <div class="flex items-center gap-4">
             <input type="checkbox" name="is_active" value="1" id="active" checked class="rounded border-gray-300 text-primary focus:ring-primary">
             <label for="active" class="text-sm font-bold text-primary">Aktif</label>

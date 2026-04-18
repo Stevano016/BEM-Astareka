@@ -29,6 +29,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::get('aspirasi', [Admin\AspirasiController::class, 'index'])->name('aspirasi.index');
     Route::get('aspirasi/{id}', [Admin\AspirasiController::class, 'show'])->name('aspirasi.show');
     Route::patch('aspirasi/{id}/status', [Admin\AspirasiController::class, 'updateStatus'])->name('aspirasi.updateStatus');
+    Route::delete('aspirasi/{id}', [Admin\AspirasiController::class, 'destroy'])->name('aspirasi.destroy');
 
     // Hero
     Route::get('hero', [Admin\HeroController::class, 'edit'])->name('hero.edit');

@@ -56,6 +56,15 @@
                 </div>
                 <button type="submit" class="w-full py-4 bg-primary text-white rounded-xl font-bold hover:bg-primary-container transition-all">Simpan Perubahan</button>
             </form>
+
+            <hr class="border-outline/5 my-6">
+
+            <form action="{{ route('admin.aspirasi.destroy', $aspirasi->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus aspirasi ini secara permanen?')">
+                @csrf @method('DELETE')
+                <button type="submit" class="w-full py-4 bg-red-50 text-red-600 rounded-xl font-bold hover:bg-red-100 transition-all border border-red-100">
+                    Hapus Aspirasi
+                </button>
+            </form>
         </div>
     </div>
 </div>
