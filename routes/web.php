@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\{BerandaController, BeritaController, AspirasiController, TentangController};
 use App\Http\Controllers\Admin;
+use App\Models\User;
 
 // Frontend
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
@@ -19,34 +20,45 @@ Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
 // Admin
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('dashboard');
-    // Berita
-    Route::resource('berita', Admin\BeritaController::class)->parameters([
-        'berita' => 'berita'
-    ]);
-    Route::patch('berita/{berita}/publish', [Admin\BeritaController::class, 'togglePublish'])->name('berita.publish');
 
-    // Aspirasi
-    Route::get('aspirasi', [Admin\AspirasiController::class, 'index'])->name('aspirasi.index');
-    Route::get('aspirasi/{id}', [Admin\AspirasiController::class, 'show'])->name('aspirasi.show');
-    Route::patch('aspirasi/{id}/status', [Admin\AspirasiController::class, 'updateStatus'])->name('aspirasi.updateStatus');
-    Route::delete('aspirasi/{id}', [Admin\AspirasiController::class, 'destroy'])->name('aspirasi.destroy');
+    // SEKRETARIS (Berita, Proker, Kalender) + Admin
+    Route::middleware(['role:' . User::ROLE_ADMIN . ',' . User::ROLE_SEKRETARIS])->group(function () {
+        // Berita
+        Route::resource('berita', Admin\BeritaController::class)->parameters([
+            'berita' => 'berita'
+        ]);
+        Route::patch('berita/{berita}/publish', [Admin\BeritaController::class, 'togglePublish'])->name('berita.publish');
 
-    // Hero
-    Route::get('hero', [Admin\HeroController::class, 'edit'])->name('hero.edit');
-    Route::put('hero', [Admin\HeroController::class, 'update'])->name('hero.update');
+        // Program Kerja
+        Route::resource('program-kerja', Admin\ProgramKerjaController::class);
 
-    // Program Kerja
-    Route::resource('program-kerja', Admin\ProgramKerjaController::class);
+        // Kalender
+        Route::resource('kalender', Admin\KalenderController::class);
+    });
 
-    // Struktur
-    Route::resource('struktur', Admin\StrukturController::class);
+    // MENDAGRI (Aspirasi) + Admin
+    Route::middleware(['role:' . User::ROLE_ADMIN . ',' . User::ROLE_MENDAGRI])->group(function () {
+        // Aspirasi
+        Route::get('aspirasi', [Admin\AspirasiController::class, 'index'])->name('aspirasi.index');
+        Route::get('aspirasi/export', [Admin\AspirasiController::class, 'export'])->name('aspirasi.export'); // New Export Route
+        Route::get('aspirasi/{aspirasi}', [Admin\AspirasiController::class, 'show'])->name('aspirasi.show');
+        Route::patch('aspirasi/{aspirasi}/status', [Admin\AspirasiController::class, 'updateStatus'])->name('aspirasi.updateStatus');
+        Route::delete('aspirasi/{aspirasi}', [Admin\AspirasiController::class, 'destroy'])->name('aspirasi.destroy')->middleware('can:delete,aspirasi');
+    });
 
-    // Kalender
-    Route::resource('kalender', Admin\KalenderController::class);
+    // ADMIN ONLY
+    Route::middleware(['role:' . User::ROLE_ADMIN])->group(function () {
+        // Hero
+        Route::get('hero', [Admin\HeroController::class, 'edit'])->name('hero.edit');
+        Route::put('hero', [Admin\HeroController::class, 'update'])->name('hero.update');
 
-    // Profile BEM
-    Route::get('profile', [Admin\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('profile', [Admin\ProfileController::class, 'update'])->name('profile.update');
+        // Struktur
+        Route::resource('struktur', Admin\StrukturController::class);
+
+        // Profile BEM
+        Route::get('profile', [Admin\ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('profile', [Admin\ProfileController::class, 'update'])->name('profile.update');
+    });
 });
 
 // Auth routes (from Breeze)

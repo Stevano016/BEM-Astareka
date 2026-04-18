@@ -133,10 +133,6 @@
         </style>
     </section>
 
-    
-    {{-- ========================================== --}}
-    {{-- SECTION BAGAN STRUKTUR ORGANISASI (TREE)   --}}
-    {{-- ========================================== --}}
     <section class="max-w-full mx-auto px-8 mt-32 mb-32">
         <div class="flex items-center gap-6 mb-12">
             <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Bagan Struktur Organisasi</h2>

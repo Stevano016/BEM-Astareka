@@ -13,6 +13,10 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    const ROLE_ADMIN = 'admin';
+    const ROLE_SEKRETARIS = 'sekretaris';
+    const ROLE_MENDAGRI = 'mendagri';
+
     /**
      * Mass assignment protection (Pindahan dari #[Fillable])
      */
@@ -22,6 +26,21 @@ class User extends Authenticatable
         'password',
         'role',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isSekretaris(): bool
+    {
+        return $this->role === self::ROLE_SEKRETARIS;
+    }
+
+    public function isMendagri(): bool
+    {
+        return $this->role === self::ROLE_MENDAGRI;
+    }
 
     /**
      * Hidden attributes for serialization (Pindahan dari #[Hidden])

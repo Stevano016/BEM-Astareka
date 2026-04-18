@@ -55,34 +55,55 @@
                     <span class="material-symbols-outlined">home</span>
                     <span class="font-bold">Dashboard</span>
                 </a>
+
+                @if(auth()->user()->isAdmin() || auth()->user()->isSekretaris())
                 <a href="{{ route('admin.berita.index') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.berita.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">newspaper</span>
                     <span class="font-bold">Berita</span>
                 </a>
+                @endif
+
+                @if(auth()->user()->isAdmin() || auth()->user()->isMendagri())
                 <a href="{{ route('admin.aspirasi.index') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.aspirasi.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">campaign</span>
                     <span class="font-bold">Aspirasi</span>
                 </a>
+                @endif
+
+                @if(auth()->user()->isAdmin())
                 <a href="{{ route('admin.hero.edit') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.hero.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">image</span>
                     <span class="font-bold">Hero Banner</span>
                 </a>
+                @endif
+
+                @if(auth()->user()->isAdmin() || auth()->user()->isSekretaris())
                 <a href="{{ route('admin.program-kerja.index') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.program-kerja.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">hub</span>
                     <span class="font-bold">Program Kerja</span>
                 </a>
+                @endif
+
+                @if(auth()->user()->isAdmin())
                 <a href="{{ route('admin.struktur.index') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.struktur.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">groups</span>
                     <span class="font-bold">Struktur</span>
                 </a>
+                @endif
+
+                @if(auth()->user()->isAdmin() || auth()->user()->isSekretaris())
                 <a href="{{ route('admin.kalender.index') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.kalender.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">calendar_month</span>
                     <span class="font-bold">Kalender</span>
                 </a>
+                @endif
+
+                @if(auth()->user()->isAdmin())
                 <a href="{{ route('admin.profile.edit') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.profile.*') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">info</span>
                     <span class="font-bold">Profil BEM</span>
                 </a>
+                @endif
             </nav>
 
             <div class="mt-auto p-8 border-t border-white/10 w-full">
