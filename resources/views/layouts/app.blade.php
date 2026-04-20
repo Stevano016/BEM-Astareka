@@ -29,22 +29,22 @@
 <body class="bg-surface text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
     
     <nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-xl border-b border-outline-variant/10">
-        {{-- Mengubah max-w-7xl menjadi max-w-[95%] --}}
-        <div class="flex justify-between items-center px-8 py-4 max-w-[95%] mx-auto">
-            <span class="text-xl font-black text-primary tracking-tighter font-headline">{{ config('bem.logo_text') }}</span>
+        {{-- Mengubah px-8 menjadi px-4 sm:px-8 untuk fleksibilitas mobile --}}
+        <div class="flex justify-between items-center px-4 sm:px-8 py-4 max-w-[95%] mx-auto">
+            <span class="text-lg sm:text-xl font-black text-primary tracking-tighter font-headline">{{ config('bem.logo_text') }}</span>
 
             {{-- Desktop Menu --}}
-            <div class="hidden md:flex items-center gap-8">
-                <a href="{{ route('beranda') }}" class="{{ request()->routeIs('beranda') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Beranda</a>
-                <a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Tentang Kami</a>
-                <a href="{{ route('berita.index') }}" class="{{ request()->routeIs('berita.*') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Berita & Event</a>
-                <a href="{{ route('aspirasi.index') }}" class="{{ request()->routeIs('aspirasi.*') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight">Aspirasi</a>
+            <div class="hidden md:flex items-center gap-4 lg:gap-8">
+                <a href="{{ route('beranda') }}" class="{{ request()->routeIs('beranda') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight text-sm lg:text-base">Beranda</a>
+                <a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight text-sm lg:text-base">Tentang Kami</a>
+                <a href="{{ route('berita.index') }}" class="{{ request()->routeIs('berita.*') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight text-sm lg:text-base">Berita & Event</a>
+                <a href="{{ route('aspirasi.index') }}" class="{{ request()->routeIs('aspirasi.*') ? 'text-secondary border-b-2 border-secondary pb-1' : 'text-primary opacity-70 hover:opacity-100 transition-all' }} font-bold tracking-tight text-sm lg:text-base">Aspirasi</a>
             </div>
 
             {{-- Desktop CTA --}}
             <div class="hidden md:block">
                 @auth
-                    <a href="{{ route('admin.dashboard') }}" class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-headline font-bold text-sm tracking-wide active:scale-95 duration-200">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}" class="bg-primary text-on-primary px-4 lg:px-6 py-2.5 rounded-xl font-headline font-bold text-xs lg:text-sm tracking-wide active:scale-95 duration-200">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}" class="tracking-wide active:scale-95 duration-200"></a>
                 @endauth
@@ -59,17 +59,17 @@
         </div>
 
         {{-- Mobile Menu Dropdown --}}
-        <div id="mobile-menu" class="md:hidden hidden flex-col px-6 pb-6 pt-2 gap-1 bg-[#f8f9ff]/95 backdrop-blur-xl border-t border-outline-variant/10">
-            <a href="{{ route('beranda') }}" class="{{ request()->routeIs('beranda') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+        <div id="mobile-menu" class="md:hidden hidden flex-col px-4 sm:px-6 pb-6 pt-2 gap-1 bg-[#f8f9ff]/95 backdrop-blur-xl border-t border-outline-variant/10">
+            <a href="{{ route('beranda') }}" class="{{ request()->routeIs('beranda') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all text-sm">
                 <span class="material-symbols-outlined text-base">home</span> Beranda
             </a>
-            <a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+            <a href="{{ route('tentang') }}" class="{{ request()->routeIs('tentang') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all text-sm">
                 <span class="material-symbols-outlined text-base">info</span> Tentang Kami
             </a>
-            <a href="{{ route('berita.index') }}" class="{{ request()->routeIs('berita.*') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+            <a href="{{ route('berita.index') }}" class="{{ request()->routeIs('berita.*') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all text-sm">
                 <span class="material-symbols-outlined text-base">newspaper</span> Berita & Event
             </a>
-            <a href="{{ route('aspirasi.index') }}" class="{{ request()->routeIs('aspirasi.*') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all">
+            <a href="{{ route('aspirasi.index') }}" class="{{ request()->routeIs('aspirasi.*') ? 'text-secondary bg-surface-container' : 'text-primary hover:bg-surface-container' }} flex items-center gap-3 px-4 py-3 rounded-xl font-bold tracking-tight transition-all text-sm">
                 <span class="material-symbols-outlined text-base">campaign</span> Aspirasi
             </a>
             <div class="mt-3 pt-3 border-t border-outline-variant/20">
@@ -83,7 +83,7 @@
     </nav>
 
     @if(session('success'))
-        <div class="fixed top-24 right-8 z-[60] bg-primary text-white p-4 rounded-xl editorial-shadow animate-bounce">
+        <div class="fixed top-24 right-4 sm:right-8 z-[60] bg-primary text-white p-4 rounded-xl editorial-shadow animate-bounce text-sm sm:text-base">
             {{ session('success') }}
         </div>
     @endif
@@ -93,11 +93,11 @@
     </main>
 
     <footer class="w-full mt-20 bg-surface-container-low font-body text-sm tracking-wide">
-        {{-- Mengubah max-w-7xl menjadi max-w-[95%] --}}
-        <div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 gap-8 w-full max-w-[95%] mx-auto">
+        {{-- Mengubah px-12 menjadi px-4 sm:px-12 --}}
+        <div class="flex flex-col md:flex-row justify-between items-start px-4 sm:px-12 py-12 sm:py-16 gap-12 w-full max-w-[95%] mx-auto">
             <div class="space-y-4 max-w-sm">
                 <div class="text-lg font-bold text-primary font-headline">{{ config('bem.logo_text') }}</div>
-                <p class="text-on-surface-variant opacity-80 leading-relaxed">
+                <p class="text-on-surface-variant opacity-80 leading-relaxed text-sm">
                     {{ config('bem.nama_organisasi') }} {{ config('bem.kabinet') }}. Menjadi garda terdepan dalam pelayanan dan advokasi mahasiswa.
                 </p>
                 <div class="flex gap-4">
@@ -124,10 +124,10 @@
                     </a>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 w-full md:w-auto">
                 <div class="space-y-4">
                     <h4 class="font-bold text-primary-container text-xs uppercase tracking-widest">Navigasi</h4>
-                    <ul class="space-y-2 text-on-surface-variant opacity-80">
+                    <ul class="space-y-2 text-on-surface-variant opacity-80 text-sm">
                         <li><a href="{{ route('beranda') }}" class="hover:text-secondary transition-colors">Beranda</a></li>
                         <li><a href="{{ route('berita.index') }}" class="hover:text-secondary transition-colors">Berita & Event</a></li>
                         <li><a href="{{ route('aspirasi.index') }}" class="hover:text-secondary transition-colors">Aspirasi</a></li>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="space-y-4">
                     <h4 class="font-bold text-primary-container text-xs uppercase tracking-widest">Hubungi Kami</h4>
-                    <ul class="space-y-2 text-on-surface-variant opacity-80">
+                    <ul class="space-y-2 text-on-surface-variant opacity-80 text-sm">
                         <li><a href="https://www.instagram.com/bem.ush?igsh=aTNia2kxMm50emRt" class="hover:text-secondary transition-colors">Instagram</a></li>
                         <li><a href="https://www.linkedin.com/company/bem-universitas-sugeng-hartono/" class="hover:text-secondary transition-colors">LinkedIn</a></li>
                         <li><a href="https://youtube.com/@bem-kmuniversitassugenghartono?si=OT7EmZnAY1QWHREA" class="hover:text-secondary transition-colors">YouTube</a></li>
@@ -144,8 +144,7 @@
                 </div>
             </div>
         </div>
-        {{-- Mengubah max-w-7xl menjadi max-w-[95%] pada baris copyright --}}
-        <div class="px-12 py-8 border-t border-outline-variant/10 text-center md:text-left text-on-surface-variant opacity-70 max-w-[95%] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="px-4 sm:px-12 py-8 border-t border-outline-variant/10 text-center md:text-left text-on-surface-variant opacity-70 max-w-[95%] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
             <p>© {{ config('bem.tahun') }} {{ config('bem.nama_organisasi') }} {{ config('bem.kabinet') }}. The Digital Curator.</p>
             <p class="opacity-50">Designed by Stevano.</p>
         </div>

@@ -2,64 +2,61 @@
 
 @section('content')
 {{-- Memastikan container utama mengikuti lebar 95% --}}
-<main class="pt-32 pb-24 max-w-[95%] mx-auto">
+<main class="pt-24 sm:pt-32 pb-16 sm:pb-24 max-w-[95%] mx-auto">
     {{-- Mengubah max-w-7xl menjadi max-w-full --}}
-    <section class="max-w-full mx-auto px-8 mb-24">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+    <section class="max-w-full mx-auto px-4 sm:px-8 mb-16 sm:mb-24">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 text-center md:text-left">
             <div class="space-y-4">
-                <span class="text-secondary font-black uppercase tracking-[0.3em] text-sm">Eksistensi Digital</span>
-                <h1 class="text-6xl md:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-none">Struktur <br/>Organisasi</h1>
+                <span class="text-secondary font-black uppercase tracking-[0.3em] text-[10px] sm:text-sm">Eksistensi Digital</span>
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-headline font-extrabold text-primary tracking-tighter leading-tight sm:leading-none">Struktur <br class="hidden sm:block"/>Organisasi</h1>
             </div>
             <div class="h-1 w-32 bg-secondary mb-4 hidden md:block"></div>
         </div>
     </section>
 
-    <section class="max-w-full mx-auto px-8 mb-32">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section class="max-w-full mx-auto px-4 sm:px-8 mb-20 sm:mb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 @foreach($strukturUtama as $leader)
-                <div class="space-y-6 group">
+                <div class="space-y-4 sm:space-y-6 group">
                     <div class="aspect-[4/5] rounded-3xl overflow-hidden relative editorial-shadow bg-primary/5">
                         @if($leader->foto)
                             <img src="{{ asset('storage/' . $leader->foto) }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="{{ $leader->nama }}">
                         @endif
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8">
-                            <h3 class="text-2xl font-headline font-extrabold text-white leading-tight">{{ $leader->nama }}</h3>
-                            <p class="text-secondary-fixed text-sm font-bold uppercase tracking-widest mt-2">{{ $leader->jabatan }}</p>
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl font-headline font-extrabold text-white leading-tight">{{ $leader->nama }}</h3>
+                            <p class="text-secondary-fixed text-xs sm:text-sm font-bold uppercase tracking-widest mt-1 sm:mt-2">{{ $leader->jabatan }}</p>
                         </div>
                     </div>
                     @if($leader->quote)
-                    <p class="text-on-surface-variant italic leading-relaxed text-sm">"{{ $leader->quote }}"</p>
+                    <p class="text-on-surface-variant italic leading-relaxed text-xs sm:text-sm">"{{ $leader->quote }}"</p>
                     @endif
                 </div>
                 @endforeach
             </div>
 
-            <div class="space-y-12">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-8 sm:space-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     @foreach($strukturPendukung as $pendukung)
-                    <div class="bg-surface-container-low p-8 rounded-3xl flex items-center gap-6 editorial-shadow border border-white">
-                        <div class="w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
+                    <div class="bg-surface-container-low p-6 sm:p-8 rounded-3xl flex items-center gap-4 sm:gap-6 editorial-shadow border border-white">
+                        <div class="w-24 sm:w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
                             @if($pendukung->foto)
                                 <img src="{{ asset('storage/' . $pendukung->foto) }}" class="w-full h-full object-cover" alt="{{ $pendukung->nama }}">
                             @else
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode($pendukung->nama) }}&background=001e40&color=fff" class="w-full h-full object-cover">
                             @endif
                         </div>
-                        <div class="space-y-1">
-                            <h4 class="font-headline font-extrabold text-primary leading-tight">{{ $pendukung->nama }}</h4>
-                            <p class="text-xs font-bold text-outline uppercase tracking-widest">{{ $pendukung->jabatan }}</p>
+                        <div class="space-y-1 overflow-hidden">
+                            <h4 class="font-headline font-extrabold text-primary leading-tight text-sm sm:text-base truncate">{{ $pendukung->nama }}</h4>
+                            <p class="text-[10px] sm:text-xs font-bold text-outline uppercase tracking-widest">{{ $pendukung->jabatan }}</p>
                         </div>
                     </div>
                     @endforeach
                 </div>
 
-                <div class="border-l-4 border-secondary bg-primary-container p-10 rounded-r-3xl text-white space-y-6 editorial-shadow relative overflow-hidden">
-                    <!-- <span class="material-symbols-outlined text-secondary-fixed-dim text-5xl">
-                        format_quote
-                    </span> -->
-                    <div class="text-2xl font-headline font-bold leading-tight relative z-10 
-                                prose prose-2xl prose-invert max-w-none 
+                <div class="border-l-4 border-secondary bg-primary-container p-8 sm:p-10 rounded-r-3xl text-white space-y-4 sm:space-y-6 editorial-shadow relative overflow-hidden">
+                    <div class="text-lg sm:text-2xl font-headline font-bold leading-tight relative z-10 
+                                prose prose-lg sm:prose-2xl prose-invert max-w-none 
                                 prose-p:leading-tight
                                 prose-headings:text-white 
                                 prose-p:text-white 
@@ -76,44 +73,44 @@
         </div>
     </section>
 
-    <section class="max-w-full mx-auto px-8 mb-32">
-        <div class="flex items-center gap-6 mb-16">
-            <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Kementerian Kabinet</h2>
+    <section class="max-w-full mx-auto px-4 sm:px-8 mb-20 sm:mb-32">
+        <div class="flex items-center gap-4 sm:gap-6 mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-headline font-extrabold text-primary tracking-tighter">Kementerian Kabinet</h2>
             <div class="flex-grow h-px bg-outline/10"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-24">
             @foreach($kementerian as $menteri)
-            <div class="bg-surface-container-low p-10 rounded-3xl editorial-shadow border border-white group hover:border-secondary transition-all">
-                <div class="flex items-start gap-6 mb-8">
-                    <div class="w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
+            <div class="bg-surface-container-low p-6 sm:p-10 rounded-3xl editorial-shadow border border-white group hover:border-secondary transition-all">
+                <div class="flex items-start gap-4 sm:gap-6 mb-6 sm:mb-8">
+                    <div class="w-24 sm:w-32 aspect-[3/4] rounded-2xl overflow-hidden bg-primary/5 flex-shrink-0"> 
                         @if($menteri->foto)
                             <img src="{{ asset('storage/' . $menteri->foto) }}" class="w-full h-full object-cover" alt="{{ $menteri->nama }}">
                         @else
                             <img src="https://ui-avatars.com/api/?name={{ urlencode($menteri->nama) }}&background=001e40&color=fff&size=80" class="w-full h-full object-cover">
                         @endif
                     </div>
-                    <div class="flex-1">
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-secondary block mb-2">{{ $menteri->departemen }}</span>
-                        <h3 class="text-xl font-headline font-extrabold text-primary leading-tight">{{ $menteri->nama }}</h3>
-                        <p class="text-xs font-bold text-outline uppercase tracking-widest mt-1">{{ $menteri->jabatan }}</p>
+                    <div class="flex-1 overflow-hidden">
+                        <span class="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-secondary block mb-1 sm:mb-2">{{ $menteri->departemen }}</span>
+                        <h3 class="text-lg sm:text-xl font-headline font-extrabold text-primary leading-tight truncate">{{ $menteri->nama }}</h3>
+                        <p class="text-[10px] sm:text-xs font-bold text-outline uppercase tracking-widest mt-1">{{ $menteri->jabatan }}</p>
                     </div>
                 </div>
                 @if($menteri->quote)
-                <p class="text-on-surface-variant italic leading-relaxed text-sm opacity-70">"{{ $menteri->quote }}"</p>
+                <p class="text-on-surface-variant italic leading-relaxed text-xs sm:text-sm opacity-70">"{{ $menteri->quote }}"</p>
                 @endif
             </div>
             @endforeach
         </div>
 
-        <div class="flex items-center gap-6 mb-16">
-            <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Staff & Fungsionaris</h2>
+        <div class="flex items-center gap-4 sm:gap-6 mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-headline font-extrabold text-primary tracking-tighter">Staff & Fungsionaris</h2>
             <div class="flex-grow h-px bg-outline/10"></div>
         </div>
 
-        <div class="flex overflow-x-auto gap-8 pb-12 scrollbar-hide snap-x snap-mandatory -mx-8 px-8">
+        <div class="flex overflow-x-auto gap-6 sm:gap-8 pb-12 scrollbar-hide snap-x snap-mandatory -mx-4 sm:-mx-8 px-4 sm:px-8">
             @foreach($staff as $item)
-            <div class="text-center group shrink-0 w-40 md:w-56 snap-center">
+            <div class="text-center group shrink-0 w-36 sm:w-56 snap-center">
                 <div class="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 editorial-shadow ring-4 ring-transparent group-hover:ring-secondary transition-all bg-surface-container">
                     @if($item->foto)
                         <img src="{{ asset('storage/' . $item->foto) }}" class="w-full h-full object-cover">
@@ -121,8 +118,8 @@
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($item->nama) }}&background=001e40&color=fff" class="w-full h-full object-cover">
                     @endif
                 </div>
-                <h4 class="font-headline font-extrabold text-primary text-sm leading-tight group-hover:text-secondary transition-colors truncate px-2">{{ $item->nama }}</h4>
-                <p class="text-[10px] text-outline font-black uppercase tracking-widest mt-1">{{ $item->departemen ?? 'Staff' }}</p>
+                <h4 class="font-headline font-extrabold text-primary text-xs sm:text-sm leading-tight group-hover:text-secondary transition-colors truncate px-2">{{ $item->nama }}</h4>
+                <p class="text-[9px] sm:text-[10px] text-outline font-black uppercase tracking-widest mt-1">{{ $item->departemen ?? 'Staff' }}</p>
             </div>
             @endforeach
         </div>
@@ -133,28 +130,34 @@
         </style>
     </section>
 
-    <section class="max-w-full mx-auto px-8 mt-32 mb-32">
-        <div class="flex items-center gap-6 mb-12">
-            <h2 class="text-3xl font-headline font-extrabold text-primary tracking-tighter">Bagan Struktur Organisasi</h2>
+    <section class="max-w-full mx-auto px-4 sm:px-8 mt-20 sm:mt-32 mb-20 sm:mb-32">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-8 sm:mb-12">
+            <h2 class="text-2xl sm:text-3xl font-headline font-extrabold text-primary tracking-tighter">Bagan Struktur Organisasi</h2>
             <div class="flex-grow h-px bg-outline/10"></div>
         </div>
 
         {{-- Legend Keterangan Garis --}}
-        <div class="flex flex-wrap gap-8 mb-8 text-xs font-bold text-outline">
+        <div class="flex flex-wrap gap-6 sm:gap-8 mb-8 text-[10px] sm:text-xs font-bold text-outline">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-[2px] bg-primary/40"></div>
-                <span class="tracking-widest">GARIS KOMANDO</span>
+                <div class="w-8 sm:w-10 h-[2px] bg-primary/40"></div>
+                <span class="tracking-widest uppercase">GARIS KOMANDO</span>
             </div>
             <div class="flex items-center gap-3">
-                <div class="w-10 h-[2px] border-b-[2px] border-dashed border-primary/40"></div>
-                <span class="tracking-widest">GARIS KOORDINASI</span>
+                <div class="w-8 sm:w-10 h-[2px] border-b-[2px] border-dashed border-primary/40"></div>
+                <span class="tracking-widest uppercase">GARIS KOORDINASI</span>
             </div>
         </div>
 
         {{-- Scrollable Container for Wide Tree --}}
-        <div class="w-full overflow-x-auto pb-16 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-outline/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+        <div class="w-full overflow-x-auto pb-12 sm:pb-16 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:bg-outline/20 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
+            {{-- Hint for Mobile --}}
+            <div class="lg:hidden flex items-center justify-center gap-2 text-[10px] text-outline font-bold mb-6 animate-pulse uppercase tracking-widest">
+                <span class="material-symbols-outlined text-sm">swipe_left</span>
+                Geser untuk melihat bagan lengkap
+            </div>
+            
             {{-- Menggunakan min-w-max dan px-12 agar tidak terpotong saat di-scroll --}}
-            <div class="min-w-max px-12 flex flex-col items-center pt-8 relative select-none">
+            <div class="min-w-max px-8 sm:px-12 flex flex-col items-center pt-8 relative select-none">
                 
                 {{-- 1. LEVEL: KETUA --}}
                 @if($ketua)

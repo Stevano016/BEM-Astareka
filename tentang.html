@@ -1,358 +1,680 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html lang="id"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Struktur Organisasi - BEM Universitas Sugeng Hartono</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                "tertiary": "#001e42",
-                "surface-container-lowest": "#ffffff",
-                "on-secondary": "#ffffff",
-                "primary-container": "#003366",
-                "surface-container": "#e5eeff",
-                "on-tertiary-fixed": "#001b3d",
-                "secondary-container": "#ffd660",
-                "surface-container-high": "#dce9ff",
-                "secondary-fixed-dim": "#eac24e",
-                "on-error": "#ffffff",
-                "on-error-container": "#93000a",
-                "primary-fixed": "#d5e3ff",
-                "outline-variant": "#c3c6d1",
-                "on-surface": "#0b1c30",
-                "on-tertiary": "#ffffff",
-                "on-primary": "#ffffff",
-                "on-secondary-container": "#755c00",
-                "surface-variant": "#d3e4fe",
-                "on-background": "#0b1c30",
-                "inverse-primary": "#a7c8ff",
-                "on-tertiary-container": "#739de0",
-                "inverse-surface": "#213145",
-                "surface-dim": "#cbdbf5",
-                "primary": "#001e40",
-                "secondary-fixed": "#ffe08e",
-                "surface": "#f8f9ff",
-                "surface-bright": "#f8f9ff",
-                "surface-container-low": "#eff4ff",
-                "error": "#ba1a1a",
-                "on-primary-container": "#799dd6",
-                "tertiary-fixed": "#d6e3ff",
-                "background": "#f8f9ff",
-                "surface-container-highest": "#d3e4fe",
-                "on-primary-fixed": "#001b3c",
-                "tertiary-container": "#003368",
-                "surface-tint": "#3a5f94",
-                "inverse-on-surface": "#eaf1ff",
-                "tertiary-fixed-dim": "#a8c8ff",
-                "secondary": "#755b00",
-                "on-primary-fixed-variant": "#1f477b",
-                "on-secondary-fixed-variant": "#584400",
-                "on-surface-variant": "#43474f",
-                "primary-fixed-dim": "#a7c8ff",
-                "on-secondary-fixed": "#241a00",
-                "outline": "#737780",
-                "error-container": "#ffdad6",
-                "on-tertiary-fixed-variant": "#134684"
-            },
-            "borderRadius": {
-                "DEFAULT": "0.125rem",
-                "lg": "0.25rem",
-                "xl": "0.5rem",
-                "full": "0.75rem"
-            },
-            "fontFamily": {
-                "headline": ["Manrope"],
-                "body": ["Inter"],
-                "label": ["Inter"]
+<html lang="id">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Struktur Organisasi - BEM Universitas Sugeng Hartono</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            tertiary: "#001e42",
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary": "#ffffff",
+                            "primary-container": "#003366",
+                            "surface-container": "#e5eeff",
+                            "on-tertiary-fixed": "#001b3d",
+                            "secondary-container": "#ffd660",
+                            "surface-container-high": "#dce9ff",
+                            "secondary-fixed-dim": "#eac24e",
+                            "on-error": "#ffffff",
+                            "on-error-container": "#93000a",
+                            "primary-fixed": "#d5e3ff",
+                            "outline-variant": "#c3c6d1",
+                            "on-surface": "#0b1c30",
+                            "on-tertiary": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "on-secondary-container": "#755c00",
+                            "surface-variant": "#d3e4fe",
+                            "on-background": "#0b1c30",
+                            "inverse-primary": "#a7c8ff",
+                            "on-tertiary-container": "#739de0",
+                            "inverse-surface": "#213145",
+                            "surface-dim": "#cbdbf5",
+                            primary: "#001e40",
+                            "secondary-fixed": "#ffe08e",
+                            surface: "#f8f9ff",
+                            "surface-bright": "#f8f9ff",
+                            "surface-container-low": "#eff4ff",
+                            error: "#ba1a1a",
+                            "on-primary-container": "#799dd6",
+                            "tertiary-fixed": "#d6e3ff",
+                            background: "#f8f9ff",
+                            "surface-container-highest": "#d3e4fe",
+                            "on-primary-fixed": "#001b3c",
+                            "tertiary-container": "#003368",
+                            "surface-tint": "#3a5f94",
+                            "inverse-on-surface": "#eaf1ff",
+                            "tertiary-fixed-dim": "#a8c8ff",
+                            secondary: "#755b00",
+                            "on-primary-fixed-variant": "#1f477b",
+                            "on-secondary-fixed-variant": "#584400",
+                            "on-surface-variant": "#43474f",
+                            "primary-fixed-dim": "#a7c8ff",
+                            "on-secondary-fixed": "#241a00",
+                            outline: "#737780",
+                            "error-container": "#ffdad6",
+                            "on-tertiary-fixed-variant": "#134684",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.125rem",
+                            lg: "0.25rem",
+                            xl: "0.5rem",
+                            full: "0.75rem",
+                        },
+                        fontFamily: {
+                            headline: ["Manrope"],
+                            body: ["Inter"],
+                            label: ["Inter"],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 300,
+                    "GRAD" 0,
+                    "opsz" 24;
             }
-          },
-        },
-      }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-        }
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
-        .glass-nav {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-    </style>
-</head>
-<body class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-xl tonal-shift bg-[#eff4ff]/50">
-<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-<div class="text-xl font-black text-[#001e40] tracking-tighter">ASTAREKA</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-[#001e40] opacity-70 hover:opacity-100 hover:text-[#003366] transition-all font-manrope tracking-tight font-bold" href="#">Beranda</a>
-<a class="text-[#755b00] border-b-2 border-[#755b00] pb-1 font-manrope tracking-tight font-bold" href="#">Tentang Kami</a>
-<a class="text-[#001e40] opacity-70 hover:opacity-100 hover:text-[#003366] transition-all font-manrope tracking-tight font-bold" href="#">Berita &amp; Event</a>
-<a class="text-[#001e40] opacity-70 hover:opacity-100 hover:text-[#003366] transition-all font-manrope tracking-tight font-bold" href="#">Aspirasi</a>
-<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-bold transition-all active:scale-95 duration-200">Login</button>
-</div>
-<button class="md:hidden text-primary">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</nav>
-<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
-<!-- Hero Header -->
-<header class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
-<div class="max-w-2xl">
-<span class="label-md uppercase tracking-[0.2em] text-secondary font-bold mb-4 block">Eksistensi Digital</span>
-<h1 class="text-5xl md:text-7xl font-extrabold text-primary tracking-tighter leading-none mb-6">Struktur Organisasi</h1>
-<p class="text-lg text-on-surface-variant max-w-xl">Mengenal para punggawa Kabinet Astareka yang berdedikasi untuk menciptakan perubahan transformatif bagi seluruh mahasiswa Universitas Sugeng Hartono.</p>
-</div>
-<div class="hidden md:block pb-2">
-<div class="h-1 w-24 bg-secondary"></div>
-</div>
-</header>
-<!-- Board Executive Hierarchy -->
-<section class="mb-32">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-<!-- Chairperson Column -->
-<div class="flex flex-col gap-12">
-<div class="relative group">
-<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low transition-all group-hover:scale-[1.01]">
-<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Professional portrait of a confident young man in a formal dark suit, minimalist grey studio background, dramatic soft side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_AmZ-okXqKhQO--Rxf3IPpcI_M4PJ6ksbBlpqTwemnTRTUUJnVpiSTuiV1qHbwuyhTvcdANE0d_osKLk67Dwvn3l1U1ABoFPThgg_PTvJ5pRSTUjQurx7Rt_H6Vllb-pk2xyGr9ISS_OMltFO8v0ViSU7DnQKocKmC7klVyKZ3LxNMey6NpppvHvCxYDoOT5BW757WbaUv4l5tJovw6PZkFs6BG100SqzURG7fom5WwHEVZS7ROn8Nosjx5KAXirOC_7FNsjXYzxw"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60"></div>
-</div>
-<div class="mt-6">
-<h3 class="text-3xl font-bold text-primary">Ketua BEM</h3>
-<p class="text-secondary font-semibold text-lg">Ahmad Sulaiman</p>
-<p class="mt-4 text-on-surface-variant italic">"Kepemimpinan adalah tentang melayani, bukan memerintah. Astareka adalah wadah pengabdian."</p>
-</div>
-</div>
-<div class="relative group">
-<div class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low transition-all group-hover:scale-[1.01]">
-<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Professional portrait of a young woman in business attire, smiling warmly, clean academic environment background, bright natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGKlamjZ-wmMgvxyuttfvHutZzJ3MkOMAcm6PcQrL0-9fFAbUdc0-qzcw8WoG2_WJuJzIjJj9g6AH2BftWhBbHUvWm2_WMBUoYWVgKWYYgGFASTOum3vw35r28ERAFlMr93akVN-qoBMfmdL4TefntSzHC8vqjrEUt_pWoN28l6VR77SRTCvW42MT1ZtI5-CpJid0G6vPJ9SDBzjxNMqw0SUU3_jpkYEuMnMY48Zt2mQJL_J0u3kc4zxEzby6aL0qPuhx9p4iWIKai"/>
-<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60"></div>
-</div>
-<div class="mt-6">
-<h3 class="text-3xl font-bold text-primary">Wakil Ketua BEM</h3>
-<p class="text-secondary font-semibold text-lg">Siti Nurhaliza</p>
-<p class="mt-4 text-on-surface-variant italic">"Sinergi antar elemen adalah kunci keberhasilan setiap program kerja kita."</p>
-</div>
-</div>
-</div>
-<!-- Admin & Finance Column -->
-<div class="flex flex-col gap-16 md:pt-24">
-<div class="bg-surface-container-low p-10 rounded-xl">
-<div class="flex items-center gap-6 mb-8">
-<div class="w-16 h-16 rounded-full overflow-hidden bg-white">
-<img class="w-full h-full object-cover" data-alt="Headshot of a professional young man, wearing glasses, soft professional background, high-end editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcPMZXNSlNWIkjo18uofVpMMAvMAo1zgB5KEG3GtkagMKCl_F-we4oBwS7Hnn-xiD_Fzzp4cOFCDBUTl5_Kh4LoWC_DWggqbH3MMr9zdzYt2ij0RiXcNQ-SWpSs1BSSZtrD5keVOKWXYiaBC0UFRd-Fxvw78f2DR_gZ3Pp9eHZfqV_gBXu2OGCza-gHHkUrVJZbA853DTIy7wzCwmEXGlr8VjuJUTAo6CfIaw9ioq241_CULuA9cd5KWrCUk4VdXVKSKhj6saQzQwW"/>
-</div>
-<div>
-<h4 class="text-xl font-bold text-primary">Sekretaris</h4>
-<p class="text-secondary font-medium">Reza Artamevia</p>
-</div>
-</div>
-<p class="text-sm text-on-surface-variant">Bertanggung jawab atas administrasi internal, pengarsipan data, dan manajemen kesekretariatan organisasi.</p>
-</div>
-<div class="bg-surface-container-low p-10 rounded-xl">
-<div class="flex items-center gap-6 mb-8">
-<div class="w-16 h-16 rounded-full overflow-hidden bg-white">
-<img class="w-full h-full object-cover" data-alt="Headshot of a young professional woman in elegant office wear, confident expression, neutral studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8MDPu9UGF49jiO9y6oEgHm9qPUebKmnk8n-sjInXC1Mi_pRLNaTLaZ5j3x2EI0jv9TBtH84pGJoxeszMV84IAea6w0w99kU5o8f9mFLrBX7OiiyTHnd8fflSQ5Nebs1XySiVZmaiu541QlPhXtfOYw5Kc5UAO01aVV-b57RBAz1DMreectO39TZlT4qEmetrkusRcT6WA0Y9r_n8ZB8bdNZPVL5d08yXnFs_feWzsrLrqQfzfJP5USvs3PmUqVfUrAd63r-oQhrzo"/>
-</div>
-<div>
-<h4 class="text-xl font-bold text-primary">Bendahara</h4>
-<p class="text-secondary font-medium">Budi Santoso</p>
-</div>
-</div>
-<p class="text-sm text-on-surface-variant">Mengelola arus kas organisasi, menyusun laporan keuangan transparan, dan mengawasi anggaran kegiatan.</p>
-</div>
-<div class="mt-8 p-12 border-l-4 border-secondary bg-primary-container text-white rounded-r-xl">
-<span class="material-symbols-outlined text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
-<h4 class="text-2xl font-bold mb-2">Visi Astareka</h4>
-<p class="text-primary-fixed opacity-90 leading-relaxed">"Membangun BEM Universitas Sugeng Hartono sebagai kurator aspirasi yang progresif, inklusif, dan berdampak nyata bagi ekosistem akademik."</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Departments Grid -->
-<section class="mt-20">
-<div class="mb-16">
-<h2 class="text-4xl font-bold text-primary tracking-tight mb-4">Divisi &amp; Departemen</h2>
-<div class="h-1 w-16 bg-secondary"></div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Divisi 1 -->
-<div class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group">
-<div class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
-<span class="material-symbols-outlined">campaign</span>
-</div>
-<h3 class="text-xl font-bold text-primary mb-3">Pengembangan SDM</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Berfokus pada peningkatan kualitas intelektual dan karakter mahasiswa melalui pelatihan kepemimpinan.</p>
-<div class="space-y-2">
-<p class="text-xs font-bold uppercase tracking-wider text-secondary">Program Unggulan:</p>
-<ul class="text-sm space-y-1 text-on-surface">
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                LKMM-TD &amp; LKMM-TM
-                            </li>
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Leadership Workshop
-                            </li>
-</ul>
-</div>
-</div>
-<!-- Divisi 2 -->
-<div class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group">
-<div class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
-<span class="material-symbols-outlined">public</span>
-</div>
-<h3 class="text-xl font-bold text-primary mb-3">Hubungan Luar</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Membangun kemitraan strategis dengan institusi eksternal dan memperluas jaringan nasional.</p>
-<div class="space-y-2">
-<p class="text-xs font-bold uppercase tracking-wider text-secondary">Program Unggulan:</p>
-<ul class="text-sm space-y-1 text-on-surface">
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Comparative Study
-                            </li>
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Partner Networking
-                            </li>
-</ul>
-</div>
-</div>
-<!-- Divisi 3 -->
-<div class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group">
-<div class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
-<span class="material-symbols-outlined">palette</span>
-</div>
-<h3 class="text-xl font-bold text-primary mb-3">Minat &amp; Bakat</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Wadah bagi ekspresi kreatif dan prestasi mahasiswa di bidang olahraga, seni, dan hobi.</p>
-<div class="space-y-2">
-<p class="text-xs font-bold uppercase tracking-wider text-secondary">Program Unggulan:</p>
-<ul class="text-sm space-y-1 text-on-surface">
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Universitas Cup
-                            </li>
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Art Showcase Night
-                            </li>
-</ul>
-</div>
-</div>
-<!-- Divisi 4 -->
-<div class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group">
-<div class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
-<span class="material-symbols-outlined">volunteer_activism</span>
-</div>
-<h3 class="text-xl font-bold text-primary mb-3">Sosial Masyarakat</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Menginisiasi aksi kemanusiaan dan pengabdian langsung kepada masyarakat sekitar kampus.</p>
-<div class="space-y-2">
-<p class="text-xs font-bold uppercase tracking-wider text-secondary">Program Unggulan:</p>
-<ul class="text-sm space-y-1 text-on-surface">
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                BEM Mengabdi
-                            </li>
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Charity Drive
-                            </li>
-</ul>
-</div>
-</div>
-<!-- Divisi 5 -->
-<div class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group">
-<div class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
-<span class="material-symbols-outlined">media_output</span>
-</div>
-<h3 class="text-xl font-bold text-primary mb-3">Media &amp; Informasi</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Mengelola kanal komunikasi digital BEM dan memastikan diseminasi informasi akurat.</p>
-<div class="space-y-2">
-<p class="text-xs font-bold uppercase tracking-wider text-secondary">Program Unggulan:</p>
-<ul class="text-sm space-y-1 text-on-surface">
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Podcast Astareka
-                            </li>
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Digital Publication
-                            </li>
-</ul>
-</div>
-</div>
-<!-- Divisi 6 -->
-<div class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group">
-<div class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors">
-<span class="material-symbols-outlined">gavel</span>
-</div>
-<h3 class="text-xl font-bold text-primary mb-3">Kajian &amp; Aksi Strategis</h3>
-<p class="text-sm text-on-surface-variant leading-relaxed mb-6">Menganalisis isu-isu kampus dan nasional untuk memberikan rekomendasi kebijakan.</p>
-<div class="space-y-2">
-<p class="text-xs font-bold uppercase tracking-wider text-secondary">Program Unggulan:</p>
-<ul class="text-sm space-y-1 text-on-surface">
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Forum Diskusi Publik
-                            </li>
-<li class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
-                                Advocacy Report
-                            </li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<!-- CTA Section -->
-<section class="mt-32 relative overflow-hidden bg-primary p-12 md:p-20 rounded-xl text-white">
-<div class="relative z-10 max-w-2xl">
-<h2 class="text-3xl md:text-5xl font-bold mb-6">Ingin Berkontribusi?</h2>
-<p class="text-primary-fixed opacity-90 text-lg mb-10">Kami selalu terbuka untuk mahasiswa yang ingin mengembangkan potensi dan memberikan dampak positif bagi universitas.</p>
-<button class="bg-secondary text-white px-8 py-4 rounded-xl font-bold hover:bg-secondary-container hover:text-on-secondary-container transition-colors">Bergabung Dengan Kami</button>
-</div>
-<div class="absolute right-[-10%] top-[-10%] w-96 h-96 bg-secondary opacity-10 rounded-full blur-[100px]"></div>
-<div class="absolute left-[-5%] bottom-[-5%] w-64 h-64 bg-primary-container opacity-20 rounded-full blur-[80px]"></div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full mt-20 bg-[#eff4ff] dark:bg-[#001e40] text-[#003366] dark:text-[#eff4ff]">
-<div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 gap-8 w-full max-w-7xl mx-auto">
-<div class="max-w-sm">
-<div class="text-lg font-bold text-[#001e40] dark:text-white mb-4">ASTAREKA</div>
-<p class="text-sm font-inter tracking-wide opacity-80 leading-relaxed">
-                    Badan Eksekutif Mahasiswa Universitas Sugeng Hartono. <br/>
-                    Menjadi garda terdepan dalam kurasi perubahan dan inovasi di lingkungan kampus.
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Manrope", sans-serif;
+            }
+            .glass-nav {
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
+        </style>
+    </head>
+    <body
+        class="bg-surface text-on-surface selection:bg-secondary-container selection:text-on-secondary-container"
+    >
+        <!-- TopNavBar -->
+        <nav
+            class="fixed top-0 w-full z-50 bg-[#f8f9ff]/80 backdrop-blur-xl tonal-shift bg-[#eff4ff]/50"
+        >
+            <div
+                class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto"
+            >
+                <div class="text-xl font-black text-[#001e40] tracking-tighter">
+                    ASTAREKA
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a
+                        class="text-[#001e40] opacity-70 hover:opacity-100 hover:text-[#003366] transition-all font-manrope tracking-tight font-bold"
+                        href="#"
+                        >Beranda</a
+                    >
+                    <a
+                        class="text-[#755b00] border-b-2 border-[#755b00] pb-1 font-manrope tracking-tight font-bold"
+                        href="#"
+                        >Tentang Kami</a
+                    >
+                    <a
+                        class="text-[#001e40] opacity-70 hover:opacity-100 hover:text-[#003366] transition-all font-manrope tracking-tight font-bold"
+                        href="#"
+                        >Berita &amp; Event</a
+                    >
+                    <a
+                        class="text-[#001e40] opacity-70 hover:opacity-100 hover:text-[#003366] transition-all font-manrope tracking-tight font-bold"
+                        href="#"
+                        >Aspirasi</a
+                    >
+                    <button
+                        class="bg-primary text-on-primary px-6 py-2 rounded-xl font-bold transition-all active:scale-95 duration-200"
+                    >
+                        Login
+                    </button>
+                </div>
+                <button class="md:hidden text-primary">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </nav>
+        <main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+            <!-- Hero Header -->
+            <header
+                class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8"
+            >
+                <div class="max-w-2xl">
+                    <span
+                        class="label-md uppercase tracking-[0.2em] text-secondary font-bold mb-4 block"
+                        >Eksistensi Digital</span
+                    >
+                    <h1
+                        class="text-5xl md:text-7xl font-extrabold text-primary tracking-tighter leading-none mb-6"
+                    >
+                        Struktur Organisasi
+                    </h1>
+                    <p class="text-lg text-on-surface-variant max-w-xl">
+                        Mengenal para punggawa Kabinet Astareka yang berdedikasi
+                        untuk menciptakan perubahan transformatif bagi seluruh
+                        mahasiswa Universitas Sugeng Hartono.
+                    </p>
+                </div>
+                <div class="hidden md:block pb-2">
+                    <div class="h-1 w-24 bg-secondary"></div>
+                </div>
+            </header>
+            <!-- Board Executive Hierarchy -->
+            <section class="mb-32">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+                    <!-- Chairperson Column -->
+                    <div class="flex flex-col gap-12">
+                        <div class="relative group">
+                            <div
+                                class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low transition-all group-hover:scale-[1.01]"
+                            >
+                                <img
+                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    data-alt="Professional portrait of a confident young man in a formal dark suit, minimalist grey studio background, dramatic soft side lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_AmZ-okXqKhQO--Rxf3IPpcI_M4PJ6ksbBlpqTwemnTRTUUJnVpiSTuiV1qHbwuyhTvcdANE0d_osKLk67Dwvn3l1U1ABoFPThgg_PTvJ5pRSTUjQurx7Rt_H6Vllb-pk2xyGr9ISS_OMltFO8v0ViSU7DnQKocKmC7klVyKZ3LxNMey6NpppvHvCxYDoOT5BW757WbaUv4l5tJovw6PZkFs6BG100SqzURG7fom5WwHEVZS7ROn8Nosjx5KAXirOC_7FNsjXYzxw"
+                                />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60"
+                                ></div>
+                            </div>
+                            <div class="mt-6">
+                                <h3 class="text-3xl font-bold text-primary">
+                                    Ketua BEM
+                                </h3>
+                                <p class="text-secondary font-semibold text-lg">
+                                    Ahmad Sulaiman
+                                </p>
+                                <p class="mt-4 text-on-surface-variant italic">
+                                    "Kepemimpinan adalah tentang melayani, bukan
+                                    memerintah. Astareka adalah wadah
+                                    pengabdian."
+                                </p>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <div
+                                class="aspect-[4/5] overflow-hidden rounded-xl bg-surface-container-low transition-all group-hover:scale-[1.01]"
+                            >
+                                <img
+                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                    data-alt="Professional portrait of a young woman in business attire, smiling warmly, clean academic environment background, bright natural lighting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGKlamjZ-wmMgvxyuttfvHutZzJ3MkOMAcm6PcQrL0-9fFAbUdc0-qzcw8WoG2_WJuJzIjJj9g6AH2BftWhBbHUvWm2_WMBUoYWVgKWYYgGFASTOum3vw35r28ERAFlMr93akVN-qoBMfmdL4TefntSzHC8vqjrEUt_pWoN28l6VR77SRTCvW42MT1ZtI5-CpJid0G6vPJ9SDBzjxNMqw0SUU3_jpkYEuMnMY48Zt2mQJL_J0u3kc4zxEzby6aL0qPuhx9p4iWIKai"
+                                />
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60"
+                                ></div>
+                            </div>
+                            <div class="mt-6">
+                                <h3 class="text-3xl font-bold text-primary">
+                                    Wakil Ketua BEM
+                                </h3>
+                                <p class="text-secondary font-semibold text-lg">
+                                    Siti Nurhaliza
+                                </p>
+                                <p class="mt-4 text-on-surface-variant italic">
+                                    "Sinergi antar elemen adalah kunci
+                                    keberhasilan setiap program kerja kita."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Admin & Finance Column -->
+                    <div class="flex flex-col gap-16 md:pt-24">
+                        <div class="bg-surface-container-low p-10 rounded-xl">
+                            <div class="flex items-center gap-6 mb-8">
+                                <div
+                                    class="w-16 h-16 rounded-full overflow-hidden bg-white"
+                                >
+                                    <img
+                                        class="w-full h-full object-cover"
+                                        data-alt="Headshot of a professional young man, wearing glasses, soft professional background, high-end editorial lighting"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcPMZXNSlNWIkjo18uofVpMMAvMAo1zgB5KEG3GtkagMKCl_F-we4oBwS7Hnn-xiD_Fzzp4cOFCDBUTl5_Kh4LoWC_DWggqbH3MMr9zdzYt2ij0RiXcNQ-SWpSs1BSSZtrD5keVOKWXYiaBC0UFRd-Fxvw78f2DR_gZ3Pp9eHZfqV_gBXu2OGCza-gHHkUrVJZbA853DTIy7wzCwmEXGlr8VjuJUTAo6CfIaw9ioq241_CULuA9cd5KWrCUk4VdXVKSKhj6saQzQwW"
+                                    />
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-primary">
+                                        Sekretaris
+                                    </h4>
+                                    <p class="text-secondary font-medium">
+                                        Reza Artamevia
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">
+                                Bertanggung jawab atas administrasi internal,
+                                pengarsipan data, dan manajemen kesekretariatan
+                                organisasi.
+                            </p>
+                        </div>
+                        <div class="bg-surface-container-low p-10 rounded-xl">
+                            <div class="flex items-center gap-6 mb-8">
+                                <div
+                                    class="w-16 h-16 rounded-full overflow-hidden bg-white"
+                                >
+                                    <img
+                                        class="w-full h-full object-cover"
+                                        data-alt="Headshot of a young professional woman in elegant office wear, confident expression, neutral studio background"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8MDPu9UGF49jiO9y6oEgHm9qPUebKmnk8n-sjInXC1Mi_pRLNaTLaZ5j3x2EI0jv9TBtH84pGJoxeszMV84IAea6w0w99kU5o8f9mFLrBX7OiiyTHnd8fflSQ5Nebs1XySiVZmaiu541QlPhXtfOYw5Kc5UAO01aVV-b57RBAz1DMreectO39TZlT4qEmetrkusRcT6WA0Y9r_n8ZB8bdNZPVL5d08yXnFs_feWzsrLrqQfzfJP5USvs3PmUqVfUrAd63r-oQhrzo"
+                                    />
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-primary">
+                                        Bendahara
+                                    </h4>
+                                    <p class="text-secondary font-medium">
+                                        Budi Santoso
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-on-surface-variant">
+                                Mengelola arus kas organisasi, menyusun laporan
+                                keuangan transparan, dan mengawasi anggaran
+                                kegiatan.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-8 p-12 border-l-4 border-secondary bg-primary-container text-white rounded-r-xl"
+                        >
+                            <span
+                                class="material-symbols-outlined text-4xl mb-4"
+                                style="
+                                    font-variation-settings: &quot;FILL&quot; 1;
+                                "
+                                >format_quote</span
+                            >
+                            <h4 class="text-2xl font-bold mb-2">
+                                Visi Astareka
+                            </h4>
+                            <p
+                                class="text-primary-fixed opacity-90 leading-relaxed"
+                            >
+                                "Membangun BEM Universitas Sugeng Hartono
+                                sebagai kurator aspirasi yang progresif,
+                                inklusif, dan berdampak nyata bagi ekosistem
+                                akademik."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Departments Grid -->
+            <section class="mt-20">
+                <div class="mb-16">
+                    <h2
+                        class="text-4xl font-bold text-primary tracking-tight mb-4"
+                    >
+                        Divisi &amp; Departemen
+                    </h2>
+                    <div class="h-1 w-16 bg-secondary"></div>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                    <!-- Divisi 1 -->
+                    <div
+                        class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group"
+                    >
+                        <div
+                            class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >campaign</span
+                            >
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">
+                            Pengembangan SDM
+                        </h3>
+                        <p
+                            class="text-sm text-on-surface-variant leading-relaxed mb-6"
+                        >
+                            Berfokus pada peningkatan kualitas intelektual dan
+                            karakter mahasiswa melalui pelatihan kepemimpinan.
+                        </p>
+                        <div class="space-y-2">
+                            <p
+                                class="text-xs font-bold uppercase tracking-wider text-secondary"
+                            >
+                                Program Unggulan:
+                            </p>
+                            <ul class="text-sm space-y-1 text-on-surface">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    LKMM-TD &amp; LKMM-TM
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Leadership Workshop
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Divisi 2 -->
+                    <div
+                        class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group"
+                    >
+                        <div
+                            class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >public</span
+                            >
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">
+                            Hubungan Luar
+                        </h3>
+                        <p
+                            class="text-sm text-on-surface-variant leading-relaxed mb-6"
+                        >
+                            Membangun kemitraan strategis dengan institusi
+                            eksternal dan memperluas jaringan nasional.
+                        </p>
+                        <div class="space-y-2">
+                            <p
+                                class="text-xs font-bold uppercase tracking-wider text-secondary"
+                            >
+                                Program Unggulan:
+                            </p>
+                            <ul class="text-sm space-y-1 text-on-surface">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Comparative Study
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Partner Networking
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Divisi 3 -->
+                    <div
+                        class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group"
+                    >
+                        <div
+                            class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >palette</span
+                            >
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">
+                            Minat &amp; Bakat
+                        </h3>
+                        <p
+                            class="text-sm text-on-surface-variant leading-relaxed mb-6"
+                        >
+                            Wadah bagi ekspresi kreatif dan prestasi mahasiswa
+                            di bidang olahraga, seni, dan hobi.
+                        </p>
+                        <div class="space-y-2">
+                            <p
+                                class="text-xs font-bold uppercase tracking-wider text-secondary"
+                            >
+                                Program Unggulan:
+                            </p>
+                            <ul class="text-sm space-y-1 text-on-surface">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Universitas Cup
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Art Showcase Night
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Divisi 4 -->
+                    <div
+                        class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group"
+                    >
+                        <div
+                            class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >volunteer_activism</span
+                            >
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">
+                            Sosial Masyarakat
+                        </h3>
+                        <p
+                            class="text-sm text-on-surface-variant leading-relaxed mb-6"
+                        >
+                            Menginisiasi aksi kemanusiaan dan pengabdian
+                            langsung kepada masyarakat sekitar kampus.
+                        </p>
+                        <div class="space-y-2">
+                            <p
+                                class="text-xs font-bold uppercase tracking-wider text-secondary"
+                            >
+                                Program Unggulan:
+                            </p>
+                            <ul class="text-sm space-y-1 text-on-surface">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    BEM Mengabdi
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Charity Drive
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Divisi 5 -->
+                    <div
+                        class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group"
+                    >
+                        <div
+                            class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors"
+                        >
+                            <span class="material-symbols-outlined"
+                                >media_output</span
+                            >
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">
+                            Media &amp; Informasi
+                        </h3>
+                        <p
+                            class="text-sm text-on-surface-variant leading-relaxed mb-6"
+                        >
+                            Mengelola kanal komunikasi digital BEM dan
+                            memastikan diseminasi informasi akurat.
+                        </p>
+                        <div class="space-y-2">
+                            <p
+                                class="text-xs font-bold uppercase tracking-wider text-secondary"
+                            >
+                                Program Unggulan:
+                            </p>
+                            <ul class="text-sm space-y-1 text-on-surface">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Podcast Astareka
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Digital Publication
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Divisi 6 -->
+                    <div
+                        class="bg-surface-container-lowest p-8 rounded-xl border-b-4 border-transparent hover:border-secondary transition-all shadow-[0_20px_40px_rgba(11,28,48,0.03)] group"
+                    >
+                        <div
+                            class="w-12 h-12 bg-surface-container-low flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary-container group-hover:text-white transition-colors"
+                        >
+                            <span class="material-symbols-outlined">gavel</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary mb-3">
+                            Kajian &amp; Aksi Strategis
+                        </h3>
+                        <p
+                            class="text-sm text-on-surface-variant leading-relaxed mb-6"
+                        >
+                            Menganalisis isu-isu kampus dan nasional untuk
+                            memberikan rekomendasi kebijakan.
+                        </p>
+                        <div class="space-y-2">
+                            <p
+                                class="text-xs font-bold uppercase tracking-wider text-secondary"
+                            >
+                                Program Unggulan:
+                            </p>
+                            <ul class="text-sm space-y-1 text-on-surface">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Forum Diskusi Publik
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="w-1.5 h-1.5 rounded-full bg-outline-variant"
+                                    ></span>
+                                    Advocacy Report
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CTA Section -->
+            <section
+                class="mt-32 relative overflow-hidden bg-primary p-12 md:p-20 rounded-xl text-white"
+            >
+                <div class="relative z-10 max-w-2xl">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                        Ingin Berkontribusi?
+                    </h2>
+                    <p class="text-primary-fixed opacity-90 text-lg mb-10">
+                        Kami selalu terbuka untuk mahasiswa yang ingin
+                        mengembangkan potensi dan memberikan dampak positif bagi
+                        universitas.
+                    </p>
+                    <button
+                        class="bg-secondary text-white px-8 py-4 rounded-xl font-bold hover:bg-secondary-container hover:text-on-secondary-container transition-colors"
+                    >
+                        Bergabung Dengan Kami
+                    </button>
+                </div>
+                <div
+                    class="absolute right-[-10%] top-[-10%] w-96 h-96 bg-secondary opacity-10 rounded-full blur-[100px]"
+                ></div>
+                <div
+                    class="absolute left-[-5%] bottom-[-5%] w-64 h-64 bg-primary-container opacity-20 rounded-full blur-[80px]"
+                ></div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer
+            class="w-full mt-20 bg-[#eff4ff] dark:bg-[#001e40] text-[#003366] dark:text-[#eff4ff]"
+        >
+            <div
+                class="flex flex-col md:flex-row justify-between items-start px-12 py-16 gap-8 w-full max-w-7xl mx-auto"
+            >
+                <div class="max-w-sm">
+                    <div
+                        class="text-lg font-bold text-[#001e40] dark:text-white mb-4"
+                    >
+                        ASTAREKA
+                    </div>
+                    <p
+                        class="text-sm font-inter tracking-wide opacity-80 leading-relaxed"
+                    >
+                        Badan Eksekutif Mahasiswa Universitas Sugeng Hartono.
+                        <br />
+                        Menjadi garda terdepan dalam kurasi perubahan dan
+                        inovasi di lingkungan kampus.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-12">
+                    <div class="flex flex-col gap-4">
+                        <span
+                            class="text-xs font-bold uppercase tracking-widest text-secondary"
+                            >Resources</span
+                        >
+                        <a
+                            class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100"
+                            href="#"
+                            >Contact</a
+                        >
+                        <a
+                            class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100"
+                            href="#"
+                            >Instagram</a
+                        >
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <span
+                            class="text-xs font-bold uppercase tracking-widest text-secondary"
+                            >Follow Us</span
+                        >
+                        <a
+                            class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100"
+                            href="#"
+                            >LinkedIn</a
+                        >
+                        <a
+                            class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100"
+                            href="#"
+                            >YouTube</a
+                        >
+                    </div>
+                </div>
+            </div>
+            <div
+                class="px-12 py-8 border-t border-outline-variant/10 max-w-7xl mx-auto"
+            >
+                <p class="font-inter text-sm tracking-wide opacity-60">
+                    © 2024 BEM Universitas Sugeng Hartono Kabinet Astareka. The
+                    Digital Curator.
                 </p>
-</div>
-<div class="grid grid-cols-2 gap-12">
-<div class="flex flex-col gap-4">
-<span class="text-xs font-bold uppercase tracking-widest text-secondary">Resources</span>
-<a class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
-<a class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100" href="#">Instagram</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="text-xs font-bold uppercase tracking-widest text-secondary">Follow Us</span>
-<a class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100" href="#">LinkedIn</a>
-<a class="text-sm hover:text-[#755b00] transition-colors opacity-80 hover:opacity-100" href="#">YouTube</a>
-</div>
-</div>
-</div>
-<div class="px-12 py-8 border-t border-outline-variant/10 max-w-7xl mx-auto">
-<p class="font-inter text-sm tracking-wide opacity-60">
-                © 2024 BEM Universitas Sugeng Hartono Kabinet Astareka. The Digital Curator.
-            </p>
-</div>
-</footer>
-</body></html>
+            </div>
+        </footer>
+    </body>
+</html>
