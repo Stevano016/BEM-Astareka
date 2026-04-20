@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- PWA -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#0d6efd">
+
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -26,5 +30,16 @@
                 {{ $slot }}
             </div>
         </div>
+
+        <!-- PWA Service Worker Registration -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                        .then(reg => console.log('Guest Service worker registered.', reg))
+                        .catch(err => console.log('Guest Service worker registration failed.', err));
+                });
+            }
+        </script>
     </body>
 </html>

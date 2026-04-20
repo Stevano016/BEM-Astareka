@@ -7,6 +7,10 @@
     
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LOGO ASTAREKA.png') }}">
     
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
@@ -186,6 +190,17 @@
                 line3.classList.remove('-rotate-45', '-translate-y-2');
             }
         });
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('Service worker registered.', reg))
+                    .catch(err => console.log('Service worker registration failed.', err));
+            });
+        }
     </script>
 
     @stack('scripts')
