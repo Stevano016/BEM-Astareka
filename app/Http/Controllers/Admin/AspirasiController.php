@@ -47,7 +47,7 @@ class AspirasiController extends Controller
         $sheet->getRowDimension(1)->setRowHeight(28);
 
         $sheet->mergeCells('A2:I2');
-        $sheet->setCellValue('A2', 'Badan Eksekutif Mahasiswa – Universitas Saintek Husada');
+        $sheet->setCellValue('A2', 'Badan Eksekutif Mahasiswa – Universitas Sugeng Hartono');
         $sheet->getStyle('A2')->applyFromArray([
             'font'      => ['size' => 11, 'name' => 'Times New Roman', 'italic' => true,
                             'color' => ['rgb' => '1F3864']],
