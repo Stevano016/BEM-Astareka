@@ -343,21 +343,25 @@
         </div>
     </section>
 
-    <section class="max-w-full mx-auto px-8 mt-32">
-        <div class="bg-primary rounded-3xl p-12 md:p-24 text-center text-white relative overflow-hidden">
-            <div class="relative z-10 max-w-2xl mx-auto space-y-8">
-                <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter leading-tight">Mari Berkolaborasi Untuk Perubahan.</h2>
-                <p class="text-white/60 text-lg">Pintu kami selalu terbuka untuk ide, saran, dan kolaborasi yang membangun demi kemajuan mahasiswa.</p>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 pt-4">
-                    <a href="{{ route('aspirasi.index') }}" class="bg-secondary text-white px-10 py-5 rounded-xl font-headline font-bold text-lg hover:bg-secondary/90 transition-all active:scale-95">Sampaikan Aspirasi</a>
-                    <a href="#" class="text-white font-bold flex items-center gap-2 group">
+    <section class="max-w-full mx-auto px-4 sm:px-8 mt-20 sm:mt-32 mb-16 sm:mb-24">
+        <div class="bg-primary rounded-3xl p-8 md:p-24 text-center text-white relative overflow-hidden editorial-shadow">
+            <div class="relative z-10 max-w-2xl mx-auto space-y-6 md:space-y-8">
+                <span class="text-secondary font-black uppercase tracking-[0.3em] text-[10px] sm:text-sm block">Aspirasi & Kolaborasi</span>
+                <h2 class="text-3xl md:text-6xl font-headline font-extrabold tracking-tighter leading-tight sm:leading-none">Mari Berkolaborasi Untuk Perubahan.</h2>
+                <p class="text-white/60 text-base md:text-lg leading-relaxed">Pintu kami selalu terbuka untuk ide, saran, dan kolaborasi yang membangun demi kemajuan mahasiswa USH.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 pt-4">
+                    <a href="{{ route('aspirasi.index') }}" class="w-full sm:w-auto bg-secondary text-white px-8 md:px-10 py-4 md:py-5 rounded-xl font-headline font-bold text-base md:text-lg hover:bg-secondary/90 transition-all active:scale-95 shadow-lg shadow-secondary/20">
+                        Sampaikan Aspirasi
+                    </a>
+                    <a href="#" class="inline-flex items-center gap-2 text-white font-bold hover:text-secondary transition-colors group py-2">
                         Hubungi Kami
-                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform text-sm md:text-base">arrow_forward</span>
                     </a>
                 </div>
             </div>
-            <div class="absolute -top-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container rounded-full blur-3xl"></div>
+            {{-- Elemen Dekoratif --}}
+            <div class="absolute -top-12 md:-top-24 -left-12 md:-left-24 w-32 md:w-64 h-32 md:h-64 bg-secondary/10 rounded-full blur-2xl md:blur-3xl"></div>
+            <div class="absolute -bottom-12 md:-bottom-24 -right-12 md:-right-24 w-48 md:w-96 h-48 md:h-96 bg-primary-container rounded-full blur-2xl md:blur-3xl"></div>
         </div>
     </section>
 
