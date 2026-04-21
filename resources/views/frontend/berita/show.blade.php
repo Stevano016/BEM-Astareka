@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', $berita->judul . ' - ' . config('bem.nama_organisasi'))
+@section('meta_description', Str::limit(strip_tags($berita->konten), 160))
+@section('meta_keywords', $berita->kategori . ', ' . implode(', ', explode(' ', $berita->judul)) . ', BEM USH, Berita Kampus')
+
 @section('content')
 <main class="pt-24 md:pt-32 pb-24 bg-white">
     <article class="max-w-4xl mx-auto px-4 md:px-8">

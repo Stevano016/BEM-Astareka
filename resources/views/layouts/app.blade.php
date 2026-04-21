@@ -6,7 +6,7 @@
     
     {{-- SEO Meta Tags --}}
     <meta name="description" content="@yield('meta_description', 'Website Resmi BEM Universitas Sugeng Hartono. Wadah aspirasi, informasi berita, dan kegiatan mahasiswa Kabinet ASTAREKA.')">
-    <meta name="keywords" content="BEM USH, Universitas Sugeng Hartono, Kabinet ASTAREKA, Mahasiswa, Aspirasi Mahasiswa, Berita Kampus">
+    <meta name="keywords" content="@yield('meta_keywords', 'BEM USH, Universitas Sugeng Hartono, Kabinet ASTAREKA, Mahasiswa, Aspirasi Mahasiswa, Berita Kampus')">
     <meta name="author" content="BEM USH">
     <meta name="robots" content="index, follow">
 
