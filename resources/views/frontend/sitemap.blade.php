@@ -21,6 +21,7 @@
     </url>
     <url>
         <loc>{{ route('aspirasi.index') }}</loc>
+        <lastmod>{{ now()->startOfMonth()->format('Y-m-d\TH:i:sP') }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
@@ -28,7 +29,7 @@
     {{-- Halaman Dinamis (Berita) --}}
     @foreach($berita as $item)
     <url>
-        <loc>{{ route('berita.show', $item->id) }}</loc>
+        <loc>{{ route('berita.show', $item->slug) }}</loc>
         <lastmod>{{ $item->updated_at->format('Y-m-d\TH:i:sP') }}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
