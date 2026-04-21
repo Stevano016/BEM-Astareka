@@ -41,10 +41,11 @@
 
         <!-- Sidebar aside -->
         <aside 
-            class="fixed lg:static top-0 left-0 w-64 bg-primary text-on-primary flex-shrink-0 flex flex-col h-full z-50 transition-transform lg:transition-none duration-300 ease-in-out"
+            class="fixed lg:static inset-y-0 left-0 w-64 bg-primary text-on-primary flex-shrink-0 flex flex-col h-screen z-50 transition-transform lg:transition-none duration-300 ease-in-out overflow-hidden overscroll-none"
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
             x-cloak>
-            {{-- Bagian Sidebar tetap sama (telah diperbaiki sebelumnya) --}}
+            
+            {{-- Header Sidebar (Statis) --}}
             <div class="p-8 flex justify-between items-center shrink-0">
                 <div>
                     <span class="text-2xl font-black font-headline tracking-tighter">{{ config('bem.logo_text') }}</span>
@@ -55,7 +56,8 @@
                 </button>
             </div>
             
-            <nav class="mt-4 px-4 space-y-2 flex-1 overflow-y-auto scrollbar-hide">
+            {{-- Navigasi (Scrollable) --}}
+            <nav class="mt-4 px-4 space-y-2 flex-1 overflow-y-auto scrollbar-hide overscroll-contain">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">home</span>
                     <span class="font-bold">Dashboard</span>
@@ -111,7 +113,8 @@
                 @endif
             </nav>
 
-            <div class="p-8 border-t border-white/10 w-full shrink-0 bg-primary">
+            {{-- Footer Sidebar (Statis di Bawah) --}}
+            <div class="p-8 border-t border-white/10 w-full shrink-0 bg-primary z-10">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="flex items-center gap-4 text-red-400 hover:text-red-300 font-bold w-full active:scale-95 transition-all">
@@ -123,7 +126,7 @@
         </aside>
 
         <!-- Main Area -->
-        <main class="flex-1 flex flex-col min-w-0 bg-surface">
+        <main class="flex-1 flex flex-col min-w-0 bg-surface h-screen overflow-hidden">
             <!-- Fixed Header -->
             <header class="bg-white border-b border-outline/10 px-6 lg:px-12 py-6 flex justify-between items-center shrink-0 z-30 shadow-sm">
                 <div class="flex items-center gap-4">
@@ -144,7 +147,7 @@
             </header>
 
             <!-- Scrollable Content Area -->
-            <div class="flex-1 overflow-y-auto p-6 lg:p-12 scroll-smooth">
+            <div class="flex-1 overflow-y-auto p-6 lg:p-12 scroll-smooth overscroll-contain">
                 @if(session('success'))
                     <div class="mb-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 flex items-center gap-3">
                         <span class="material-symbols-outlined">check_circle</span>
@@ -153,12 +156,12 @@
                 @endif
 
                 @yield('content')
-                
-                {{-- Footer Area (Optional) --}}
-                <div class="mt-20 pt-8 border-t border-outline/5 text-center">
-                    <p class="text-[10px] font-bold text-outline uppercase tracking-[0.2em]">&copy; {{ date('Y') }} {{ config('bem.logo_text') }} • Admin Management System</p>
-                </div>
             </div>
+
+            {{-- Footer Area (Statis di Bawah Main Content) --}}
+            <footer class="shrink-0 py-4 px-6 lg:px-12 border-t border-outline/5 bg-white/50 backdrop-blur-sm text-center">
+                <p class="text-[9px] font-bold text-outline uppercase tracking-[0.2em]">&copy; {{ date('Y') }} {{ config('bem.logo_text') }} • Admin Management System</p>
+            </footer>
         </main>
     </div>
     @stack('scripts')
