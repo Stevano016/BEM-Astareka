@@ -1,8 +1,4 @@
 User-agent: *
-Disallow: /admin
-Disallow: /login
-Disallow: /register
-Disallow: /dashboard
-Disallow: /api
+Allow: /
 
-Sitemap: https://bem-ush.id/sitemap.xml
+Sitemap: https://astareka-bemush.com/sitemap.xml

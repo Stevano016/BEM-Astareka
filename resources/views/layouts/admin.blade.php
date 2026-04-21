@@ -110,6 +110,12 @@
                     <span class="material-symbols-outlined">info</span>
                     <span>Profil BEM</span>
                 </a>
+                
+                {{-- SEO Performance Menu --}}
+                <a href="{{ route('admin.seo.index') }}" class="flex items-center gap-4 px-4 py-3 rounded-2xl {{ request()->routeIs('admin.seo.*') ? 'bg-primary-container text-white' : 'text-white/60 hover:bg-primary-container/30 hover:text-white' }} transition-all font-bold text-sm">
+                    <span class="material-symbols-outlined">query_stats</span>
+                    <span>SEO Performa</span>
+                </a>
                 @endif
             </nav>
 

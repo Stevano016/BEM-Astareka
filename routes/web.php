@@ -5,6 +5,11 @@ use App\Http\Controllers\Frontend\{BerandaController, BeritaController, Aspirasi
 use App\Http\Controllers\Admin;
 use App\Models\User;
 
+use App\Http\Controllers\SitemapController;
+
+// SEO
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+
 // Frontend
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 
@@ -58,6 +63,11 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
         // Profile BEM
         Route::get('profile', [Admin\ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [Admin\ProfileController::class, 'update'])->name('profile.update');
+
+        // SEO
+        Route::get('seo', function() {
+            return view('admin.seo');
+        })->name('seo.index');
     });
 });
 

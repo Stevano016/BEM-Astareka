@@ -3,6 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    {{-- SEO Meta Tags --}}
+    <meta name="description" content="@yield('meta_description', 'Website Resmi BEM Universitas Sahid Heritage. Wadah aspirasi, informasi berita, dan kegiatan mahasiswa Kabinet ASTAREKA.')">
+    <meta name="keywords" content="BEM USH, Universitas Sahid Heritage, Kabinet ASTAREKA, Mahasiswa, Aspirasi Mahasiswa, Berita Kampus">
+    <meta name="author" content="BEM USH">
+    <meta name="robots" content="index, follow">
+
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', config('bem.nama_organisasi'))">
+    <meta property="og:description" content="@yield('meta_description', 'Website Resmi BEM Universitas Sahid Heritage.')">
+    <meta property="og:image" content="@yield('meta_image', asset('img/LOGO ASTAREKA.png'))">
+
+    {{-- Twitter --}}
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="@yield('title', config('bem.nama_organisasi'))">
+    <meta property="twitter:description" content="@yield('meta_description', 'Website Resmi BEM Universitas Sahid Heritage.')">
+    <meta property="twitter:image" content="@yield('meta_image', asset('img/LOGO ASTAREKA.png'))">
+
     <title>@yield('title', config('bem.nama_organisasi'))</title>
     
     <link rel="icon" type="image/x-icon" href="{{ asset('img/LOGO ASTAREKA.png') }}">
