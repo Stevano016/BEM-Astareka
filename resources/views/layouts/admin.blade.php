@@ -24,7 +24,7 @@
     
 </head>
 <body class="bg-surface text-on-surface font-body">
-    <div class="flex min-h-screen relative" x-data="{ sidebarOpen: false }">
+    <div class="flex h-screen overflow-hidden relative" x-data="{ sidebarOpen: false }">
         
         <!-- Backdrop Mobile -->
         <div x-show="sidebarOpen" 
@@ -41,10 +41,11 @@
 
         <!-- Sidebar aside -->
         <aside 
-            class="fixed lg:sticky top-0 left-0 w-64 bg-primary text-on-primary flex-shrink-0 flex flex-col h-screen z-50 transition-transform lg:transition-none duration-300 ease-in-out"
+            class="fixed lg:static top-0 left-0 w-64 bg-primary text-on-primary flex-shrink-0 flex flex-col h-full z-50 transition-transform lg:transition-none duration-300 ease-in-out"
             :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
             x-cloak>
-            <div class="p-8 flex justify-between items-center">
+            {{-- Bagian Sidebar tetap sama (telah diperbaiki sebelumnya) --}}
+            <div class="p-8 flex justify-between items-center shrink-0">
                 <div>
                     <span class="text-2xl font-black font-headline tracking-tighter">{{ config('bem.logo_text') }}</span>
                     <p class="text-xs opacity-50 uppercase tracking-widest mt-1">Admin Panel</p>
@@ -54,7 +55,7 @@
                 </button>
             </div>
             
-            <nav class="mt-4 px-4 space-y-2 flex-1 overflow-y-auto pb-4">
+            <nav class="mt-4 px-4 space-y-2 flex-1 overflow-y-auto scrollbar-hide">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-4 px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'bg-primary-container' : 'hover:bg-primary-container/50' }} transition-colors">
                     <span class="material-symbols-outlined">home</span>
                     <span class="font-bold">Dashboard</span>
@@ -110,10 +111,10 @@
                 @endif
             </nav>
 
-            <div class="mt-auto p-8 border-t border-white/10 w-full">
+            <div class="p-8 border-t border-white/10 w-full shrink-0 bg-primary">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="flex items-center gap-4 text-red-400 hover:text-red-300 font-bold w-full">
+                    <button type="submit" class="flex items-center gap-4 text-red-400 hover:text-red-300 font-bold w-full active:scale-95 transition-all">
                         <span class="material-symbols-outlined">logout</span>
                         <span>Logout</span>
                     </button>
@@ -121,30 +122,42 @@
             </div>
         </aside>
 
-        <main class="flex-1 w-full overflow-x-hidden">
-            <header class="bg-white border-b border-outline/10 px-6 lg:px-12 py-6 flex justify-between items-center sticky top-0 z-30">
+        <!-- Main Area -->
+        <main class="flex-1 flex flex-col min-w-0 bg-surface">
+            <!-- Fixed Header -->
+            <header class="bg-white border-b border-outline/10 px-6 lg:px-12 py-6 flex justify-between items-center shrink-0 z-30 shadow-sm">
                 <div class="flex items-center gap-4">
                     <button @click.stop="sidebarOpen = true" class="lg:hidden text-primary p-2 -ml-2">
                         <span class="material-symbols-outlined">menu</span>
                     </button>
-                    <h2 class="text-lg lg:text-xl font-headline font-extrabold text-primary truncate">@yield('page_title', 'Dashboard')</h2>
+                    <h2 class="text-lg lg:text-xl font-headline font-extrabold text-primary truncate uppercase tracking-tight">@yield('page_title', 'Dashboard')</h2>
                 </div>
                 <div class="flex items-center gap-4">
-                    <span class="text-sm font-bold text-primary opacity-70 hidden md:block">{{ auth()->user()->name }}</span>
-                    <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold flex-shrink-0">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-sm font-bold text-primary leading-none">{{ auth()->user()->name }}</p>
+                        <p class="text-[10px] font-bold text-secondary uppercase tracking-widest mt-1">{{ auth()->user()->role }}</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white font-bold flex-shrink-0 border-2 border-surface shadow-sm">
                         {{ substr(auth()->user()->name, 0, 1) }}
                     </div>
                 </div>
             </header>
 
-            <div class="p-6 lg:p-12">
+            <!-- Scrollable Content Area -->
+            <div class="flex-1 overflow-y-auto p-6 lg:p-12 scroll-smooth">
                 @if(session('success'))
-                    <div class="mb-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200">
-                        {{ session('success') }}
+                    <div class="mb-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 flex items-center gap-3">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        <span class="font-bold text-sm">{{ session('success') }}</span>
                     </div>
                 @endif
 
                 @yield('content')
+                
+                {{-- Footer Area (Optional) --}}
+                <div class="mt-20 pt-8 border-t border-outline/5 text-center">
+                    <p class="text-[10px] font-bold text-outline uppercase tracking-[0.2em]">&copy; {{ date('Y') }} {{ config('bem.logo_text') }} • Admin Management System</p>
+                </div>
             </div>
         </main>
     </div>
