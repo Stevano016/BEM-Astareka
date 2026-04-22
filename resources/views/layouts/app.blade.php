@@ -15,18 +15,18 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', config('bem.nama_organisasi'))">
     <meta property="og:description" content="@yield('meta_description', 'Website Resmi BEM Universitas Sugeng Hartono.')">
-    <meta property="og:image" content="@yield('meta_image', asset('img/LOGO ASTAREKA.png'))">
+    <meta property="og:image" content="@yield('meta_image', asset('img/logo-astareka.png'))">
 
     {{-- Twitter --}}
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="@yield('title', config('bem.nama_organisasi'))">
     <meta property="twitter:description" content="@yield('meta_description', 'Website Resmi BEM Universitas Sugeng Hartono.')">
-    <meta property="twitter:image" content="@yield('meta_image', asset('img/LOGO ASTAREKA.png'))">
+    <meta property="twitter:image" content="@yield('meta_image', asset('img/logo-astareka.png'))">
 
     <title>@yield('title', config('bem.nama_organisasi'))</title>
     
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/LOGO ASTAREKA.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo-astareka.png') }}">
     
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json">

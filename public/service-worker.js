@@ -2,7 +2,7 @@ const CACHE_NAME = 'bem-ush-cache-v1';
 const urlsToCache = [
   '/',
   '/css/astareka-custom.css',
-  '/img/LOGO ASTAREKA.png'
+  '/img/logo-astareka.png'
 ];
 
 self.addEventListener('install', event => {

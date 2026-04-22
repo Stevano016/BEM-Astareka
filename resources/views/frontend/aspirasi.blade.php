@@ -101,7 +101,7 @@
             <div class="rounded-3xl aspect-video relative overflow-hidden flex items-center justify-center p-8 sm:p-12 text-center group">
                 <div class="absolute inset-0 bg-primary/90 z-10"></div>
                 {{-- Menggunakan logo sebagai latar belakang karena $hero tidak tersedia di halaman ini --}}
-                <img src="{{ asset('img/LOGO ASTAREKA.png') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-20" alt="Decoration">
+                <img src="{{ asset('img/logo-astareka.png') }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-20" alt="Decoration">
                 <div class="relative z-20 space-y-3 sm:space-y-4">
                     <span class="material-symbols-outlined text-secondary text-4xl sm:text-5xl">format_quote</span>
                     <p class="text-lg sm:text-xl font-headline font-bold text-white leading-relaxed italic">"{{ $profileBem['quote_inspirasi'] ?? 'Setiap aspirasi adalah inovasi.' }}"</p>
