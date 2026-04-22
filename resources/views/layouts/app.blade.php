@@ -26,8 +26,7 @@
 
     <title>@yield('title', config('bem.nama_organisasi'))</title>
     
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo-astareka.png') }}">
-    
+<link rel="icon" type="image/png" href="{{ asset('img/logo-astareka.png') }}">    
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0d6efd">
